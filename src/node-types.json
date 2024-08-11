@@ -52,6 +52,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -499,7 +509,7 @@
     "fields": {
       "action": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "comment",
@@ -524,14 +534,6 @@
           {
             "type": "variable",
             "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
           }
         ]
       },
@@ -1312,6 +1314,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1335,19 +1347,11 @@
     "named": false
   },
   {
-    "type": "'",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
   {
     "type": ")",
-    "named": false
-  },
-  {
-    "type": ",",
     "named": false
   },
   {
@@ -1875,15 +1879,7 @@
     "named": false
   },
   {
-    "type": "{",
-    "named": false
-  },
-  {
     "type": "||",
-    "named": false
-  },
-  {
-    "type": "}",
     "named": false
   }
 ]

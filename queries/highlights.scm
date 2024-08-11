@@ -3,7 +3,7 @@
 (loadmodule) @function.builtin
 
 (local_variable
-  (identifier) @variable ) @variable.local
+  (identifier) @variable.local ) @variable.local
 (avp_variable
   (identifier) @variable.local ) @variable.builtin
 (xavp_variable) @variable.builtin
@@ -23,7 +23,6 @@
   function_name: (identifier) @function.call
   "(" @punctuation.bracket
   ")" @punctuation.bracket)
-; (argument) @variable
 (route_call) @function
 (number) @number
 (local_id) @keyword

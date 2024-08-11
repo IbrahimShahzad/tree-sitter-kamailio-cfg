@@ -546,8 +546,8 @@
             }
           },
           {
-            "type": "STRING",
-            "value": "="
+            "type": "SYMBOL",
+            "name": "assignment"
           },
           {
             "type": "FIELD",
@@ -1261,8 +1261,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "'"
+              "type": "SYMBOL",
+              "name": "_TICK"
             },
             {
               "type": "REPEAT",
@@ -1281,8 +1281,8 @@
               }
             },
             {
-              "type": "STRING",
-              "value": "'"
+              "type": "SYMBOL",
+              "name": "_TICK"
             }
           ]
         }
@@ -1596,8 +1596,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "{"
+          "type": "SYMBOL",
+          "name": "_LBRACE"
         },
         {
           "type": "FIELD",
@@ -1665,8 +1665,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "}"
+          "type": "SYMBOL",
+          "name": "_RBRACE"
         }
       ]
     },
@@ -1918,8 +1918,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "{"
+                  "type": "SYMBOL",
+                  "name": "_LBRACE"
                 },
                 {
                   "type": "FIELD",
@@ -1930,8 +1930,8 @@
                   }
                 },
                 {
-                  "type": "STRING",
-                  "value": "}"
+                  "type": "SYMBOL",
+                  "name": "_RBRACE"
                 }
               ]
             },
@@ -2040,8 +2040,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "("
+          "type": "SYMBOL",
+          "name": "_LPAREN"
         },
         {
           "type": "FIELD",
@@ -2052,12 +2052,12 @@
           }
         },
         {
-          "type": "STRING",
-          "value": ")"
+          "type": "SYMBOL",
+          "name": "_RPAREN"
         },
         {
-          "type": "STRING",
-          "value": "="
+          "type": "SYMBOL",
+          "name": "assignment"
         },
         {
           "type": "FIELD",
@@ -2113,8 +2113,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "("
+          "type": "SYMBOL",
+          "name": "_LPAREN"
         },
         {
           "type": "FIELD",
@@ -2125,12 +2125,12 @@
           }
         },
         {
-          "type": "STRING",
-          "value": ")"
+          "type": "SYMBOL",
+          "name": "_RPAREN"
         },
         {
-          "type": "STRING",
-          "value": "="
+          "type": "SYMBOL",
+          "name": "assignment"
         },
         {
           "type": "FIELD",
@@ -2182,8 +2182,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "("
+          "type": "SYMBOL",
+          "name": "_LPAREN"
         },
         {
           "type": "FIELD",
@@ -2194,8 +2194,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": ","
+          "type": "SYMBOL",
+          "name": "_COMMA"
         },
         {
           "type": "FIELD",
@@ -2206,8 +2206,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": ","
+          "type": "SYMBOL",
+          "name": "_COMMA"
         },
         {
           "type": "FIELD",
@@ -2247,8 +2247,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": ")"
+          "type": "SYMBOL",
+          "name": "_RPAREN"
         }
       ]
     },

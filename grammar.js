@@ -815,7 +815,7 @@ module.exports = grammar({
     // parse debug=3; as debug_variable
     debug: $ => prec.left(3, choice(
       field('key',token(CFG_VARS.DEBUG)),
-      OPERATORS.EQUAL,
+      $.assignment,
       field('value', $.number)
     )),
 
@@ -939,7 +939,7 @@ module.exports = grammar({
 
     string: $ => choice(
       seq($._QUOTE, repeat(choice($.escape_sequence, /[^\\"]+/)), $._QUOTE),
-      seq("'", repeat(choice($.escape_sequence, /[^\\']+/)), "'")
+      seq($._TICK, repeat(choice($.escape_sequence, /[^\\']+/)), $._TICK)
     ),
 
     escape_sequence: $ => token.immediate(seq('\\', /./)),
@@ -1007,11 +1007,11 @@ module.exports = grammar({
     index: $ => seq('[', /[^\]]+/, ']'),
 
     transformation: $ => seq(
-      '{',
+      $._LBRACE,
       field('transformation_type', choice(
         's', 'uri', 'param', 'nameaddr', 'tobody', 're', 'line', 'sql', 'msrpuri', 'json', 'url', 'sock', 'urialias', 'val'
       )),
-      '}'
+      $._RBRACE
     ),
 
     boolean_constant: $ => token(choice(
@@ -1119,9 +1119,9 @@ module.exports = grammar({
 
 
     pseudo_variable: $ => seq(
-      '$',
+      ATTRIBUTES.VAR_MARK,
       choice(
-        seq('{', field('pvar', $.pvar_type), '}'),
+        seq($._LBRACE, field('pvar', $.pvar_type), $._RBRACE),
         seq(field('pvar', $.pvar_type))
       )
     ),
@@ -1133,12 +1133,12 @@ module.exports = grammar({
     ),
 
     avp_variable: $ => seq(
-      '$',
+      ATTRIBUTES.VAR_MARK,
       token('avp'),
-      '(',
+      $._LPAREN,
       field('variable_name', $.identifier),
-      ')',
-      '=',
+      $._RPAREN,
+      $.assignment,
       field('value', choice(
         $.string,
         $.number,
@@ -1151,12 +1151,12 @@ module.exports = grammar({
     ),
 
     xavp_variable: $ => seq(
-      '$',
+      ATTRIBUTES.VAR_MARK,
       token('xavp'),
-      '(',
+      $._LPAREN,
       field('variable_name', $.identifier),
-      ')',
-'=',
+      $._RPAREN,
+      $.assignment,
       field('value', choice(
         $.string,
         $.number,
@@ -1170,11 +1170,11 @@ module.exports = grammar({
 
     modparam: $ => seq(
       token(CFG_VARS.MODPARAM),
-      '(',
+      $._LPAREN,
       field('module_name', $.string),
-      ',',
+      $._COMMA,
       field('parameter_name', $.string),
-      ',',
+      $._COMMA,
       field('value', choice(
         $.string,
         $.number,
@@ -1184,7 +1184,7 @@ module.exports = grammar({
         $.variable,
         $.variable_content
       )),
-      ')'
+      $._RPAREN
     ),
 
   modparamx: $ => seq(
