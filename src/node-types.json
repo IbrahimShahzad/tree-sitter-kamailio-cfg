@@ -1,0 +1,1889 @@
+[
+  {
+    "type": "assignment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "avp_variable",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean_constant",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "variable_content",
+            "named": true
+          }
+        ]
+      },
+      "variable_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "binary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "local_variable",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "variable_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "config_key",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "advertise|ADVERTISE",
+            "named": false
+          },
+          {
+            "type": "alias",
+            "named": false
+          },
+          {
+            "type": "auto_aliases",
+            "named": false
+          },
+          {
+            "type": "auto_bind_ipv6",
+            "named": false
+          },
+          {
+            "type": "auto_domains",
+            "named": false
+          },
+          {
+            "type": "bind_ipv6_link_local",
+            "named": false
+          },
+          {
+            "type": "debug",
+            "named": false
+          },
+          {
+            "type": "dns",
+            "named": false
+          },
+          {
+            "type": "dns_cache_del_nonexp|dns_cache_delete_nonexpired",
+            "named": false
+          },
+          {
+            "type": "dns_cache_flags",
+            "named": false
+          },
+          {
+            "type": "dns_cache_gc_interval",
+            "named": false
+          },
+          {
+            "type": "dns_cache_init",
+            "named": false
+          },
+          {
+            "type": "dns_cache_max_ttl",
+            "named": false
+          },
+          {
+            "type": "dns_cache_mem",
+            "named": false
+          },
+          {
+            "type": "dns_cache_min_ttl",
+            "named": false
+          },
+          {
+            "type": "dns_cache_negative_ttl",
+            "named": false
+          },
+          {
+            "type": "dns_cache_rec_pref",
+            "named": false
+          },
+          {
+            "type": "dns_naptr_ignore_rfc",
+            "named": false
+          },
+          {
+            "type": "dns_retr_no",
+            "named": false
+          },
+          {
+            "type": "dns_retr_time",
+            "named": false
+          },
+          {
+            "type": "dns_sctp_pref|dns_sctp_preference",
+            "named": false
+          },
+          {
+            "type": "dns_search_full_match",
+            "named": false
+          },
+          {
+            "type": "dns_servers_no",
+            "named": false
+          },
+          {
+            "type": "dns_slow_query_ms",
+            "named": false
+          },
+          {
+            "type": "dns_srv_lb|dns_srv_loadbalancing",
+            "named": false
+          },
+          {
+            "type": "dns_tcp_pref|dns_tcp_preference",
+            "named": false
+          },
+          {
+            "type": "dns_tls_pref|dns_tls_preference",
+            "named": false
+          },
+          {
+            "type": "dns_try_ipv6",
+            "named": false
+          },
+          {
+            "type": "dns_try_naptr",
+            "named": false
+          },
+          {
+            "type": "dns_udp_pref|dns_udp_preference",
+            "named": false
+          },
+          {
+            "type": "dns_use_search_list",
+            "named": false
+          },
+          {
+            "type": "domain",
+            "named": false
+          },
+          {
+            "type": "fork",
+            "named": false
+          },
+          {
+            "type": "fork_delay",
+            "named": false
+          },
+          {
+            "type": "ipv6 auto bind */",
+            "named": false
+          },
+          {
+            "type": "ipv6_hex_style",
+            "named": false
+          },
+          {
+            "type": "listen",
+            "named": false
+          },
+          {
+            "type": "log_color",
+            "named": false
+          },
+          {
+            "type": "log_engine_data",
+            "named": false
+          },
+          {
+            "type": "log_engine_type",
+            "named": false
+          },
+          {
+            "type": "log_facility",
+            "named": false
+          },
+          {
+            "type": "log_name",
+            "named": false
+          },
+          {
+            "type": "log_prefix",
+            "named": false
+          },
+          {
+            "type": "log_prefix_mode",
+            "named": false
+          },
+          {
+            "type": "log_stderror",
+            "named": false
+          },
+          {
+            "type": "modinit_delay",
+            "named": false
+          },
+          {
+            "type": "name|NAME",
+            "named": false
+          },
+          {
+            "type": "rev_dns|dns_rev_via",
+            "named": false
+          },
+          {
+            "type": "use_dns_cache|dns_use_cache",
+            "named": false
+          },
+          {
+            "type": "use_dns_failover|dns_use_failover",
+            "named": false
+          },
+          {
+            "type": "virtual",
+            "named": false
+          },
+          {
+            "type": "xavp_via_fields",
+            "named": false
+          },
+          {
+            "type": "xavp_via_params",
+            "named": false
+          },
+          {
+            "type": "xavp_via_reply_params",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "config_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "config_variable",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "config_key",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "config_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "control",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "else_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "control",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "file_inclusion",
+    "named": true,
+    "fields": {
+      "file_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "file_starter",
+    "named": true,
+    "fields": {
+      "cfg_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ALL",
+            "named": false
+          },
+          {
+            "type": "KAMAILIO",
+            "named": false
+          },
+          {
+            "type": "MAXCOMPAT",
+            "named": false
+          },
+          {
+            "type": "OPENSER",
+            "named": false
+          },
+          {
+            "type": "SER",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "function_call",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "sip_keywords",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "function_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {
+      "action": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "control",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "route_call",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parentized_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "else_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "index",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "loadmodule",
+    "named": true,
+    "fields": {
+      "module_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "loadmodulex",
+    "named": true,
+    "fields": {
+      "module_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "local_id",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "local_variable",
+    "named": true,
+    "fields": {
+      "local_var": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "local_id",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean_constant",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "variable_content",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "modparam",
+    "named": true,
+    "fields": {
+      "module_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "parameter_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean_constant",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          },
+          {
+            "type": "variable_content",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "modparamx",
+    "named": true,
+    "fields": {
+      "module_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "parameter_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean_constant",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          },
+          {
+            "type": "variable_content",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "named_route",
+    "named": true,
+    "fields": {
+      "route": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "predefined_routes",
+            "named": true
+          }
+        ]
+      },
+      "route_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "control",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "number",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bin_number",
+          "named": true
+        },
+        {
+          "type": "dec_number",
+          "named": true
+        },
+        {
+          "type": "hex_number",
+          "named": true
+        },
+        {
+          "type": "oct_number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parentized_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "predefined_routes",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "preprocessor_directive",
+    "named": true,
+    "fields": {
+      "from": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "pseudo_variable",
+    "named": true,
+    "fields": {
+      "pvar": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "pvar_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "route_call",
+    "named": true,
+    "fields": {
+      "route_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "routing_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "named_route",
+          "named": true
+        },
+        {
+          "type": "unnamed_route",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "config_variable",
+          "named": true
+        },
+        {
+          "type": "file_inclusion",
+          "named": true
+        },
+        {
+          "type": "file_starter",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
+          "named": true
+        },
+        {
+          "type": "preprocessor_directive",
+          "named": true
+        },
+        {
+          "type": "routing_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "transformation",
+    "named": true,
+    "fields": {
+      "transformation_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "json",
+            "named": false
+          },
+          {
+            "type": "line",
+            "named": false
+          },
+          {
+            "type": "msrpuri",
+            "named": false
+          },
+          {
+            "type": "nameaddr",
+            "named": false
+          },
+          {
+            "type": "param",
+            "named": false
+          },
+          {
+            "type": "re",
+            "named": false
+          },
+          {
+            "type": "s",
+            "named": false
+          },
+          {
+            "type": "sock",
+            "named": false
+          },
+          {
+            "type": "sql",
+            "named": false
+          },
+          {
+            "type": "tobody",
+            "named": false
+          },
+          {
+            "type": "uri",
+            "named": false
+          },
+          {
+            "type": "urialias",
+            "named": false
+          },
+          {
+            "type": "url",
+            "named": false
+          },
+          {
+            "type": "val",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "unary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unnamed_route",
+    "named": true,
+    "fields": {
+      "route": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "predefined_routes",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "control",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "avp_variable",
+          "named": true
+        },
+        {
+          "type": "local_variable",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "xavp_variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "index",
+          "named": true
+        },
+        {
+          "type": "transformation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "xavp_variable",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean_constant",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "variable_content",
+            "named": true
+          }
+        ]
+      },
+      "variable_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "!!",
+    "named": false
+  },
+  {
+    "type": "#!",
+    "named": false
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "&&",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "/*",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "ALL",
+    "named": false
+  },
+  {
+    "type": "KAMAILIO",
+    "named": false
+  },
+  {
+    "type": "MAXCOMPAT",
+    "named": false
+  },
+  {
+    "type": "OPENSER",
+    "named": false
+  },
+  {
+    "type": "SER",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "addr",
+    "named": false
+  },
+  {
+    "type": "advertise|ADVERTISE",
+    "named": false
+  },
+  {
+    "type": "alias",
+    "named": false
+  },
+  {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "auto_aliases",
+    "named": false
+  },
+  {
+    "type": "auto_bind_ipv6",
+    "named": false
+  },
+  {
+    "type": "auto_domains",
+    "named": false
+  },
+  {
+    "type": "avp",
+    "named": false
+  },
+  {
+    "type": "bin_number",
+    "named": true
+  },
+  {
+    "type": "bind_ipv6_link_local",
+    "named": false
+  },
+  {
+    "type": "body",
+    "named": false
+  },
+  {
+    "type": "boolean_constant",
+    "named": true
+  },
+  {
+    "type": "branch",
+    "named": false
+  },
+  {
+    "type": "branch_route",
+    "named": false
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
+    "type": "cfgengine",
+    "named": false
+  },
+  {
+    "type": "ci",
+    "named": false
+  },
+  {
+    "type": "ct",
+    "named": false
+  },
+  {
+    "type": "debug",
+    "named": false
+  },
+  {
+    "type": "dec_number",
+    "named": true
+  },
+  {
+    "type": "diversion",
+    "named": false
+  },
+  {
+    "type": "dns",
+    "named": false
+  },
+  {
+    "type": "dns_cache_del_nonexp|dns_cache_delete_nonexpired",
+    "named": false
+  },
+  {
+    "type": "dns_cache_flags",
+    "named": false
+  },
+  {
+    "type": "dns_cache_gc_interval",
+    "named": false
+  },
+  {
+    "type": "dns_cache_init",
+    "named": false
+  },
+  {
+    "type": "dns_cache_max_ttl",
+    "named": false
+  },
+  {
+    "type": "dns_cache_mem",
+    "named": false
+  },
+  {
+    "type": "dns_cache_min_ttl",
+    "named": false
+  },
+  {
+    "type": "dns_cache_negative_ttl",
+    "named": false
+  },
+  {
+    "type": "dns_cache_rec_pref",
+    "named": false
+  },
+  {
+    "type": "dns_naptr_ignore_rfc",
+    "named": false
+  },
+  {
+    "type": "dns_retr_no",
+    "named": false
+  },
+  {
+    "type": "dns_retr_time",
+    "named": false
+  },
+  {
+    "type": "dns_sctp_pref|dns_sctp_preference",
+    "named": false
+  },
+  {
+    "type": "dns_search_full_match",
+    "named": false
+  },
+  {
+    "type": "dns_servers_no",
+    "named": false
+  },
+  {
+    "type": "dns_slow_query_ms",
+    "named": false
+  },
+  {
+    "type": "dns_srv_lb|dns_srv_loadbalancing",
+    "named": false
+  },
+  {
+    "type": "dns_tcp_pref|dns_tcp_preference",
+    "named": false
+  },
+  {
+    "type": "dns_tls_pref|dns_tls_preference",
+    "named": false
+  },
+  {
+    "type": "dns_try_ipv6",
+    "named": false
+  },
+  {
+    "type": "dns_try_naptr",
+    "named": false
+  },
+  {
+    "type": "dns_udp_pref|dns_udp_preference",
+    "named": false
+  },
+  {
+    "type": "dns_use_search_list",
+    "named": false
+  },
+  {
+    "type": "domain",
+    "named": false
+  },
+  {
+    "type": "drop",
+    "named": false
+  },
+  {
+    "type": "du",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "escape_sequence",
+    "named": true
+  },
+  {
+    "type": "event_route",
+    "named": false
+  },
+  {
+    "type": "exit",
+    "named": false
+  },
+  {
+    "type": "failure_route",
+    "named": false
+  },
+  {
+    "type": "fork",
+    "named": false
+  },
+  {
+    "type": "fork_delay",
+    "named": false
+  },
+  {
+    "type": "fu",
+    "named": false
+  },
+  {
+    "type": "hdr",
+    "named": false
+  },
+  {
+    "type": "hex_number",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "import_file",
+    "named": false
+  },
+  {
+    "type": "include_file",
+    "named": false
+  },
+  {
+    "type": "ipv6 auto bind */",
+    "named": false
+  },
+  {
+    "type": "ipv6_hex_style",
+    "named": false
+  },
+  {
+    "type": "json",
+    "named": false
+  },
+  {
+    "type": "line",
+    "named": false
+  },
+  {
+    "type": "listen",
+    "named": false
+  },
+  {
+    "type": "loadmodule",
+    "named": false
+  },
+  {
+    "type": "loadmodulex",
+    "named": false
+  },
+  {
+    "type": "log_color",
+    "named": false
+  },
+  {
+    "type": "log_engine_data",
+    "named": false
+  },
+  {
+    "type": "log_engine_type",
+    "named": false
+  },
+  {
+    "type": "log_facility",
+    "named": false
+  },
+  {
+    "type": "log_name",
+    "named": false
+  },
+  {
+    "type": "log_prefix",
+    "named": false
+  },
+  {
+    "type": "log_prefix_mode",
+    "named": false
+  },
+  {
+    "type": "log_stderror",
+    "named": false
+  },
+  {
+    "type": "modinit_delay",
+    "named": false
+  },
+  {
+    "type": "modparam",
+    "named": false
+  },
+  {
+    "type": "modparamx",
+    "named": false
+  },
+  {
+    "type": "msrpuri",
+    "named": false
+  },
+  {
+    "type": "nameaddr",
+    "named": false
+  },
+  {
+    "type": "name|NAME",
+    "named": false
+  },
+  {
+    "type": "null",
+    "named": false
+  },
+  {
+    "type": "oct_number",
+    "named": true
+  },
+  {
+    "type": "onreply_route",
+    "named": false
+  },
+  {
+    "type": "onsend_route",
+    "named": false
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "param",
+    "named": false
+  },
+  {
+    "type": "rU",
+    "named": false
+  },
+  {
+    "type": "re",
+    "named": false
+  },
+  {
+    "type": "reply_route",
+    "named": false
+  },
+  {
+    "type": "request_route",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "rev_dns|dns_rev_via",
+    "named": false
+  },
+  {
+    "type": "route",
+    "named": false
+  },
+  {
+    "type": "rr",
+    "named": false
+  },
+  {
+    "type": "ru",
+    "named": false
+  },
+  {
+    "type": "s",
+    "named": false
+  },
+  {
+    "type": "sip_keywords",
+    "named": true
+  },
+  {
+    "type": "sock",
+    "named": false
+  },
+  {
+    "type": "sql",
+    "named": false
+  },
+  {
+    "type": "tobody",
+    "named": false
+  },
+  {
+    "type": "tu",
+    "named": false
+  },
+  {
+    "type": "uri",
+    "named": false
+  },
+  {
+    "type": "urialias",
+    "named": false
+  },
+  {
+    "type": "url",
+    "named": false
+  },
+  {
+    "type": "use_dns_cache|dns_use_cache",
+    "named": false
+  },
+  {
+    "type": "use_dns_failover|dns_use_failover",
+    "named": false
+  },
+  {
+    "type": "val",
+    "named": false
+  },
+  {
+    "type": "var",
+    "named": false
+  },
+  {
+    "type": "virtual",
+    "named": false
+  },
+  {
+    "type": "xavp",
+    "named": false
+  },
+  {
+    "type": "xavp_via_fields",
+    "named": false
+  },
+  {
+    "type": "xavp_via_params",
+    "named": false
+  },
+  {
+    "type": "xavp_via_reply_params",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "||",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]

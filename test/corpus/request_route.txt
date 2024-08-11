@@ -1,0 +1,19 @@
+==================
+Request Route Block
+==================
+
+request_route {
+  xlog("L_INFO", "Request received");
+  exit;
+}
+
+---
+
+(source_file
+  (routing_block
+    (function_call
+      (identifier)
+      (string)
+      (string))
+    (control)
+    ))
