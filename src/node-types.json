@@ -51,11 +51,6 @@
     }
   },
   {
-    "type": "assignment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "assignment_expression",
     "named": true,
     "fields": {
@@ -77,6 +72,10 @@
           },
           {
             "type": "pseudo_variable",
+            "named": true
+          },
+          {
+            "type": "pvar_expression",
             "named": true
           },
           {
@@ -292,6 +291,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
           "type": "call_expression",
           "named": true
         },
@@ -300,7 +303,19 @@
           "named": true
         },
         {
-          "type": "config_variable",
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
           "named": true
         },
         {
@@ -321,6 +336,10 @@
         },
         {
           "type": "preproc_substdef",
+          "named": true
+        },
+        {
+          "type": "preproc_substdefs",
           "named": true
         },
         {
@@ -539,279 +558,6 @@
     }
   },
   {
-    "type": "config_key",
-    "named": true,
-    "fields": {
-      "key": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "advertise|ADVERTISE",
-            "named": false
-          },
-          {
-            "type": "alias",
-            "named": false
-          },
-          {
-            "type": "auto_aliases",
-            "named": false
-          },
-          {
-            "type": "auto_bind_ipv6",
-            "named": false
-          },
-          {
-            "type": "auto_domains",
-            "named": false
-          },
-          {
-            "type": "bind_ipv6_link_local",
-            "named": false
-          },
-          {
-            "type": "debug",
-            "named": false
-          },
-          {
-            "type": "dns",
-            "named": false
-          },
-          {
-            "type": "dns_cache_del_nonexp|dns_cache_delete_nonexpired",
-            "named": false
-          },
-          {
-            "type": "dns_cache_flags",
-            "named": false
-          },
-          {
-            "type": "dns_cache_gc_interval",
-            "named": false
-          },
-          {
-            "type": "dns_cache_init",
-            "named": false
-          },
-          {
-            "type": "dns_cache_max_ttl",
-            "named": false
-          },
-          {
-            "type": "dns_cache_mem",
-            "named": false
-          },
-          {
-            "type": "dns_cache_min_ttl",
-            "named": false
-          },
-          {
-            "type": "dns_cache_negative_ttl",
-            "named": false
-          },
-          {
-            "type": "dns_cache_rec_pref",
-            "named": false
-          },
-          {
-            "type": "dns_naptr_ignore_rfc",
-            "named": false
-          },
-          {
-            "type": "dns_retr_no",
-            "named": false
-          },
-          {
-            "type": "dns_retr_time",
-            "named": false
-          },
-          {
-            "type": "dns_sctp_pref|dns_sctp_preference",
-            "named": false
-          },
-          {
-            "type": "dns_search_full_match",
-            "named": false
-          },
-          {
-            "type": "dns_servers_no",
-            "named": false
-          },
-          {
-            "type": "dns_slow_query_ms",
-            "named": false
-          },
-          {
-            "type": "dns_srv_lb|dns_srv_loadbalancing",
-            "named": false
-          },
-          {
-            "type": "dns_tcp_pref|dns_tcp_preference",
-            "named": false
-          },
-          {
-            "type": "dns_tls_pref|dns_tls_preference",
-            "named": false
-          },
-          {
-            "type": "dns_try_ipv6",
-            "named": false
-          },
-          {
-            "type": "dns_try_naptr",
-            "named": false
-          },
-          {
-            "type": "dns_udp_pref|dns_udp_preference",
-            "named": false
-          },
-          {
-            "type": "dns_use_search_list",
-            "named": false
-          },
-          {
-            "type": "domain",
-            "named": false
-          },
-          {
-            "type": "fork",
-            "named": false
-          },
-          {
-            "type": "fork_delay",
-            "named": false
-          },
-          {
-            "type": "ipv6 auto bind */",
-            "named": false
-          },
-          {
-            "type": "ipv6_hex_style",
-            "named": false
-          },
-          {
-            "type": "listen",
-            "named": false
-          },
-          {
-            "type": "log_color",
-            "named": false
-          },
-          {
-            "type": "log_engine_data",
-            "named": false
-          },
-          {
-            "type": "log_engine_type",
-            "named": false
-          },
-          {
-            "type": "log_facility",
-            "named": false
-          },
-          {
-            "type": "log_name",
-            "named": false
-          },
-          {
-            "type": "log_prefix",
-            "named": false
-          },
-          {
-            "type": "log_prefix_mode",
-            "named": false
-          },
-          {
-            "type": "log_stderror",
-            "named": false
-          },
-          {
-            "type": "modinit_delay",
-            "named": false
-          },
-          {
-            "type": "name|NAME",
-            "named": false
-          },
-          {
-            "type": "rev_dns|dns_rev_via",
-            "named": false
-          },
-          {
-            "type": "use_dns_cache|dns_use_cache",
-            "named": false
-          },
-          {
-            "type": "use_dns_failover|dns_use_failover",
-            "named": false
-          },
-          {
-            "type": "virtual",
-            "named": false
-          },
-          {
-            "type": "xavp_via_fields",
-            "named": false
-          },
-          {
-            "type": "xavp_via_params",
-            "named": false
-          },
-          {
-            "type": "xavp_via_reply_params",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "config_value",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "config_variable",
-    "named": true,
-    "fields": {
-      "key": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "config_key",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "config_value",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "continue_statement",
     "named": true,
     "fields": {}
@@ -922,6 +668,10 @@
           "named": true
         },
         {
+          "type": "pvar_expression",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -998,6 +748,10 @@
         },
         {
           "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "pvar_expression",
           "named": true
         },
         {
@@ -1361,50 +1115,6 @@
     }
   },
   {
-    "type": "named_route",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "compound_statement",
-            "named": true
-          }
-        ]
-      },
-      "route": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "predefined_routes",
-            "named": true
-          }
-        ]
-      },
-      "route_name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "null",
     "named": true,
     "fields": {}
@@ -1461,7 +1171,7 @@
     }
   },
   {
-    "type": "predefined_routes",
+    "type": "predef_route",
     "named": true,
     "fields": {}
   },
@@ -1616,6 +1326,22 @@
     }
   },
   {
+    "type": "preproc_substdefs",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "preproc_arg",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "preproc_trydef",
     "named": true,
     "fields": {
@@ -1655,6 +1381,10 @@
         "required": false,
         "types": [
           {
+            "type": "field_expression",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1679,6 +1409,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "pvar_expression",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "pvar_type",
@@ -1739,7 +1474,7 @@
     }
   },
   {
-    "type": "routing_block",
+    "type": "route_name",
     "named": true,
     "fields": {},
     "children": {
@@ -1747,14 +1482,58 @@
       "required": true,
       "types": [
         {
-          "type": "named_route",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "unnamed_route",
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "special_name",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "routing_block",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "compound_statement",
+            "named": true
+          }
+        ]
+      },
+      "route": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "predef_route",
+            "named": true
+          }
+        ]
+      },
+      "route_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "route_name",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1766,111 +1545,7 @@
       "required": false,
       "types": [
         {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "case_statement",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "compound_statement",
-          "named": true
-        },
-        {
-          "type": "config_variable",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "expression_statement",
-          "named": true
-        },
-        {
-          "type": "file_starter",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "import_file",
-          "named": true
-        },
-        {
-          "type": "include_file",
-          "named": true
-        },
-        {
-          "type": "keyword",
-          "named": true
-        },
-        {
-          "type": "loadmodule",
-          "named": true
-        },
-        {
-          "type": "loadmodulex",
-          "named": true
-        },
-        {
-          "type": "modparam",
-          "named": true
-        },
-        {
-          "type": "modparamx",
-          "named": true
-        },
-        {
-          "type": "preproc_def",
-          "named": true
-        },
-        {
-          "type": "preproc_ifdef",
-          "named": true
-        },
-        {
-          "type": "preproc_redef",
-          "named": true
-        },
-        {
-          "type": "preproc_subst",
-          "named": true
-        },
-        {
-          "type": "preproc_substdef",
-          "named": true
-        },
-        {
-          "type": "preproc_trydef",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "routing_block",
-          "named": true
-        },
-        {
-          "type": "switch_statement",
-          "named": true
-        },
-        {
-          "type": "while_statement",
+          "type": "top_level_item",
           "named": true
         }
       ]
@@ -1992,6 +1667,204 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "top_level_assignment_expression",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          },
+          {
+            "type": "pvar_expression",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+=",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "top_level_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "file_starter",
+          "named": true
+        },
+        {
+          "type": "import_file",
+          "named": true
+        },
+        {
+          "type": "include_file",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_redef",
+          "named": true
+        },
+        {
+          "type": "preproc_subst",
+          "named": true
+        },
+        {
+          "type": "preproc_substdef",
+          "named": true
+        },
+        {
+          "type": "preproc_substdefs",
+          "named": true
+        },
+        {
+          "type": "preproc_trydef",
+          "named": true
+        },
+        {
+          "type": "routing_block",
+          "named": true
+        },
+        {
+          "type": "top_level_assignment_expression",
+          "named": true
+        },
+        {
+          "type": "top_level_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "top_level_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "case_statement",
+          "named": true
+        },
+        {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "expression_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2137,32 +2010,6 @@
     }
   },
   {
-    "type": "unnamed_route",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "compound_statement",
-            "named": true
-          }
-        ]
-      },
-      "route": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "predefined_routes",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "update_expression",
     "named": true,
     "fields": {
@@ -2287,6 +2134,10 @@
   },
   {
     "type": "#!substdef",
+    "named": false
+  },
+  {
+    "type": "#!substdefs",
     "named": false
   },
   {
@@ -2434,31 +2285,7 @@
     "named": false
   },
   {
-    "type": "advertise|ADVERTISE",
-    "named": false
-  },
-  {
-    "type": "alias",
-    "named": false
-  },
-  {
     "type": "and",
-    "named": false
-  },
-  {
-    "type": "auto_aliases",
-    "named": false
-  },
-  {
-    "type": "auto_bind_ipv6",
-    "named": false
-  },
-  {
-    "type": "auto_domains",
-    "named": false
-  },
-  {
-    "type": "bind_ipv6_link_local",
     "named": false
   },
   {
@@ -2494,10 +2321,6 @@
     "named": false
   },
   {
-    "type": "debug",
-    "named": false
-  },
-  {
     "type": "default",
     "named": false
   },
@@ -2512,106 +2335,6 @@
   {
     "type": "deprecated_comment",
     "named": true
-  },
-  {
-    "type": "dns",
-    "named": false
-  },
-  {
-    "type": "dns_cache_del_nonexp|dns_cache_delete_nonexpired",
-    "named": false
-  },
-  {
-    "type": "dns_cache_flags",
-    "named": false
-  },
-  {
-    "type": "dns_cache_gc_interval",
-    "named": false
-  },
-  {
-    "type": "dns_cache_init",
-    "named": false
-  },
-  {
-    "type": "dns_cache_max_ttl",
-    "named": false
-  },
-  {
-    "type": "dns_cache_mem",
-    "named": false
-  },
-  {
-    "type": "dns_cache_min_ttl",
-    "named": false
-  },
-  {
-    "type": "dns_cache_negative_ttl",
-    "named": false
-  },
-  {
-    "type": "dns_cache_rec_pref",
-    "named": false
-  },
-  {
-    "type": "dns_naptr_ignore_rfc",
-    "named": false
-  },
-  {
-    "type": "dns_retr_no",
-    "named": false
-  },
-  {
-    "type": "dns_retr_time",
-    "named": false
-  },
-  {
-    "type": "dns_sctp_pref|dns_sctp_preference",
-    "named": false
-  },
-  {
-    "type": "dns_search_full_match",
-    "named": false
-  },
-  {
-    "type": "dns_servers_no",
-    "named": false
-  },
-  {
-    "type": "dns_slow_query_ms",
-    "named": false
-  },
-  {
-    "type": "dns_srv_lb|dns_srv_loadbalancing",
-    "named": false
-  },
-  {
-    "type": "dns_tcp_pref|dns_tcp_preference",
-    "named": false
-  },
-  {
-    "type": "dns_tls_pref|dns_tls_preference",
-    "named": false
-  },
-  {
-    "type": "dns_try_ipv6",
-    "named": false
-  },
-  {
-    "type": "dns_try_naptr",
-    "named": false
-  },
-  {
-    "type": "dns_udp_pref|dns_udp_preference",
-    "named": false
-  },
-  {
-    "type": "dns_use_search_list",
-    "named": false
-  },
-  {
-    "type": "domain",
-    "named": false
   },
   {
     "type": "drop",
@@ -2646,14 +2369,6 @@
     "named": true
   },
   {
-    "type": "fork",
-    "named": false
-  },
-  {
-    "type": "fork_delay",
-    "named": false
-  },
-  {
     "type": "identifier",
     "named": true
   },
@@ -2670,14 +2385,6 @@
     "named": false
   },
   {
-    "type": "ipv6 auto bind */",
-    "named": false
-  },
-  {
-    "type": "ipv6_hex_style",
-    "named": false
-  },
-  {
     "type": "json",
     "named": false
   },
@@ -2686,51 +2393,11 @@
     "named": false
   },
   {
-    "type": "listen",
-    "named": false
-  },
-  {
     "type": "loadmodule",
     "named": false
   },
   {
     "type": "loadmodulex",
-    "named": false
-  },
-  {
-    "type": "log_color",
-    "named": false
-  },
-  {
-    "type": "log_engine_data",
-    "named": false
-  },
-  {
-    "type": "log_engine_type",
-    "named": false
-  },
-  {
-    "type": "log_facility",
-    "named": false
-  },
-  {
-    "type": "log_name",
-    "named": false
-  },
-  {
-    "type": "log_prefix",
-    "named": false
-  },
-  {
-    "type": "log_prefix_mode",
-    "named": false
-  },
-  {
-    "type": "log_stderror",
-    "named": false
-  },
-  {
-    "type": "modinit_delay",
     "named": false
   },
   {
@@ -2751,10 +2418,6 @@
   },
   {
     "type": "nameaddr",
-    "named": false
-  },
-  {
-    "type": "name|NAME",
     "named": false
   },
   {
@@ -2802,10 +2465,6 @@
     "named": false
   },
   {
-    "type": "rev_dns|dns_rev_via",
-    "named": false
-  },
-  {
     "type": "route",
     "named": false
   },
@@ -2820,6 +2479,10 @@
   {
     "type": "sock",
     "named": false
+  },
+  {
+    "type": "special_name",
+    "named": true
   },
   {
     "type": "sql",
@@ -2866,35 +2529,11 @@
     "named": false
   },
   {
-    "type": "use_dns_cache|dns_use_cache",
-    "named": false
-  },
-  {
-    "type": "use_dns_failover|dns_use_failover",
-    "named": false
-  },
-  {
     "type": "val",
     "named": false
   },
   {
-    "type": "virtual",
-    "named": false
-  },
-  {
     "type": "while",
-    "named": false
-  },
-  {
-    "type": "xavp_via_fields",
-    "named": false
-  },
-  {
-    "type": "xavp_via_params",
-    "named": false
-  },
-  {
-    "type": "xavp_via_reply_params",
     "named": false
   },
   {

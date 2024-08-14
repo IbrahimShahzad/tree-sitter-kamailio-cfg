@@ -58,7 +58,8 @@ loadmodule "pv.so"
 modparam("tmx", "fr_timer", 5)
 
 /* This line should be classified as new comment */
-
+/* hekko
+ * world */
 request_route {
     $var(x) = "string";
     $avp(y) = "string";
@@ -120,7 +121,7 @@ route["custom"] {
     $var(b) = "sip:" + $var(a) + "@" + $fd;
 
 
-    switch(x){
+    switch($retcode){
     default:
         log("hello");
 	break;
@@ -148,4 +149,10 @@ route[1] {
     }
     drop();
     exit;
+}
+/**
+ * Catch all kamailio originated responses for LI
+ */
+event_route[tm:local-response] {
+    route(INTERCEPT_HANDLING);
 }

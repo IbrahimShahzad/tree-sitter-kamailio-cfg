@@ -670,23 +670,23 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.block_item, $._expression_not_binary],
-    [$._top_level_item, $._expression_not_binary],
+    [$.top_level_item, $._expression_not_binary],
   ],
 
   rules: {
     source_file: $ => seq(
-      repeat($._top_level_item)
+      repeat($.top_level_item)
     ),
 
     // Top level statements
     // The valid blocks would be request routes
-    _top_level_item: $ => choice(
+    top_level_item: $ => choice(
       $.file_starter,
       $.include_file,
       $.import_file,
       $.call_expression,
       $.routing_block,
-      $.config_variable,
+      $.top_level_assignment_expression,
       $.keyword,
       $.loadmodule,
       $.loadmodulex,
@@ -697,30 +697,37 @@ module.exports = grammar({
       $.preproc_ifdef,
       $.preproc_redef,
       $.preproc_subst,
+      $.preproc_substdefs,
       $.preproc_substdef,
-      $._top_level_statement,
+      $.top_level_statement,
       $.comment,
     ),
 
     block_item: $ => choice(
       $.statement,
-      $.config_variable,
+      $.assignment_expression,
       $.preproc_def,
       $.preproc_trydef,
       $.preproc_ifdef,
       $.preproc_redef,
       $.preproc_subst,
+      $.preproc_substdefs,
       $.preproc_substdef,
+      $.loadmodule,
+      $.loadmodulex,
+      $.modparam,
+      $.modparamx,
+
       $.route_call,
       $.routing_block,
       $.call_expression,
       $.comment,
     ),
 
-    _top_level_statement: $ => choice(
+    top_level_statement: $ => choice(
       $.case_statement,
       $.compound_statement,
-      alias($._top_level_expression_statement, $.expression_statement),
+      alias($.top_level_expression_statement, $.expression_statement),
       $.if_statement,
       $.switch_statement,
       $.while_statement,
@@ -747,10 +754,10 @@ module.exports = grammar({
 
 
 
-    _top_level_expression_statement: $ => seq(
+    top_level_expression_statement: $ => prec(10, seq(
       $._expression_not_binary,
-      PUNC.SEMICOLON,
-    ),
+      optional(PUNC.SEMICOLON),
+    )),
     statement: $ => choice(
       $.case_statement,
       $._non_case_statement,
@@ -839,39 +846,30 @@ module.exports = grammar({
     ),
 
 
-    predefined_routes: _ => choice(
-      ACTION_KEYWORDS.ROUTE_REQUEST,
-      ACTION_KEYWORDS.ROUTE_REPLY,
-      ACTION_KEYWORDS.ROUTE_BRANCH,
-      ACTION_KEYWORDS.ROUTE_FAILURE,
-      ACTION_KEYWORDS.ROUTE_ONREPLY,
-      ACTION_KEYWORDS.ROUTE_EVENT,
-      ACTION_KEYWORDS.ROUTE_SEND,
-      ACTION_KEYWORDS.ROUTE
+    predef_route: _ => choice(
+      token(ACTION_KEYWORDS.ROUTE_REQUEST),
+      token(ACTION_KEYWORDS.ROUTE_REPLY),
+      token(ACTION_KEYWORDS.ROUTE_BRANCH),
+      token(ACTION_KEYWORDS.ROUTE_FAILURE),
+      token(ACTION_KEYWORDS.ROUTE_ONREPLY),
+      token(ACTION_KEYWORDS.ROUTE_EVENT),
+      token(ACTION_KEYWORDS.ROUTE_SEND),
+      token(ACTION_KEYWORDS.ROUTE)
     ),
 
-    _route_name: $ => choice(
+    route_name: $ => choice(
       $.string,
       $.identifier,
       $.number_literal,
+      $.special_name
     ),
 
-    named_route: $ => seq(
-      field('route', $.predefined_routes),
-      PUNC.LBRACK,
-      field('route_name', $._route_name),
-      PUNC.RBRACK,
+    special_name: _ => /[a-zA-Z_:-][a-zA-Z0-9_:-]*/,
+
+    routing_block: $ => seq(
+      field('route', $.predef_route),
+      optional(seq(PUNC.LBRACK, field('route_name', $.route_name), PUNC.RBRACK)),
       field('body', $.compound_statement)
-    ),
-
-    unnamed_route: $ => seq(
-      field('route', $.predefined_routes),
-      field('body', $.compound_statement)
-    ),
-
-    routing_block: $ => choice(
-      $.unnamed_route,
-      $.named_route
     ),
 
     comment_line: _ => token(seq(PUNC.COM_LINE, /(\\+(.|\r?\n)|[^\\\n])*/)),
@@ -889,102 +887,6 @@ module.exports = grammar({
       token(prec(1, 'cfgengine')),
     ),
 
-
-    // parse debug=3; as debug_variable
-    debug: $ => prec.left(3, choice(
-      field('key', token(CFG_VARS.DEBUG)),
-      $.assignment,
-      field('value', $.number_literal)
-    )),
-
-    assignment: _ => OPERATORS.EQUAL,
-
-    _log_variable: $ => prec.left(2, choice(
-      field('var',
-        choice(
-          token(CFG_VARS.LOGNAME),
-          token(CFG_VARS.LOGSTDERROR),
-          token(CFG_VARS.LOGFACILITY),
-          token(CFG_VARS.LOGCOLOR),
-          token(CFG_VARS.LOGPREFIX),
-          token(CFG_VARS.LOGPREFIXMODE),
-          token(CFG_VARS.LOGENGINETYPE),
-          token(CFG_VARS.LOGENGINEDATA))),
-      token(OPERATORS.EQUAL),
-      field('value', $.string)
-    )),
-
-    // TODO: this here
-    config_key: _ => field('key', choice(
-      token('debug'),
-      token(CFG_VARS.LOGNAME),
-      token(CFG_VARS.LOGSTDERROR),
-      token(CFG_VARS.LOGFACILITY),
-      token(CFG_VARS.LOGCOLOR),
-      token(CFG_VARS.LOGPREFIX),
-      token(CFG_VARS.LOGPREFIXMODE),
-      token(CFG_VARS.LOGENGINETYPE),
-      token(CFG_VARS.LOGENGINEDATA),
-      token('fork'),
-      token('fork_delay'),
-      token('modinit_delay'),
-      token('xavp_via_params'),
-      token('xavp_via_fields'),
-      token('xavp_via_reply_params'),
-      token('listen'),
-      token('advertise|ADVERTISE'),
-      token('virtual'),
-      token('name|NAME'),
-      token('alias'),
-      token('domain'),
-      token('auto_aliases'),
-      token('auto_domains'),
-      token('dns'),
-      token('rev_dns|dns_rev_via'),
-      token('dns_try_ipv6'),
-      token('dns_try_naptr'),
-      token('dns_srv_lb|dns_srv_loadbalancing'),
-      token('dns_udp_pref|dns_udp_preference'),
-      token('dns_tcp_pref|dns_tcp_preference'),
-      token('dns_tls_pref|dns_tls_preference'),
-      token('dns_sctp_pref|dns_sctp_preference'),
-      token('dns_retr_time'),
-      token('dns_slow_query_ms'),
-      token('dns_retr_no'),
-      token('dns_servers_no'),
-      token('dns_use_search_list'),
-      token('dns_search_full_match'),
-      token('dns_naptr_ignore_rfc'),
-      /* dns cache */
-      token('dns_cache_init'),
-      token('use_dns_cache|dns_use_cache'),
-      token('use_dns_failover|dns_use_failover'),
-      token('dns_cache_flags'),
-      token('dns_cache_negative_ttl'),
-      token('dns_cache_min_ttl'),
-      token('dns_cache_max_ttl'),
-      token('dns_cache_mem'),
-      token('dns_cache_gc_interval'),
-      token('dns_cache_del_nonexp|dns_cache_delete_nonexpired'),
-      token('dns_cache_rec_pref'),
-      token('ipv6 auto bind */'),
-      token('auto_bind_ipv6'),
-      token('bind_ipv6_link_local'),
-      token('ipv6_hex_style'),
-    )),
-
-    config_value: $ => choice($.string, $.number_literal),
-
-    config_variable: $ => seq(
-      field('key', $.config_key),
-      OPERATORS.EQUAL,
-      field('value', $.config_value)
-    ),
-
-    action_keyword: $ => choice(
-      token(ACTION_KEYWORDS.IF),
-      token(ACTION_KEYWORDS.ELSE),
-    ),
 
     if_statement: $ => prec.right(seq(
       token(ACTION_KEYWORDS.IF),
@@ -1079,11 +981,17 @@ module.exports = grammar({
       field('value', $.preproc_arg),
       token.immediate(/\r?\n/),
     ),
+    preproc_substdefs: $ => prec.right(seq(
+      preprocessor('substdefs'),
+      field('value', $.preproc_arg),
+      token.immediate(/\r?\n/),
+    )),
     preproc_substdef: $ => prec.right(seq(
       preprocessor('substdef'),
       field('value', $.preproc_arg),
       token.immediate(/\r?\n/),
     )),
+
 
     preproc_arg: _ => token(prec(-1, /\S([^/\n]|\/[^*]|\\\r?\n)*/)),
     preproc_directive: _ => /#![ \t]*[a-zA-Z0-9]\w*/,
@@ -1208,8 +1116,18 @@ module.exports = grammar({
       $.false,
       $.null,
       $.pseudo_variable,
+      $.pvar_expression,
       $.parenthesized_expression,
     ),
+
+    top_level_assignment_expression: $ => prec.right(PREC.DEFAULT, seq(
+      field('key', $._assignment_left_expression),
+      field('operator', choice(
+        OPERATORS.EQUAL,
+        OPERATORS.ADDEQ,
+      )),
+      field('value', $.expression),
+    )),
 
     assignment_expression: $ => prec.right(PREC.ASSIGNMENT, seq(
       field('left', $._assignment_left_expression),
@@ -1222,6 +1140,7 @@ module.exports = grammar({
 
     _assignment_left_expression: $ => choice(
       $.pseudo_variable,
+      $.pvar_expression,
       $.identifier,
       $.field_expression,
       $.subscript_expression,
@@ -1369,9 +1288,11 @@ module.exports = grammar({
       $.identifier
     ),
 
+    pvar_expression: _ => seq(ATTRIBUTES.VAR_MARK, PUNC.LPAREN, /[\S]*/, PUNC.RPAREN),
+
     pseudo_variable: $ => prec.right(seq(
       field('pvar', $.pvar_type),
-      optional(seq(PUNC.LPAREN, field('argument', choice($.number_literal, $.string, $.identifier)), PUNC.RPAREN))
+      optional(seq(PUNC.LPAREN, field('argument', choice($.number_literal, $.string, $.identifier, $.field_expression)), PUNC.RPAREN, PUNC.SEMICOLON))
     )),
 
     modparam: $ => seq(

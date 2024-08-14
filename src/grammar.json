@@ -8,12 +8,12 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_top_level_item"
+            "name": "top_level_item"
           }
         }
       ]
     },
-    "_top_level_item": {
+    "top_level_item": {
       "type": "CHOICE",
       "members": [
         {
@@ -38,7 +38,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "config_variable"
+          "name": "top_level_assignment_expression"
         },
         {
           "type": "SYMBOL",
@@ -82,11 +82,15 @@
         },
         {
           "type": "SYMBOL",
+          "name": "preproc_substdefs"
+        },
+        {
+          "type": "SYMBOL",
           "name": "preproc_substdef"
         },
         {
           "type": "SYMBOL",
-          "name": "_top_level_statement"
+          "name": "top_level_statement"
         },
         {
           "type": "SYMBOL",
@@ -103,7 +107,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "config_variable"
+          "name": "assignment_expression"
         },
         {
           "type": "SYMBOL",
@@ -127,7 +131,27 @@
         },
         {
           "type": "SYMBOL",
+          "name": "preproc_substdefs"
+        },
+        {
+          "type": "SYMBOL",
           "name": "preproc_substdef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loadmodule"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loadmodulex"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "modparam"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "modparamx"
         },
         {
           "type": "SYMBOL",
@@ -147,7 +171,7 @@
         }
       ]
     },
-    "_top_level_statement": {
+    "top_level_statement": {
       "type": "CHOICE",
       "members": [
         {
@@ -162,7 +186,7 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_top_level_expression_statement"
+            "name": "top_level_expression_statement"
           },
           "named": true,
           "value": "expression_statement"
@@ -249,18 +273,30 @@
         }
       ]
     },
-    "_top_level_expression_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_expression_not_binary"
-        },
-        {
-          "type": "STRING",
-          "value": ";"
-        }
-      ]
+    "top_level_expression_statement": {
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression_not_binary"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ";"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "statement": {
       "type": "CHOICE",
@@ -632,44 +668,68 @@
         }
       ]
     },
-    "predefined_routes": {
+    "predef_route": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "request_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "request_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "reply_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "reply_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "branch_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "branch_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "failure_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "failure_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "onreply_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "onreply_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "event_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "event_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "onsend_route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "onsend_route"
+          }
         },
         {
-          "type": "STRING",
-          "value": "route"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "route"
+          }
         }
       ]
     },
-    "_route_name": {
+    "route_name": {
       "type": "CHOICE",
       "members": [
         {
@@ -683,77 +743,64 @@
         {
           "type": "SYMBOL",
           "name": "number_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "special_name"
         }
       ]
     },
-    "named_route": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "route",
-          "content": {
-            "type": "SYMBOL",
-            "name": "predefined_routes"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "["
-        },
-        {
-          "type": "FIELD",
-          "name": "route_name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_route_name"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "]"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "compound_statement"
-          }
-        }
-      ]
-    },
-    "unnamed_route": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "route",
-          "content": {
-            "type": "SYMBOL",
-            "name": "predefined_routes"
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "compound_statement"
-          }
-        }
-      ]
+    "special_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_:-][a-zA-Z0-9_:-]*"
     },
     "routing_block": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "unnamed_route"
+          "type": "FIELD",
+          "name": "route",
+          "content": {
+            "type": "SYMBOL",
+            "name": "predef_route"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "named_route"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "["
+                },
+                {
+                  "type": "FIELD",
+                  "name": "route_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "route_name"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "]"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "compound_statement"
+          }
         }
       ]
     },
@@ -842,575 +889,6 @@
               "type": "STRING",
               "value": "cfgengine"
             }
-          }
-        }
-      ]
-    },
-    "debug": {
-      "type": "PREC_LEFT",
-      "value": 3,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "key",
-            "content": {
-              "type": "TOKEN",
-              "content": {
-                "type": "STRING",
-                "value": "debug"
-              }
-            }
-          },
-          {
-            "type": "SYMBOL",
-            "name": "assignment"
-          },
-          {
-            "type": "FIELD",
-            "name": "value",
-            "content": {
-              "type": "SYMBOL",
-              "name": "number_literal"
-            }
-          }
-        ]
-      }
-    },
-    "assignment": {
-      "type": "STRING",
-      "value": "="
-    },
-    "_log_variable": {
-      "type": "PREC_LEFT",
-      "value": 2,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "var",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_name"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_stderror"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_facility"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_color"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_prefix"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_prefix_mode"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_engine_type"
-                  }
-                },
-                {
-                  "type": "TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": "log_engine_data"
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "="
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "value",
-            "content": {
-              "type": "SYMBOL",
-              "name": "string"
-            }
-          }
-        ]
-      }
-    },
-    "config_key": {
-      "type": "FIELD",
-      "name": "key",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "debug"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_name"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_stderror"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_facility"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_color"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_prefix"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_prefix_mode"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_engine_type"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "log_engine_data"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "fork"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "fork_delay"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "modinit_delay"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "xavp_via_params"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "xavp_via_fields"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "xavp_via_reply_params"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "listen"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "advertise|ADVERTISE"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "virtual"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "name|NAME"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "alias"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "domain"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "auto_aliases"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "auto_domains"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "rev_dns|dns_rev_via"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_try_ipv6"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_try_naptr"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_srv_lb|dns_srv_loadbalancing"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_udp_pref|dns_udp_preference"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_tcp_pref|dns_tcp_preference"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_tls_pref|dns_tls_preference"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_sctp_pref|dns_sctp_preference"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_retr_time"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_slow_query_ms"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_retr_no"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_servers_no"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_use_search_list"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_search_full_match"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_naptr_ignore_rfc"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_init"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "use_dns_cache|dns_use_cache"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "use_dns_failover|dns_use_failover"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_flags"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_negative_ttl"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_min_ttl"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_max_ttl"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_mem"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_gc_interval"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_del_nonexp|dns_cache_delete_nonexpired"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "dns_cache_rec_pref"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "ipv6 auto bind */"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "auto_bind_ipv6"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "bind_ipv6_link_local"
-            }
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "ipv6_hex_style"
-            }
-          }
-        ]
-      }
-    },
-    "config_value": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "number_literal"
-        }
-      ]
-    },
-    "config_variable": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "key",
-          "content": {
-            "type": "SYMBOL",
-            "name": "config_key"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "config_value"
-          }
-        }
-      ]
-    },
-    "action_keyword": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "if"
-          }
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "else"
           }
         }
       ]
@@ -1932,6 +1410,39 @@
           }
         }
       ]
+    },
+    "preproc_substdefs": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "PATTERN",
+              "value": "#!substdefs"
+            },
+            "named": false,
+            "value": "#!substdefs"
+          },
+          {
+            "type": "FIELD",
+            "name": "value",
+            "content": {
+              "type": "SYMBOL",
+              "name": "preproc_arg"
+            }
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\r?\\n"
+            }
+          }
+        ]
+      }
     },
     "preproc_substdef": {
       "type": "PREC_RIGHT",
@@ -3240,9 +2751,55 @@
         },
         {
           "type": "SYMBOL",
+          "name": "pvar_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "parenthesized_expression"
         }
       ]
+    },
+    "top_level_assignment_expression": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "key",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_assignment_left_expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "operator",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "="
+                },
+                {
+                  "type": "STRING",
+                  "value": "+="
+                }
+              ]
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "value",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          }
+        ]
+      }
     },
     "assignment_expression": {
       "type": "PREC_RIGHT",
@@ -3292,6 +2849,10 @@
         {
           "type": "SYMBOL",
           "name": "pseudo_variable"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pvar_expression"
         },
         {
           "type": "SYMBOL",
@@ -4690,6 +4251,27 @@
         }
       ]
     },
+    "pvar_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "PATTERN",
+          "value": "[\\S]*"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
     "pseudo_variable": {
       "type": "PREC_RIGHT",
       "value": 0,
@@ -4731,6 +4313,10 @@
                         {
                           "type": "SYMBOL",
                           "name": "identifier"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "field_expression"
                         }
                       ]
                     }
@@ -4738,6 +4324,10 @@
                   {
                     "type": "STRING",
                     "value": ")"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": ";"
                   }
                 ]
               },
@@ -5233,7 +4823,7 @@
       "_expression_not_binary"
     ],
     [
-      "_top_level_item",
+      "top_level_item",
       "_expression_not_binary"
     ]
   ],
