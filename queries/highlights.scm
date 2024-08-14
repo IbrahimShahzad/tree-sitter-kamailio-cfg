@@ -1,42 +1,100 @@
 
 (comment) @comment
-(loadmodule) @function.builtin
 
-(local_variable
-  (identifier) @variable.local ) @variable.local
-(avp_variable
-  (identifier) @variable.local ) @variable.builtin
-(xavp_variable) @variable.builtin
-(pseudo_variable) @function.builtin
+(loadmodule) @function.builtin
+(preproc_def) @keyword.directive.define
+(preproc_subst
+  (preproc_arg) @string.regexp) @keyword.directive
+(preproc_substdef
+  (preproc_arg) @string.regexp) @keyword.directive.define
+(preproc_trydef) @keyword.directive.define
+(preproc_ifdef) @keyword.directive
+(include_file
+  file_name: (string) @string.special.path) @keyword.directive
+(import_file
+  file_name: (string) @string.special.path) @keyword.directive
+(route_call) @function
+
+(pseudo_variable
+   pvar: (pvar_type) @attribute.builtin
+   "(" @punctuation.builtin
+   argument: (identifier) @variable.parameter
+   ")" @punctuation.builtin) 
+
+(pvar_type) @attribute.builtin
 (modparam) @function.builtin
-(file_inclusion) @function.builtin
 
 (config_variable
-  key: (config_key) @variable.builtin)
+  key: (config_key) @variable.member)
 
-(control) @keyword
-(file_starter) @keyword
-(preprocessor_directive) @keyword
-(predefined_routes) @type.builtin
+(file_starter) @module
+(predefined_routes) @keyword
+
 (string) @string
-(function_call
-  function_name: (identifier) @function.call
-  "(" @punctuation.bracket
-  ")" @punctuation.bracket)
-(route_call) @function
-(number) @number
-(local_id) @keyword
+(call_expression
+  function: (expression) @function.call
+  arguments: (argument_list
+    "(" @punctuation.bracket
+    ")" @punctuation.bracket))
 
-(if_statement
-  "if" @keyword
-  (else_block
-    "else" @keyword))
-; (operator) @operator
+(number_literal) @number
+(named_route
+  "[" @punctuation.special
+  "]" @punctuation.special)
 
+(named_route
+  route_name: (string) @attribute)
 
-; [ "if"
-;   "else"
-;   "or" ] @keyword
-  ; "while"
-  ; "for"
-  ; "break" ] @keyword
+(named_route
+  route_name: (number_literal) @attribute)
+
+(true) @keyword
+(false) @keyword
+(null) @keyword
+
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
+
+"=" @operator
+"==" @operator
+">" @operator
+"<" @operator
+">=" @operator
+"<=" @operator
+"!=" @operator
+"=~" @operator
+"+=" @operator
+"!" @operator
+"&&" @operator
+"&" @operator
+"||" @operator
+"|" @operator
+"^" @operator
+"<<" @operator
+">>" @operator
+"+" @operator
+"-" @operator
+
+"." @punctuation.delimiter
+";" @punctuation.delimiter
+":" @punctuation.delimiter
+
+"or" @keyword.operator
+"not" @keyword.operator
+"and" @keyword.operator
+
+[ "break"
+  "continue"
+  "return"
+  "switch"
+  "drop"
+  "exit"] @keyword.return
+
+[ "while" ] @keyword.repeat
+[  "if"
+ "else"  
+ "default"
+  "case" ] @keyword.conditional 
+
