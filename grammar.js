@@ -669,8 +669,10 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
-    [$.block_item, $._expression_not_binary],
-    [$.top_level_item, $._expression_not_binary],
+    [$.block_item, $.expression_not_binary],
+    [$.top_level_item, $.expression_not_binary],
+    // [$.expression_not_binary, $.pvar_expression],
+    [$.index_expression, $.expression_not_binary],
   ],
 
   rules: {
@@ -755,7 +757,7 @@ module.exports = grammar({
 
 
     top_level_expression_statement: $ => prec(10, seq(
-      $._expression_not_binary,
+      $.expression_not_binary,
       optional(PUNC.SEMICOLON),
     )),
     statement: $ => choice(
@@ -1097,12 +1099,14 @@ module.exports = grammar({
     )),
 
     expression: $ => choice(
-      $._expression_not_binary,
+      $.expression_not_binary,
       $.binary_expression,
     ),
 
-    _expression_not_binary: $ => choice(
+    expression_not_binary: $ => choice(
       $.assignment_expression,
+      $.pseudo_variable,
+      $.pvar_expression,
       $.unary_expression,
       $.update_expression,
       $.cast_expression,
@@ -1115,8 +1119,6 @@ module.exports = grammar({
       $.true,
       $.false,
       $.null,
-      $.pseudo_variable,
-      $.pvar_expression,
       $.parenthesized_expression,
     ),
 
@@ -1227,7 +1229,6 @@ module.exports = grammar({
       PUNC.RPAREN
     ),
 
-
     true: _ => token(choice(
       VALUES.YES.YES,
       VALUES.YES.TRUE,
@@ -1288,11 +1289,76 @@ module.exports = grammar({
       $.identifier
     ),
 
-    pvar_expression: _ => seq(ATTRIBUTES.VAR_MARK, PUNC.LPAREN, /[\S]*/, PUNC.RPAREN),
+    // pvars expressions such as
+    // $(avp(i:3)[*]) = 123;
+    // $(branch(uri)[$var(i)])
+    // $(branch(attr)[index]) = value;
+    // $(branch(uri)[2]) = "sip:test@kamailio.org;transport=sctp";
+    // $(avp(id)[*]) = newvalue;
+    // $(C(bg))avp(i:20)$(C(xx)) [$avp(i:20)] $(C(br))cseq$(C(xx))=[$hdr(cseq)]
+    // all start with $( and end with )
+    pvar_expression: $ => prec(PREC.SUBSCRIPT,seq(
+      ATTRIBUTES.VAR_MARK,
+      PUNC.LPAREN,
+      field('pvar', choice(
+        $.identifier,
+        $.field_expression,
+        $.number_literal,
+        $.string,
+        $.variable_content
+      )),
+      optional(field('value', $.pvar_attribute)),
+      PUNC.RPAREN
+    )),
 
+    pvar_attribute: $ => seq(
+      PUNC.LPAREN,
+      field('attribute', choice($.identifier, $.range_expression)),
+      PUNC.RPAREN,
+      optional(field('index',$.index_expression)),
+    ),
+
+    // range expression (i:3)
+    range_expression: $ => seq(
+      field('range_start', choice($.identifier, $.number_literal)),
+      PUNC.COLON,
+      field('range_end', choice($.identifier, $.number_literal)),
+    ),
+
+    // index expression [2] or [*]
+    index_expression: $ => seq(
+      PUNC.LBRACK,
+      field('index', choice($.expression, $.string, $.number_literal, token(PUNC.STAR))),
+      PUNC.RBRACK
+    ),
+
+    // $avp(i:3)
+    //
     pseudo_variable: $ => prec.right(seq(
       field('pvar', $.pvar_type),
-      optional(seq(PUNC.LPAREN, field('argument', choice($.number_literal, $.string, $.identifier, $.field_expression)), PUNC.RPAREN, PUNC.SEMICOLON))
+      optional(
+        seq(
+          PUNC.LPAREN,
+          field('argument', $.pvar_argument),
+          PUNC.RPAREN,
+          optional(PUNC.SEMICOLON)
+        ))
+    )),
+
+    pvar_argument: $ => choice(
+      $.number_literal,
+      $.string,
+      $.identifier,
+      $.field_expression,
+      $.variable_content,
+      $.subelement
+    ),
+
+    subelement: $ => prec(PREC.FIELD,seq(
+      $.identifier,
+      '=>',
+      optional(ATTRIBUTES.VAR_MARK),
+      $.identifier
     )),
 
     modparam: $ => seq(
