@@ -20,12 +20,6 @@
   file_name: (string) @string.special.path) @keyword.directive
 (route_call) @function
 
-(pseudo_variable
-   pvar: (pvar_type) @attribute.builtin
-   "(" @punctuation.builtin
-   argument: (identifier) @variable.parameter
-   ")" @punctuation.builtin) 
-
 (pvar_type) @attribute.builtin
 (modparam) @function.builtin
 (loadmodule) @function.builtin
@@ -37,7 +31,6 @@
   value: (expression) @variable.parameter)
 
 (file_starter) @module
-;(predefined_routes) @keyword
 
 (string) @string
 (call_expression
@@ -47,16 +40,10 @@
     ")" @punctuation.bracket))
 
 (number_literal) @number
-;(named_route
-;  "[" @punctuation.special
-;  "]" @punctuation.special)
-;
-;(named_route
-;  route_name: (string) @attribute)
-;
-;(named_route
-;  route_name: (number_literal) @attribute)
-;
+
+(predef_route) @keyword
+(route_name) @variable.parameter
+
 (true) @keyword
 (false) @keyword
 (null) @keyword
@@ -105,8 +92,7 @@
 
 [ "while" ] @keyword.repeat
 [  "if"
- "else"  
+ "else"
  "default"
-  "case" ] @keyword.conditional 
-(predef_route) @keyword
+  "case" ] @keyword.conditional
 

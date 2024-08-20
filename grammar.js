@@ -661,6 +661,163 @@ const PREC = {
   SUBSCRIPT: 17,
 };
 
+const PARAMETER_LIST_TRANSFORMATION = {
+  VALUE: "param.value",
+  IN: "param.in",
+  VALUEAT: "param.valueat",
+  NAME: "param.name",
+  COUNT: "param.count"
+};
+
+const REGEX_TRANSFORMATION = {
+  SUBST: "re.subst",
+};
+
+const VALUE_TRANSFORMATION = {
+  JSON: "val.json",
+  N0: "val.n0",
+  NE: "val.ne",
+  JSONQE: "val.jsonqe",
+};
+
+const URIALIAS_TRANSFORMATION = {
+  ENCODE: 'urialias.encode',
+  DECODE: 'urialias.decode'
+};
+
+const SOCKADDR_TRANSFORMATION = {
+  HOST: "sock.host",
+  PORT: "sock.port",
+  PROTO: "sock.proto",
+  TOURI: "sock.touri"
+};
+
+const JSON_TRANSFORMATION = {
+  PARSE: "json.parse"
+};
+
+const URL_TRANSFORMATION = {
+  PATH: "url.path",
+  QUERYSTRING: "url.querystring"
+};
+
+const SQL_TRANSFORMATION = {
+  VAL: "sql.val",
+  INT: "sql.val.int",
+  STR: "sql.val.str",
+};
+
+const MSRP_TRANSFORMATION = {
+  USER: "msrpuri.user",
+  HOST: "msrpuri.host",
+  PORT: "msrpuri.port",
+  SESSION: "msrpuri.session",
+  PROTO: "msrpuri.proto",
+  PARAMS: "msrpuri.params",
+  USERINFO: "msrpuri.userinfo",
+};
+const LINE_TRANSFORMATION = {
+  COUNT: "line.count",
+  AT: "line.at",
+  SW: "line.sw",
+};
+
+const TOBODY_TRANSFORMATION = {
+  URI: "tobody.uri",
+  DISPLAY: "tobody.display",
+  TAG: "tobody.tag",
+  USER: "tobody.user",
+  HOST: "tobody.host",
+  params: "tobody.params"
+};
+
+const NAMEADDR_TRANSFORMATION = {
+  NAME: "nameaddr.name ",
+  URI: "nameaddr.uri ",
+  LEN: "nameaddr.len ",
+};
+
+const URI_TRANSFORMATION = {
+  USER: "uri.user",
+  HOST: "uri.host",
+  PASSWD: "uri.passwd",
+  PORT: "uri.port",
+  PARAMS: "uri.params",
+  PARAM: "uri.param,name", //n
+  HEADERS: "uri.headers",
+  TRANSPORT: "uri.transport",
+  TTL: "uri.ttl",
+  UPARAM: "uri.uparam",
+  MADDR: "uri.maddr",
+  METHOD: "uri.method",
+  LR: "uri.lr",
+  R2: "uri.r2",
+  SCHEME: "uri.scheme",
+  TOSOCKET: "uri.tosocket",
+  DURI: "uri.duri",
+  SAOR: "uri.saor",
+  SURI: "uri.suri",
+};
+
+const STRING_TRANSFORMATIONS = {
+  LEN: "s.len",
+  INT: "s.int",
+  MD5: "s.md5",
+  SHA256: "s.sha256",
+  SHA384: "s.sha384",
+  SHA512: "s.sha512",
+  SUBSTR: "s.substr", //, offset, length
+  SELECT: "s.select", // index, separator
+  ENCODE_7BIT: "s.encode.7bit",
+  DECODE_7BIT: "s.decode.7bit",
+  ENCODE_HEXA: "s.encode.hexa",
+  DECODE_HEXA: "s.decode.hexa",
+  ENCODE_BASE58: "s.encode.base58",
+  ENCODE_BASE64: "s.encode.base64",
+  DECODE_BASE64: "s.decode.base64",
+  ENCODE_BASE64T: "s.encode.base64t",
+  DECODE_BASE64T: "s.decode.base64t",
+  ENCODE_BASE64URL: "s.encode.base64url",
+  DECODE_BASE64URL: "s.decode.base64url",
+  ENCODE_BASE64URLT: "s.encode.base64urlt",
+  DECODE_BASE64URLT: "s.decode.base64urlt",
+  ESCAPE_COMMON: "s.escape.common",
+  UNESCAPE_COMMON: "s.unescape.common",
+  ESCAPE_USER: "s.escape.user",
+  UNESCAPE_USER: "s.unescape.user",
+  ESCAPE_PARAM: "s.escape.param",
+  UNESCAPE_PARAM: "s.unescape.param",
+  ESCAPE_CSV: "s.escape_csv",
+  NUMERIC: "s.numeric",
+  TOLOWER: "s.tolower",
+  TOUPPER: "s.toupper",
+  STRIP: "s.strip", // len
+  STRIPTAIL: "s.striptail", //len
+  PREFIXES: "s.prefixes",
+  PREFIXES_QUOUTED: "s.prefixes.quoted",
+  REPLACE: "s.replace", //match, repl
+  FTIME: "s.ftime", //format
+  TRIM: "s.trim",
+  RTRIM: "s.rtrim",
+  LTRIM: "s.ltrim",
+  RM: "s.rm", //, match
+  RMHDWS: "s.rmhdws",
+  RMHLWS: "s.rmhlws",
+  RMWS: "s.rmws",
+  COREHASH: "s.corehash", //n
+  UNQUOTE: "s.unquote",
+  UNBRACKET: "unbracket",
+  COUNT: "s.count", // c
+  AFTER: "s.after", //x
+  RAFTER: "s.rafter", //x
+  BEFORE: "s.before",//, x
+  RBEFORE: "s.rbefore",// x
+  FMTLINES: "s.fmtlines", //, n, m
+  FMTLINET: "s.fmtlinet", // , n, m
+  URLENCODE_PARAM: "s.urlencode.param",
+  URLDECODE_PARAM: "s.urldecode.param"
+};
+
 module.exports = grammar({
   name: 'kamailio_cfg',
 
@@ -719,7 +876,8 @@ module.exports = grammar({
       $.loadmodulex,
       $.modparam,
       $.modparamx,
-
+      $.import_file,
+      $.include_file,
       $.route_call,
       $.routing_block,
       $.call_expression,
@@ -1243,6 +1401,8 @@ module.exports = grammar({
 
     null: _ => choice('$NULL', '$null'),
 
+
+
     _type_identifier: $ => alias(
       $.identifier,
       $.type_identifier,
@@ -1283,7 +1443,7 @@ module.exports = grammar({
     _field_identifier: $ => alias($.identifier, $.field_identifier),
     _statement_identifier: $ => alias($.identifier, $.statement_identifier),
 
-    identifier: _ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    identifier: _ => /[a-zA-Z_-][a-zA-Z0-9_-]*/,
     pvar_type: $ => seq(
       ATTRIBUTES.VAR_MARK,
       $.identifier
@@ -1297,25 +1457,232 @@ module.exports = grammar({
     // $(avp(id)[*]) = newvalue;
     // $(C(bg))avp(i:20)$(C(xx)) [$avp(i:20)] $(C(br))cseq$(C(xx))=[$hdr(cseq)]
     // all start with $( and end with )
-    pvar_expression: $ => prec(PREC.SUBSCRIPT,seq(
+    pvar_expression: $ => prec(PREC.SUBSCRIPT, seq(
       ATTRIBUTES.VAR_MARK,
       PUNC.LPAREN,
-      field('pvar', choice(
-        $.identifier,
-        $.field_expression,
-        $.number_literal,
-        $.string,
-        $.variable_content
-      )),
+      field('pvar', $.identifier),
       optional(field('value', $.pvar_attribute)),
       PUNC.RPAREN
     )),
 
+    // $(pvar(attribute)...)
+    // attributes can be:
+    // identifiers $(hd(To)..)
+    // strings     $(somthign("Something")
+    // range_expression $(avp(i:3)...)
+    // pvar_variable $(x($hdr)...
+    // pvar_expression $(x($(y(i:3)[*]){transformation})
     pvar_attribute: $ => seq(
       PUNC.LPAREN,
-      field('attribute', choice($.identifier, $.range_expression)),
+      field('attribute', choice(
+        $.identifier,
+        $.string,
+        $.range_expression,
+        $.pseudo_variable,
+        $.pvar_expression
+      )),
       PUNC.RPAREN,
-      optional(field('index',$.index_expression)),
+      optional(field('index', $.index_expression)),
+      optional(field('transformations', seq(repeat($.transformation))))
+    ),
+
+
+
+    //transformations: $ => repeat($.transformation),
+
+    transformation: $ => seq(
+      PUNC.LBRACE,
+      field('transformation', choice(
+        $.string_transformation,
+        $.uri_transformation,
+        $.parameter_list_transformation,
+        $.nameaddr_transformation,
+        $.tobody_transformation,
+        $.line_transformation,
+        $.msrpuri_transformation,
+        $.regex_transformation,
+        $.sql_transformation,
+        $.url_transformation,
+        $.json_transformation,
+        $.sock_addr_transformation,
+        $.uri_alias_transformation,
+        $.value_transformation,
+        $.general_transformation
+      )),
+      PUNC.RBRACE,
+    ),
+
+
+    parameter_list_transformation: $ => choice(
+      seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.IN), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.VALUEAT), PUNC.COMMA, $.number_literal, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.number_literal, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.COUNT), optional(seq(PUNC.COMMA, $.char_literal))),
+    ),
+
+    regex_pattern: _ => token.immediate(/[^\/\n]+/),
+    regex_replacement: _ => token.immediate(/[^\/\n]*/),
+    regex_flags: _ => token.immediate(/[a-zA-Z]*/),
+
+    regex_transformation: $ => seq(
+      token(REGEX_TRANSFORMATION.SUBST),
+      PUNC.COMMA,
+      PUNC.SLASH,
+      $.regex_pattern,
+      PUNC.SLASH,
+      $.regex_replacement, // can be empty
+      PUNC.SLASH,
+      optional($.regex_flags)
+    ),
+
+    value_transformation: _ => choice(
+      token(VALUE_TRANSFORMATION.JSON),
+      token(VALUE_TRANSFORMATION.N0),
+      token(VALUE_TRANSFORMATION.NE),
+      token(VALUE_TRANSFORMATION.JSONQE),
+    ),
+
+    uri_alias_transformation: _ => choice(
+      token(URIALIAS_TRANSFORMATION.ENCODE),
+      token(URIALIAS_TRANSFORMATION.DECODE),
+    ),
+
+    sock_addr_transformation: _ => choice(
+      token(SOCKADDR_TRANSFORMATION.PROTO),
+      token(SOCKADDR_TRANSFORMATION.PORT),
+      token(SOCKADDR_TRANSFORMATION.HOST),
+      token(SOCKADDR_TRANSFORMATION.TOURI)
+    ),
+
+    json_transformation: _ => token(JSON_TRANSFORMATION.PARSE),
+
+    url_transformation: _ => choice(
+      token(URL_TRANSFORMATION.PATH),
+      token(URL_TRANSFORMATION.QUERYSTRING),
+    ),
+
+    sql_transformation: _ => choice(
+      token(SQL_TRANSFORMATION.VAL),
+      token(SQL_TRANSFORMATION.INT),
+      token(SQL_TRANSFORMATION.STR),
+    ),
+
+    msrpuri_transformation: _ => choice(
+      token(MSRP_TRANSFORMATION.USER),
+      token(MSRP_TRANSFORMATION.HOST),
+      token(MSRP_TRANSFORMATION.PORT),
+      token(MSRP_TRANSFORMATION.SESSION),
+      token(MSRP_TRANSFORMATION.PROTO),
+      token(MSRP_TRANSFORMATION.PARAMS),
+      token(MSRP_TRANSFORMATION.USERINFO),
+    ),
+
+    // A general catch-all
+    // TODO: may be think of this more on how to restrict
+    general_transformation: _ => /[\s\S]/,
+
+    line_transformation: $ => choice(
+      token(LINE_TRANSFORMATION.COUNT),
+      seq(token(LINE_TRANSFORMATION.AT), $.number_literal),
+      seq(token(LINE_TRANSFORMATION.SW), $.identifier),
+    ),
+
+    tobody_transformation: _ => choice(
+      token(TOBODY_TRANSFORMATION.URI),
+      token(TOBODY_TRANSFORMATION.DISPLAY),
+      token(TOBODY_TRANSFORMATION.TAG),
+      token(TOBODY_TRANSFORMATION.USER),
+      token(TOBODY_TRANSFORMATION.HOST),
+      token(TOBODY_TRANSFORMATION.params),
+    ),
+
+    nameaddr_transformation: _ => choice(
+      token(NAMEADDR_TRANSFORMATION.URI),
+      token(NAMEADDR_TRANSFORMATION.NAME),
+      token(NAMEADDR_TRANSFORMATION.LEN),
+    ),
+
+    uri_transformation: $ => choice(
+      token(URI_TRANSFORMATION.USER),
+      token(URI_TRANSFORMATION.HOST),
+      token(URI_TRANSFORMATION.PASSWD),
+      token(URI_TRANSFORMATION.PORT),
+      token(URI_TRANSFORMATION.PARAMS),
+      seq(token(URI_TRANSFORMATION.PARAM), choice($.identifier, $.string)),
+      token(URI_TRANSFORMATION.HEADERS),
+      token(URI_TRANSFORMATION.TRANSPORT),
+      token(URI_TRANSFORMATION.TTL),
+      token(URI_TRANSFORMATION.UPARAM),
+      token(URI_TRANSFORMATION.MADDR),
+      token(URI_TRANSFORMATION.METHOD),
+      token(URI_TRANSFORMATION.LR),
+      token(URI_TRANSFORMATION.R2),
+      token(URI_TRANSFORMATION.SCHEME),
+      token(URI_TRANSFORMATION.TOSOCKET),
+      token(URI_TRANSFORMATION.DURI),
+      token(URI_TRANSFORMATION.DURI),
+      token(URI_TRANSFORMATION.SAOR),
+      token(URI_TRANSFORMATION.SURI),
+    ),
+
+    string_transformation: $ => choice(
+      token(STRING_TRANSFORMATIONS.LEN),
+      token(STRING_TRANSFORMATIONS.INT),
+      token(STRING_TRANSFORMATIONS.MD5),
+      token(STRING_TRANSFORMATIONS.SHA256),
+      token(STRING_TRANSFORMATIONS.SHA384),
+      token(STRING_TRANSFORMATIONS.SHA512),
+      seq(token(STRING_TRANSFORMATIONS.SUBSTR), PUNC.COMMA, $.number_literal, PUNC.COMMA, $.number_literal),
+      seq(token(STRING_TRANSFORMATIONS.SELECT), PUNC.COMMA, $.number_literal, PUNC.COMMA, /./),
+      token(STRING_TRANSFORMATIONS.ENCODE_7BIT),
+      token(STRING_TRANSFORMATIONS.DECODE_7BIT),
+      token(STRING_TRANSFORMATIONS.ENCODE_HEXA),
+      token(STRING_TRANSFORMATIONS.DECODE_HEXA),
+      token(STRING_TRANSFORMATIONS.ENCODE_BASE58),
+      token(STRING_TRANSFORMATIONS.ENCODE_BASE64),
+      token(STRING_TRANSFORMATIONS.DECODE_BASE64),
+      token(STRING_TRANSFORMATIONS.ENCODE_BASE64T),
+      token(STRING_TRANSFORMATIONS.DECODE_BASE64T),
+      token(STRING_TRANSFORMATIONS.ENCODE_BASE64URL),
+      token(STRING_TRANSFORMATIONS.DECODE_BASE64URL),
+      token(STRING_TRANSFORMATIONS.ENCODE_BASE64URLT),
+      token(STRING_TRANSFORMATIONS.DECODE_BASE64URLT),
+      token(STRING_TRANSFORMATIONS.ESCAPE_COMMON),
+      token(STRING_TRANSFORMATIONS.UNESCAPE_COMMON),
+      token(STRING_TRANSFORMATIONS.ESCAPE_USER),
+      token(STRING_TRANSFORMATIONS.UNESCAPE_USER),
+      token(STRING_TRANSFORMATIONS.ESCAPE_PARAM),
+      token(STRING_TRANSFORMATIONS.UNESCAPE_PARAM),
+      token(STRING_TRANSFORMATIONS.ESCAPE_CSV),
+      token(STRING_TRANSFORMATIONS.NUMERIC),
+      token(STRING_TRANSFORMATIONS.TOLOWER),
+      token(STRING_TRANSFORMATIONS.TOUPPER),
+      seq(token(STRING_TRANSFORMATIONS.STRIP), PUNC.COMMA, $.number_literal),
+      seq(token(STRING_TRANSFORMATIONS.STRIPTAIL), PUNC.COMMA, $.number_literal),
+      seq(token(STRING_TRANSFORMATIONS.PREFIXES), optional(seq(PUNC.COMMA, $.number_literal))),
+      seq(token(STRING_TRANSFORMATIONS.PREFIXES_QUOUTED), optional(seq(PUNC.COMMA, $.number_literal))),
+      seq(token(STRING_TRANSFORMATIONS.REPLACE), PUNC.COMMA, /./, PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.FTIME), PUNC.COMMA, /[/s/S]/),
+      token(STRING_TRANSFORMATIONS.TRIM),
+      token(STRING_TRANSFORMATIONS.RTRIM),
+      token(STRING_TRANSFORMATIONS.LTRIM),
+      seq(token(STRING_TRANSFORMATIONS.RM), PUNC.COMMA, /[/s/S]/),
+      token(STRING_TRANSFORMATIONS.RMHDWS),
+      token(STRING_TRANSFORMATIONS.RMHLWS),
+      token(STRING_TRANSFORMATIONS.RMWS),
+      token(STRING_TRANSFORMATIONS.COREHASH),
+      token(STRING_TRANSFORMATIONS.UNQUOTE),
+      token(STRING_TRANSFORMATIONS.UNBRACKET),
+      seq(token(STRING_TRANSFORMATIONS.COUNT), PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.AFTER), PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.RAFTER), PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.BEFORE), PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.RBEFORE), PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.FMTLINES), PUNC.COMMA, $.number_literal, PUNC.COMMA, $.number_literal),
+      seq(token(STRING_TRANSFORMATIONS.FMTLINET), PUNC.COMMA, $.number_literal, PUNC.COMMA, $.number_literal),
+      token(STRING_TRANSFORMATIONS.URLENCODE_PARAM),
+      token(STRING_TRANSFORMATIONS.URLDECODE_PARAM),
     ),
 
     // range expression (i:3)
@@ -1354,14 +1721,14 @@ module.exports = grammar({
       $.subelement
     ),
 
-    subelement: $ => prec(PREC.FIELD,seq(
+    subelement: $ => prec(PREC.FIELD, seq(
       $.identifier,
       '=>',
       optional(ATTRIBUTES.VAR_MARK),
       $.identifier
     )),
 
-    modparam: $ => seq(
+    modparam: $ => prec.right(seq(
       token(CFG_VARS.MODPARAM),
       PUNC.LPAREN,
       field('module_name', $.string),
@@ -1377,8 +1744,9 @@ module.exports = grammar({
         $.pseudo_variable,
         $.variable_content
       )),
-      PUNC.RPAREN
-    ),
+      PUNC.RPAREN,
+      optional(PUNC.SEMICOLON),
+    )),
 
     modparamx: $ => seq(
       token(CFG_VARS.MODPARAMX),
