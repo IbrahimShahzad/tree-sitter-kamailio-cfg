@@ -43,18 +43,18 @@ const PUNC = {
 
 /*action keywords*/
 const ACTION_KEYWORDS = {
-  FORWARD: "forward",
-  FORWARD_TCP: "forward_tcp",
-  FORWARD_UDP: "forward_udp",
-  FORWARD_TLS: "forward_tls",
-  FORWARD_SCTP: "forward_sctp",
+  //FORWARD: "forward",
+  //FORWARD_TCP: "forward_tcp",
+  //FORWARD_UDP: "forward_udp",
+  //FORWARD_TLS: "forward_tls",
+  //FORWARD_SCTP: "forward_sctp",
   DROP: "drop", // done
   EXIT: "exit", // done
   RETURN: "return", // done
   RETURN_MODE: "return_mode",
   BREAK: "break", // done
-  LOG: "log",
-  ERROR: "error",
+  //LOG: "log",
+  //ERROR: "error",
   ROUTE: "route", // done
   ROUTE_REQUEST: "request_route", // done
   ROUTE_FAILURE: "failure_route", // done
@@ -63,90 +63,90 @@ const ACTION_KEYWORDS = {
   ROUTE_BRANCH: "branch_route", // done
   ROUTE_SEND: "onsend_route", // done
   ROUTE_EVENT: "event_route", // done
-  EXEC: "exec",
-  FORCE_RPORT: {
-    FORCE_RPORT: "force_rport",
-    ADD_RPORT: "add_rport"
-  },
-  LOCAL_RPORT: "local_rport",
-  ADD_LOCAL_RPORT: "add_local_rport",
-  FORCE_TCP_ALIAS: {
-    FORCE_TCP_ALIAS: "force_tcp_alias",
-    ADD_TCP_ALIAS: "add_tcp_alias"
-  },
-  UDP_MTU: "udp_mtu",
-  UDP_MTU_TRY_PROTO: "udp_mtu_try_proto",
-  UDP_RECEIVER_MODE: "udp_receiver_mode",
-  UDP4_RAW: "udp4_raw",
-  UDP4_RAW_MTU: "udp4_raw_mtu",
-  UDP4_RAW_TTL: "udp4_raw_ttl",
-  SETFLAG: "setflag",
-  RESETFLAG: "resetflag",
-  ISFLAGSET: "isflagset",
-  FLAGS_DECL: {
-    FLAG: "flags",
-    BOOL: "bool",
-  },
-  SETAVPFLAG: "setavpflag",
-  RESETAVPFLAG: "resetavpflag",
-  ISAVPFLAGSET: "isavpflagset",
-  AVPFLAGS_DECL: "avpflags",
-  SET_HOST: {
-    REWRITEHOST: "rewritehost",
-    SETHOST: "sethost",
-    SETH: "seth"
-  },
-  SET_HOSTPORT: {
-    REWRITEHOSTPORT: "rewritehostport",
-    SETHOSTPORT: "sethostport",
-    SETHP: "sethp"
-  },
-  SET_HOSTPORTTRANS: {
-    REWRITEHOSTPORTTRANS: "rewritehostporttrans",
-    SETHOSTPORTTRANS: "sethostporttrans",
-    SETHPT: "sethpt",
-  },
-  SET_USER: {
-    REWRITEUSER: "rewriteuser",
-    SETUSER: "setuser",
-    SETU: "setu"
-  },
-  SET_USERPASS: {
-    REWRITEUSERPASS: "rewriteuserpass",
-    SETUSERPASS: "setuserpass",
-    SETUP: "setup"
-  },
-  SET_PORT: {
-    REWRITEPORT: "rewriteport",
-    SETPORT: "setport",
-    SETP: "setp",
-  },
-  SET_URI: {
-    REWRITEURI: "rewriteuri",
-    SETURI: "seturi"
-  },
-  REVERT_URI: "revert_uri",
-  PREFIX: "prefix",
-  STRIP: "strip",
-  STRIP_TAIL: "strip_tail",
-  SET_USERPHONE: "userphone",
-  REMOVE_BRANCH: "remove_branch",
-  CLEAR_BRANCHES: "clear_branches",
+  //EXEC: "exec",
+  //FORCE_RPORT: {
+  //  FORCE_RPORT: "force_rport",
+  //  ADD_RPORT: "add_rport"
+  //},
+  //LOCAL_RPORT: "local_rport",
+  //ADD_LOCAL_RPORT: "add_local_rport",
+  //FORCE_TCP_ALIAS: {
+  //  FORCE_TCP_ALIAS: "force_tcp_alias",
+  //  ADD_TCP_ALIAS: "add_tcp_alias"
+  //},
+  //UDP_MTU: "udp_mtu",
+  //UDP_MTU_TRY_PROTO: "udp_mtu_try_proto",
+  //UDP_RECEIVER_MODE: "udp_receiver_mode",
+  //UDP4_RAW: "udp4_raw",
+  //UDP4_RAW_MTU: "udp4_raw_mtu",
+  //UDP4_RAW_TTL: "udp4_raw_ttl",
+  //SETFLAG: "setflag",
+  //RESETFLAG: "resetflag",
+  //ISFLAGSET: "isflagset",
+  //FLAGS_DECL: {
+  //  FLAG: "flags",
+  //  BOOL: "bool",
+  //},
+  //SETAVPFLAG: "setavpflag",
+  //RESETAVPFLAG: "resetavpflag",
+  //ISAVPFLAGSET: "isavpflagset",
+  //AVPFLAGS_DECL: "avpflags",
+  //SET_HOST: {
+  //  REWRITEHOST: "rewritehost",
+  //  SETHOST: "sethost",
+  //  SETH: "seth"
+  //},
+  //SET_HOSTPORT: {
+  //  REWRITEHOSTPORT: "rewritehostport",
+  //  SETHOSTPORT: "sethostport",
+  //  SETHP: "sethp"
+  //},
+  //SET_HOSTPORTTRANS: {
+  //  REWRITEHOSTPORTTRANS: "rewritehostporttrans",
+  //  SETHOSTPORTTRANS: "sethostporttrans",
+  //  SETHPT: "sethpt",
+  //},
+  //SET_USER: {
+  //  REWRITEUSER: "rewriteuser",
+  //  SETUSER: "setuser",
+  //  SETU: "setu"
+  //},
+  //SET_USERPASS: {
+  //  REWRITEUSERPASS: "rewriteuserpass",
+  //  SETUSERPASS: "setuserpass",
+  //  SETUP: "setup"
+  //},
+  //SET_PORT: {
+  //  REWRITEPORT: "rewriteport",
+  //  SETPORT: "setport",
+  //  SETP: "setp",
+  //},
+  //SET_URI: {
+  //  REWRITEURI: "rewriteuri",
+  //  SETURI: "seturi"
+  //},
+  //REVERT_URI: "revert_uri",
+  //PREFIX: "prefix",
+  //STRIP: "strip",
+  //STRIP_TAIL: "strip_tail",
+  //SET_USERPHONE: "userphone",
+  //REMOVE_BRANCH: "remove_branch",
+  //CLEAR_BRANCHES: "clear_branches",
   IF: "if", // done
   ELSE: "else", // done
-  SET_ADV_ADDRESS: "set_advertised_address",
-  SET_ADV_PORT: "set_advertised_port",
-  FORCE_SEND_SOCKET: "force_send_socket",
-  SET_FWD_NO_CONNECT: "set_forward_no_connect",
-  SET_RPL_NO_CONNECT: "set_reply_no_connect",
-  SET_FWD_CLOSE: "set_forward_close",
-  SET_RPL_CLOSE: "set_reply_close",
+  //SET_ADV_ADDRESS: "set_advertised_address",
+  //SET_ADV_PORT: "set_advertised_port",
+  //FORCE_SEND_SOCKET: "force_send_socket",
+  //SET_FWD_NO_CONNECT: "set_forward_no_connect",
+  //SET_RPL_NO_CONNECT: "set_reply_no_connect",
+  //SET_FWD_CLOSE: "set_forward_close",
+  //SET_RPL_CLOSE: "set_reply_close",
   SWITCH: "switch", //done
   CASE: "case", // done
   DEFAULT: "default", // done
   WHILE: "while", // done
-  CFG_SELECT: "cfg_select",
-  CFG_RESET: "cfg_reset"
+  //CFG_SELECT: "cfg_select",
+  //CFG_RESET: "cfg_reset"
 };
 
 /*ACTION LVALUES*/
@@ -486,6 +486,7 @@ const CFG_VARS = {
   MODPARAMX: "modparamx", /* done */
   CFGENGINE: "cfgengine",
 };
+
 const VALUES = {
   YES: {
     YES: "yes",
@@ -499,64 +500,65 @@ const VALUES = {
     OFF: "off",
     DISABLE: "disable"
   },
-  UDP: {
-    UDP_LOWER: "udp",
-    UDP_UPPER: "UDP"
-  },
-  TCP: {
-    TCP_LOWER: "tcp",
-    TCP_UPPER: "TCP"
-  },
-  TLS: {
-    TLS_LOWER: "tls",
-    TLS_UPPER: "TLS"
-  },
-  SCTP: {
-    SCTP_LOWER: "sctp",
-    SCTP_UPPER: "SCTP"
-  },
-  WS: {
-    WS_LOWER: "ws",
-    WS_UPPER: "WS"
-  },
-  WSS: {
-    WSS_LOWER: "wss",
-    WSS_UPPER: "WSS"
-  },
-  INET: {
-    INET_LOWER: "inet",
-    INET_UPPER: "INET",
-    IPV4_LOWER: "ipv4",
-    IPV4_Cammel: "IPv4",
-    IPV4_UPPER: "IPV4"
-  },
-  INET6: {
-    INET6_LOWER: "inet6",
-    INET6_UPPER: "INET6",
-    IPV6_LOWER: "ipv6",
-    IPV6_Cammel: "IPv6",
-    IPV6_UPPER: "IPV6"
-  },
-  SSLv23: {
-    SSLv23_LOWER: "sslv23",
-    SSLv23_Cammel: "SSLv23",
-    SSLV23_UPPER: "SSLV23"
-  },
-  SSLv2: {
-    SSLv2_LOWER: "sslv2",
-    SSLv2_Cammel: "SSLv2",
-    SSLV2_UPPER: "SSLV2"
-  },
-  SSLv3: {
-    SSLv3_LOWER: "sslv3",
-    SSLv3_Cammel: "SSLv3",
-    SSLV3_UPPER: "SSLV3"
-  },
-  TLSv1: {
-    TLSv1_LOWER: "tlsv1",
-    TLSv1_Cammel: "TLSv1",
-    TLSV1_UPPER: "TLSV1"
-  },
+  //
+  //UDP: {
+  //  UDP_LOWER: "udp",
+  //  UDP_UPPER: "UDP"
+  //},
+  //TCP: {
+  //  TCP_LOWER: "tcp",
+  //  TCP_UPPER: "TCP"
+  //},
+  //TLS: {
+  //  TLS_LOWER: "tls",
+  //  TLS_UPPER: "TLS"
+  //},
+  //SCTP: {
+  //  SCTP_LOWER: "sctp",
+  //  SCTP_UPPER: "SCTP"
+  //},
+  //WS: {
+  //  WS_LOWER: "ws",
+  //  WS_UPPER: "WS"
+  //},
+  //WSS: {
+  //  WSS_LOWER: "wss",
+  //  WSS_UPPER: "WSS"
+  //},
+  //INET: {
+  //  INET_LOWER: "inet",
+  //  INET_UPPER: "INET",
+  //  IPV4_LOWER: "ipv4",
+  //  IPV4_Cammel: "IPv4",
+  //  IPV4_UPPER: "IPV4"
+  //},
+  //INET6: {
+  //  INET6_LOWER: "inet6",
+  //  INET6_UPPER: "INET6",
+  //  IPV6_LOWER: "ipv6",
+  //  IPV6_Cammel: "IPv6",
+  //  IPV6_UPPER: "IPV6"
+  //},
+  //SSLv23: {
+  //  SSLv23_LOWER: "sslv23",
+  //  SSLv23_Cammel: "SSLv23",
+  //  SSLV23_UPPER: "SSLV23"
+  //},
+  //SSLv2: {
+  //  SSLv2_LOWER: "sslv2",
+  //  SSLv2_Cammel: "SSLv2",
+  //  SSLV2_UPPER: "SSLV2"
+  //},
+  //SSLv3: {
+  //  SSLv3_LOWER: "sslv3",
+  //  SSLv3_Cammel: "SSLv3",
+  //  SSLV3_UPPER: "SSLV3"
+  //},
+  //TLSv1: {
+  //  TLSv1_LOWER: "tlsv1",
+  //  TLSv1_Cammel: "TLSv1",
+  //  TLSV1_UPPER: "TLSV1"
+  //},
 };
 
 const BOOL = {
@@ -594,6 +596,8 @@ const OPERATORS = {
   BIN_RSHIFT: ">>",
   PLUS: "+",
   MINUS: "-",
+  MULTIPLY: "*",
+  DIVIDE: "/",
   MODULO: "mod",
   STRLEN: "strlen",
   STREMPTY: "strempty",
@@ -623,19 +627,6 @@ const ATTRIBUTES = {
   ATTR_GLOBAL: "g",
 };
 
-// this is avp prefix (([ft][rud]?)|g)\.
-// FIXME: This is wrong
-const AVP_PREFIX = {
-  FROM: "f.",
-  TO: "t.",
-  FROMURI: "fr.",
-  TOURI: "tr.",
-  FROMUSER: "fu.",
-  TOUSER: "tu.",
-  FROMDOMAIN: "fd.",
-  TODOMAIN: "td.",
-  GLOBAL: "g."
-};
 const PREC = {
   COMMENT: -11,
   PAREN_DECLARATOR: -10,
@@ -732,9 +723,9 @@ const TOBODY_TRANSFORMATION = {
 };
 
 const NAMEADDR_TRANSFORMATION = {
-  NAME: "nameaddr.name ",
-  URI: "nameaddr.uri ",
-  LEN: "nameaddr.len ",
+  NAME: "nameaddr.name",
+  URI: "nameaddr.uri",
+  LEN: "nameaddr.len",
 };
 
 const URI_TRANSFORMATION = {
@@ -743,7 +734,7 @@ const URI_TRANSFORMATION = {
   PASSWD: "uri.passwd",
   PORT: "uri.port",
   PARAMS: "uri.params",
-  PARAM: "uri.param,name", //n
+  PARAM: "uri.param", //,name", //n
   HEADERS: "uri.headers",
   TRANSPORT: "uri.transport",
   TTL: "uri.ttl",
@@ -806,7 +797,7 @@ const STRING_TRANSFORMATIONS = {
   RMWS: "s.rmws",
   COREHASH: "s.corehash", //n
   UNQUOTE: "s.unquote",
-  UNBRACKET: "unbracket",
+  UNBRACKET: "s.unbracket",
   COUNT: "s.count", // c
   AFTER: "s.after", //x
   RAFTER: "s.rafter", //x
@@ -818,6 +809,142 @@ const STRING_TRANSFORMATIONS = {
   URLDECODE_PARAM: "s.urldecode.param"
 };
 
+const PSEUDO_VARS = {
+  FORMAT: "_s",//$_s(format)
+  URI_IN_P_ASSERTED_IDENTITY_HEADER: "ai",
+  AUTH_DIGEST_URI: "adu",
+  AUTH_ALGORITHM: "aa",
+  AUTH_REALM: "ar",
+  AUTH_USERNAME_USER: "au",
+  AUTH_USERNAME_DOMAIN: "ad",
+  AUTH_WHOLE_USERNAME: "aU",
+  ACC_USERNAME_AND_REALM_DOMAIN: "Au",
+  ACC_USERNAME: "AU",
+  BRANCH_ATTRIBUTES: "branch",//_(NAME)
+  REQUESTS_FIRST_BRANCH: "br",
+  REQUESTS_ALL_BRANCHES: "bR",
+  BRANCH_FLAGS: "bf",
+  BRANCH_FLAGS: "bF",
+  BODY_SIZE: "bs",
+  CALL_ID: "ci",
+  CONTENT_LENGTH: "cl",
+  COUNT_NUMBER_OF_PVS: "cnt",//(PV)
+  TCP_CONNECTION_ID: "conid",
+  CSEQ_NUMBER: "cs",
+  CSEQ_HEADER_BODY: "csb",
+  CONTACT_HEADER: "ct",
+  CONTACT_HEADER_STAR_STATUS: "cts",
+  CONTACT_HEADER_URI: "ctu",
+  CONTENT_TYPE: "cT",
+  DOMAIN_OF_DESTINATION_URI: "dd",
+  DEFINED_VALUE_: "def",//_(NAME)
+  DEFINED_VALUE_AS_NUMBER: "defn",//(NAME)
+  DIVERSION_HEADER_URI: "di",
+  DIVERSION_PRIVACY_PARAMETER: "dip",
+  DIVERSION_REASON_PARAMETER: "dir",
+  DIVERSION_COUNTER_PARAMETER: "dic",
+  PORT_OF_DESTINATION_URI: "dp",
+  TRANSPORT_PROTOCOL_OF_DESTINATION_URI: "dP",
+  DESTINATION_SET: "ds",
+  DESTINATION_URI: "du",
+  BACK_SLASH: "Eb",
+  LF: "En",
+  CR: "En",
+  TAB: "Et",
+  SPACE: "Es",
+  COMMA: "Ec",
+  DOUBLE_QUOTE: "Eq",
+  SINGLE_QUOTE: "Ek",
+  COLON: "Ei",
+  SEMICOLON: "Ej",
+  BACK_TICK: "Ev",
+  FROM_URI_DOMAIN: "fd",
+  FROM_DISPLAY_NAME: "fn",
+  FORCED_SEND_SOCKET: "fs",
+  FORCED_SEND_SOCKET_NAME: "fsn",
+  FROM_TAG: "ft",
+  INITIAL_FROM_TAG: "fti",
+  FROM_URI: "fu",
+  FROM_URI_USERNAME: "fU",
+  FROM_URI_USERNAME_LENGTH: "fUl",
+  SIP_MESSAGE_BUFFER: "mb",
+  UPDATED_SIP_MESSAGE_BUFFER: "mbu",
+  FLAGS: "mf",
+  FLAGS_IN_HEX: "mF",
+  SIP_MESSAGE_ID: "mi",
+  SIP_MESSAGE_TYPE: "mt",
+  DOMAIN_ORIGINAL_R_URI: "od",
+  PORT_IN_ORIGINAL_R_URI: "op",
+  PROTOCOL_OF_ORIGINAL_R_URI: "oP",
+  ORIGINAL_R_URI: "ou",
+  USERNAME_IN_ORIGINAL_R_URI: "oU",
+  ORIGINAL_R_URI_USERNAME_LENGTH: "oUl",
+  DOMAIN_IN_P_PREFERRED_IDENTITY_HEADER_URI: "pd",
+  DISPLAY_NAME_IN_P_PREFERRED_IDENTITY_HEADER: "pn",
+  PROCESS_ID: "pp",
+  PROTOCOL_OF_RECEIVED_MESSAGE: "pr",
+  PROTOCOL_OF_RECEIVED_MESSAGE_1: "proto",
+  PROTOCOL_ID: "prid",
+  USER_IN_P_PREFERRED_IDENTITY_HEADER_URI: "pU",
+  URI_IN_P_PREFERRED_IDENTITY_HEADER: "pu",
+  BODY_OF_REQUEST_REPLY: "rb",
+  RETURNED_CODE: "rc",
+  RETURNED_CODE_FULL: "retcode",
+  DOMAIN_IN_R_URI: "rd",
+  REQUEST_DIRECTION: "rdir",//_(KEY)
+  REMOTE_PARTY_ID_HEADER_URI: "re",
+  SIP_METHOD: "rm",
+  SIP_METHOD_ID: "rmid",
+  URI_IN_FIRST_ROUTE_HEADER: "route_uri",
+  PORT_IN_R_URI: "rp",
+  PROTOCOL_OF_R_URI: "rP",
+  SIP_REPLY_REASON_PHRASE: "rr",
+  SIP_REPLY_CODE: "rs",
+  REFER_TO_URI: "rt",
+  REQUEST_URI: "ru",
+  USERNAME_IN_R_URI: "rU",
+  R_URI_USERNAME_LENGTH: "rUl",
+  SIP_MESSAGE_VERSION: "rv",
+  RECORD_INTERNAL_UNIQUE_ID: "ruid",
+  URI_SCHEME_OF_R_URI: "rz",
+  RECEIVED_ADVERTISED_IP_ADDRESS: "RAi",
+  RECEIVED_ADVERTISED_PORT: "RAp",
+  RECEIVED_IP_ADDRESS: "Ri",
+  RECEIVED_PORT: "Rp",
+  RECEIVED_SOCKET_NAME: "Rn",
+  ADVERTISED_SOCKET_URI: "RAu",
+  ADVERTISED_SOCKET_URI_T: "RAut",
+  RECEIVED_SOCKET_URI: "Ru",
+  RECEIVED_SOCKET_URI_T: "Rut",
+  SOURCE_ADDRESS_IN_SOCKET_FORMAT: "sas",
+  STATIC_BRANCH: "sbranch",//_(ATTR)
+  SCRIPT_FLAGS: "sf",
+  SCRIPT_FLAGS: "sF",
+  SOURCE_IP_ADDRESS: "si",
+  SERVER_ID: "sid",
+  SOURCE_IP_ADDRESS_REF: "siz",
+  SOURCE_PORT: "sp",
+  STATISTICS: "stat",//_(NAME)
+  SOURCE_ADDRESS_AS_URI: "su",
+  SOURCE_ADDRESS_AS_FULL_URI: "sut",
+  TO_URI_DOMAIN: "td",
+  TO_DISPLAY_NAME: "tn",
+  TO_TAG: "tt",
+  INITIAL_TO_TAG: "tti",
+  TO_URI: "tu",
+  TO_URI_USERNAME: "tU",
+  TO_URI_USERNAME_LENGTH: "tUl",
+  STARTUP_TIMESTAMP: "Tb",
+  STRING_FORMATTED_TIME_CACHED: "Tf",
+  STRING_FORMATTED_TIME_CURRENT: "TF",
+  UNIX_TIME_STAMP_CACHED: "Ts",
+  UNIX_TIME_STAMP_CURRENT: "TS",
+  USER_AGENT_HEADER: "ua",
+  VERSION: "version",//_()_
+  ENVIRONMENT_VARIABLES: "env",//_(NAME)
+  EXPIRES: "expires",//_(NAME)
+};
+
 module.exports = grammar({
   name: 'kamailio_cfg',
 
@@ -826,10 +953,8 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
-    [$.block_item, $.expression_not_binary],
+    [$.expression_not_binary, $.block_item],
     [$.top_level_item, $.expression_not_binary],
-    // [$.expression_not_binary, $.pvar_expression],
-    [$.index_expression, $.expression_not_binary],
   ],
 
   rules: {
@@ -854,6 +979,7 @@ module.exports = grammar({
       $.preproc_def,
       $.preproc_trydef,
       $.preproc_ifdef,
+      $.preproc_ifndef,
       $.preproc_redef,
       $.preproc_subst,
       $.preproc_substdefs,
@@ -868,6 +994,7 @@ module.exports = grammar({
       $.preproc_def,
       $.preproc_trydef,
       $.preproc_ifdef,
+      $.preproc_ifndef,
       $.preproc_redef,
       $.preproc_subst,
       $.preproc_substdefs,
@@ -993,13 +1120,13 @@ module.exports = grammar({
     ),
 
 
-    // Example: loadmodule "module_name"
+    // TODO: go back Example: loadmodule "module_name"
     loadmodule: $ => seq(
       token(CFG_VARS.LOADMODULE),
       field('module_name', $.string)
     ),
 
-    // Example: loadmodulex "module_name"
+    // TODO: go back Example: loadmodulex "module_name"
     loadmodulex: $ => seq(
       token(CFG_VARS.LOADMODULEX),
       field('module_name', $.string)
@@ -1158,6 +1285,7 @@ module.exports = grammar({
 
 
     ...preprocIf('', $ => $.block_item),
+    ...preprocIfn('', $ => $.block_item),
 
     _preproc_expression: $ => choice(
       $.identifier,
@@ -1234,23 +1362,8 @@ module.exports = grammar({
       PUNC.RPAREN,
     ),
 
-    variable_content: $ => choice(
-      seq($.index, optional($.transformation)),
-      seq($.transformation, optional($.index))
-    ),
-
     index: _ => seq(PUNC.LBRACK, /[^\]]+/, PUNC.RBRACK),
 
-    // TODO: revisit
-    transformation: _ => seq(
-      PUNC.LBRACE,
-      field('transformation_type', choice(
-        's', 'uri', 'param', 'nameaddr', 'tobody', 're', 'line', 'sql', 'msrpuri', 'json', 'url', 'sock', 'urialias', 'val'
-      )),
-      PUNC.RBRACE
-    ),
-
-    // TODO: revisit
     boolean_constant: _ => token(choice(
       BOOL.TRUE,
       BOOL.FALSE
@@ -1289,7 +1402,7 @@ module.exports = grammar({
       field('value', $.expression),
     )),
 
-    assignment_expression: $ => prec.right(PREC.ASSIGNMENT, seq(
+    assignment_expression: $ => prec.left(PREC.ASSIGNMENT, seq(
       field('left', $._assignment_left_expression),
       field('operator', choice(
         OPERATORS.EQUAL,
@@ -1316,6 +1429,8 @@ module.exports = grammar({
       const table = [
         [OPERATORS.PLUS, PREC.ADD],
         [OPERATORS.MINUS, PREC.ADD],
+        [OPERATORS.MULTIPLY, PREC.MULTIPLY],
+        [OPERATORS.DIVIDE, PREC.MULTIPLY],
         [OPERATORS.LOG_OR.OP, PREC.LOGICAL_OR],
         [OPERATORS.LOG_OR.WORD, PREC.LOGICAL_OR],
         [OPERATORS.LOG_AND.OP, PREC.LOGICAL_AND],
@@ -1376,7 +1491,7 @@ module.exports = grammar({
     field_expression: $ => seq(
       prec(PREC.FIELD, seq(
         field('argument', $.expression),
-        field('operator', choice(PUNC.DOT, '->', '=>')),
+        field('operator', choice(PUNC.DOT, token('=>'))),
       )),
       field('field', $._field_identifier),
     ),
@@ -1443,52 +1558,19 @@ module.exports = grammar({
     _field_identifier: $ => alias($.identifier, $.field_identifier),
     _statement_identifier: $ => alias($.identifier, $.statement_identifier),
 
-    identifier: _ => /[a-zA-Z_-][a-zA-Z0-9_-]*/,
+    identifier: _ => /[a-zA-Z_\-][a-zA-Z0-9_\-]*/,
     pvar_type: $ => seq(
       ATTRIBUTES.VAR_MARK,
       $.identifier
     ),
 
-    // pvars expressions such as
-    // $(avp(i:3)[*]) = 123;
-    // $(branch(uri)[$var(i)])
-    // $(branch(attr)[index]) = value;
-    // $(branch(uri)[2]) = "sip:test@kamailio.org;transport=sctp";
-    // $(avp(id)[*]) = newvalue;
-    // $(C(bg))avp(i:20)$(C(xx)) [$avp(i:20)] $(C(br))cseq$(C(xx))=[$hdr(cseq)]
-    // all start with $( and end with )
     pvar_expression: $ => prec(PREC.SUBSCRIPT, seq(
       ATTRIBUTES.VAR_MARK,
       PUNC.LPAREN,
-      field('pvar', $.identifier),
-      optional(field('value', $.pvar_attribute)),
+      field('var', $.pseudo_content),
+      optional(field('transformations', seq(repeat($.transformation)))),
       PUNC.RPAREN
     )),
-
-    // $(pvar(attribute)...)
-    // attributes can be:
-    // identifiers $(hd(To)..)
-    // strings     $(somthign("Something")
-    // range_expression $(avp(i:3)...)
-    // pvar_variable $(x($hdr)...
-    // pvar_expression $(x($(y(i:3)[*]){transformation})
-    pvar_attribute: $ => seq(
-      PUNC.LPAREN,
-      field('attribute', choice(
-        $.identifier,
-        $.string,
-        $.range_expression,
-        $.pseudo_variable,
-        $.pvar_expression
-      )),
-      PUNC.RPAREN,
-      optional(field('index', $.index_expression)),
-      optional(field('transformations', seq(repeat($.transformation))))
-    ),
-
-
-
-    //transformations: $ => repeat($.transformation),
 
     transformation: $ => seq(
       PUNC.LBRACE,
@@ -1512,9 +1594,9 @@ module.exports = grammar({
       PUNC.RBRACE,
     ),
 
-
     parameter_list_transformation: $ => choice(
       seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.VALUE), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
       seq(token(PARAMETER_LIST_TRANSFORMATION.IN), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
       seq(token(PARAMETER_LIST_TRANSFORMATION.VALUEAT), PUNC.COMMA, $.number_literal, optional(seq(PUNC.COMMA, $.char_literal))),
       seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.number_literal, optional(seq(PUNC.COMMA, $.char_literal))),
@@ -1609,7 +1691,7 @@ module.exports = grammar({
       token(URI_TRANSFORMATION.PASSWD),
       token(URI_TRANSFORMATION.PORT),
       token(URI_TRANSFORMATION.PARAMS),
-      seq(token(URI_TRANSFORMATION.PARAM), choice($.identifier, $.string)),
+      seq(token(URI_TRANSFORMATION.PARAM), PUNC.COMMA, choice($.identifier, $.string)),
       token(URI_TRANSFORMATION.HEADERS),
       token(URI_TRANSFORMATION.TRANSPORT),
       token(URI_TRANSFORMATION.TTL),
@@ -1686,46 +1768,961 @@ module.exports = grammar({
     ),
 
     // range expression (i:3)
-    range_expression: $ => seq(
-      field('range_start', choice($.identifier, $.number_literal)),
-      PUNC.COLON,
-      field('range_end', choice($.identifier, $.number_literal)),
-    ),
+    //range_expression: $ => seq(
+    //  field('range_start', choice($.identifier, $.number_literal)),
+    //  PUNC.COLON,
+    //  field('range_end', choice($.identifier, $.number_literal)),
+    //),
 
     // index expression [2] or [*]
     index_expression: $ => seq(
       PUNC.LBRACK,
-      field('index', choice($.expression, $.string, $.number_literal, token(PUNC.STAR))),
+      field('index', choice($.number_literal, token(PUNC.STAR))),
       PUNC.RBRACK
     ),
 
     // $avp(i:3)
     //
-    pseudo_variable: $ => prec.right(seq(
-      field('pvar', $.pvar_type),
+    catch_all_pseudo_variable: $ => prec.right(seq(
+      $.pvar_type,
       optional(
         seq(
           PUNC.LPAREN,
-          field('argument', $.pvar_argument),
+          field('name', $.pvar_argument),
           PUNC.RPAREN,
           optional(PUNC.SEMICOLON)
         ))
     )),
 
-    pvar_argument: $ => choice(
+
+    pvar: $ => prec.right(choice(
+      seq(token(PSEUDO_VARS.FORMAT), PUNC.LPAREN, field('format', $.identifier), PUNC.RPAREN),
+      token(PSEUDO_VARS.URI_IN_P_ASSERTED_IDENTITY_HEADER),
+      token(PSEUDO_VARS.AUTH_DIGEST_URI),
+      token(PSEUDO_VARS.AUTH_ALGORITHM),
+      token(PSEUDO_VARS.AUTH_REALM),
+      token(PSEUDO_VARS.AUTH_USERNAME_USER),
+      token(PSEUDO_VARS.AUTH_USERNAME_DOMAIN),
+      token(PSEUDO_VARS.AUTH_WHOLE_USERNAME),
+      token(PSEUDO_VARS.ACC_USERNAME_AND_REALM_DOMAIN),
+      token(PSEUDO_VARS.ACC_USERNAME),
+      seq(token(PSEUDO_VARS.BRANCH_ATTRIBUTES), PUNC.LPAREN, field('name', choice($.identifier, $.string)), PUNC.RPAREN, optional($.index_expression)),
+      token(PSEUDO_VARS.REQUESTS_FIRST_BRANCH),
+      token(PSEUDO_VARS.BRANCH_FLAGS),
+      token(PSEUDO_VARS.BODY_SIZE),
+      token(PSEUDO_VARS.CALL_ID),
+      token(PSEUDO_VARS.CONTENT_LENGTH),
+      seq(token(PSEUDO_VARS.COUNT_NUMBER_OF_PVS), PUNC.LPAREN, choice($.pvar_expression, $.pseudo_variable), PUNC.RPAREN), // TODO: verify this, should only be for avp or xavp
+      token(PSEUDO_VARS.TCP_CONNECTION_ID),
+      token(PSEUDO_VARS.CSEQ_NUMBER),
+      token(PSEUDO_VARS.CSEQ_HEADER_BODY),
+      token(PSEUDO_VARS.CONTACT_HEADER),
+      token(PSEUDO_VARS.CONTACT_HEADER_STAR_STATUS),
+      token(PSEUDO_VARS.CONTENT_TYPE),
+      token(PSEUDO_VARS.DOMAIN_OF_DESTINATION_URI),
+      seq(token(PSEUDO_VARS.DEFINED_VALUE_), PUNC.LPAREN, field('name', choice($.identifier, $.string), PUNC.RPAREN)),
+      seq(token(PSEUDO_VARS.DEFINED_VALUE_AS_NUMBER), PUNC.LPAREN, field('name', choice($.identifier, $.string), PUNC.RPAREN)),
+      token(PSEUDO_VARS.DIVERSION_HEADER_URI),
+      token(PSEUDO_VARS.DIVERSION_PRIVACY_PARAMETER),
+      token(PSEUDO_VARS.DIVERSION_REASON_PARAMETER),
+      token(PSEUDO_VARS.DIVERSION_COUNTER_PARAMETER),
+      token(PSEUDO_VARS.PORT_OF_DESTINATION_URI),
+      token(PSEUDO_VARS.DESTINATION_SET),
+      token(PSEUDO_VARS.DESTINATION_URI),
+      token(PSEUDO_VARS.BACK_SLASH),
+      token(PSEUDO_VARS.LF),
+      token(PSEUDO_VARS.CR),
+      token(PSEUDO_VARS.TAB),
+      token(PSEUDO_VARS.SPACE),
+      token(PSEUDO_VARS.COMMA),
+      token(PSEUDO_VARS.DOUBLE_QUOTE),
+      token(PSEUDO_VARS.SINGLE_QUOTE),
+      token(PSEUDO_VARS.COLON),
+      token(PSEUDO_VARS.SEMICOLON),
+      token(PSEUDO_VARS.BACK_TICK),
+      token(PSEUDO_VARS.FROM_URI_DOMAIN),
+      token(PSEUDO_VARS.FROM_DISPLAY_NAME),
+      token(PSEUDO_VARS.FORCED_SEND_SOCKET),
+      token(PSEUDO_VARS.FORCED_SEND_SOCKET_NAME),
+      token(PSEUDO_VARS.FROM_TAG),
+      token(PSEUDO_VARS.INITIAL_FROM_TAG),
+      token(PSEUDO_VARS.FROM_URI),
+      token(PSEUDO_VARS.FROM_URI_USERNAME),
+      token(PSEUDO_VARS.FROM_URI_USERNAME_LENGTH),
+      token(PSEUDO_VARS.SIP_MESSAGE_BUFFER),
+      token(PSEUDO_VARS.UPDATED_SIP_MESSAGE_BUFFER),
+      token(PSEUDO_VARS.FLAGS),
+      token(PSEUDO_VARS.FLAGS_IN_HEX),
+      token(PSEUDO_VARS.SIP_MESSAGE_ID),
+      token(PSEUDO_VARS.SIP_MESSAGE_TYPE),
+      token(PSEUDO_VARS.DOMAIN_ORIGINAL_R_URI),
+      token(PSEUDO_VARS.PORT_OF_DESTINATION_URI),
+      token(PSEUDO_VARS.PROTOCOL_OF_ORIGINAL_R_URI),
+      token(PSEUDO_VARS.ORIGINAL_R_URI),
+      token(PSEUDO_VARS.USERNAME_IN_ORIGINAL_R_URI),
+      token(PSEUDO_VARS.ORIGINAL_R_URI_USERNAME_LENGTH),
+      token(PSEUDO_VARS.DOMAIN_IN_P_PREFERRED_IDENTITY_HEADER_URI),
+      token(PSEUDO_VARS.DISPLAY_NAME_IN_P_PREFERRED_IDENTITY_HEADER),
+      token(PSEUDO_VARS.PROCESS_ID),
+      token(PSEUDO_VARS.PROTOCOL_OF_RECEIVED_MESSAGE),
+      token(PSEUDO_VARS.PROTOCOL_OF_RECEIVED_MESSAGE_1),
+      token(PSEUDO_VARS.PROTOCOL_ID),
+      token(PSEUDO_VARS.USER_IN_P_PREFERRED_IDENTITY_HEADER_URI),
+      token(PSEUDO_VARS.URI_IN_P_PREFERRED_IDENTITY_HEADER),
+      token(PSEUDO_VARS.BODY_OF_REQUEST_REPLY),
+      token(PSEUDO_VARS.RETURNED_CODE),
+      token(PSEUDO_VARS.RETURNED_CODE_FULL),
+      token(PSEUDO_VARS.DOMAIN_IN_R_URI),
+      seq(PSEUDO_VARS.REQUEST_DIRECTION, PUNC.LPAREN, choice($.identifier, $.string), PUNC.RPAREN),
+      token(PSEUDO_VARS.REMOTE_PARTY_ID_HEADER_URI),
+      token(PSEUDO_VARS.SIP_METHOD),
+      token(PSEUDO_VARS.SIP_METHOD_ID),
+      token(PSEUDO_VARS.URI_IN_FIRST_ROUTE_HEADER),
+      token(PSEUDO_VARS.PORT_IN_R_URI),
+      token(PSEUDO_VARS.PROTOCOL_OF_R_URI),
+      token(PSEUDO_VARS.SIP_REPLY_REASON_PHRASE),
+      token(PSEUDO_VARS.SIP_REPLY_CODE),
+      token(PSEUDO_VARS.REFER_TO_URI),
+      token(PSEUDO_VARS.REQUEST_URI),
+      token(PSEUDO_VARS.USERNAME_IN_R_URI),
+      token(PSEUDO_VARS.R_URI_USERNAME_LENGTH),
+      token(PSEUDO_VARS.SIP_MESSAGE_VERSION),
+      token(PSEUDO_VARS.RECORD_INTERNAL_UNIQUE_ID),
+      token(PSEUDO_VARS.URI_SCHEME_OF_R_URI),
+      token(PSEUDO_VARS.RECEIVED_ADVERTISED_PORT),
+      token(PSEUDO_VARS.RECEIVED_IP_ADDRESS),
+      token(PSEUDO_VARS.RECEIVED_PORT),
+      token(PSEUDO_VARS.RECEIVED_SOCKET_NAME),
+      token(PSEUDO_VARS.ADVERTISED_SOCKET_URI),
+      token(PSEUDO_VARS.ADVERTISED_SOCKET_URI_T),
+      token(PSEUDO_VARS.RECEIVED_SOCKET_URI),
+      token(PSEUDO_VARS.RECEIVED_SOCKET_URI_T),
+      token(PSEUDO_VARS.SOURCE_ADDRESS_IN_SOCKET_FORMAT),
+      seq(token(PSEUDO_VARS.STATIC_BRANCH), PUNC.LPAREN, field('attr', choice($.identifier, $.string)), PUNC.RPAREN),
+      token(PSEUDO_VARS.SCRIPT_FLAGS),
+      token(PSEUDO_VARS.SOURCE_IP_ADDRESS),
+      token(PSEUDO_VARS.SERVER_ID),
+      token(PSEUDO_VARS.SOURCE_IP_ADDRESS_REF),
+      token(PSEUDO_VARS.SOURCE_PORT),
+      token(PSEUDO_VARS.SOURCE_ADDRESS_AS_URI),
+      token(PSEUDO_VARS.SOURCE_ADDRESS_AS_FULL_URI),
+      token(PSEUDO_VARS.TO_URI_DOMAIN),
+      token(PSEUDO_VARS.TO_DISPLAY_NAME),
+      token(PSEUDO_VARS.TO_TAG),
+      token(PSEUDO_VARS.INITIAL_TO_TAG),
+      token(PSEUDO_VARS.TO_URI),
+      token(PSEUDO_VARS.TO_URI_USERNAME),
+      token(PSEUDO_VARS.TO_URI_USERNAME_LENGTH),
+      token(PSEUDO_VARS.STARTUP_TIMESTAMP),
+      token(PSEUDO_VARS.STRING_FORMATTED_TIME_CACHED),
+      token(PSEUDO_VARS.STRING_FORMATTED_TIME_CURRENT),
+      token(PSEUDO_VARS.UNIX_TIME_STAMP_CACHED),
+      token(PSEUDO_VARS.UNIX_TIME_STAMP_CURRENT),
+      token(PSEUDO_VARS.USER_AGENT_HEADER),
+      seq(token(PSEUDO_VARS.VERSION), PUNC.LPAREN, PUNC.RPAREN),
+      seq(token(PSEUDO_VARS.ENVIRONMENT_VARIABLES), PUNC.LPAREN, field('name', $.identifier), PUNC.RPAREN),
+      seq(token(PSEUDO_VARS.EXPIRES), PUNC.LPAREN, field('key', choice(token('min'), token('max'))), PUNC.RPAREN),
+    )),
+
+    pseudo_content: $ => choice(
+      $.pvar,
+      $.avp_var,
+      $.xavp_var,
+      $.xavu_var,
+      $.hdr,
+      $.hdrc,
+      $.shv_var,
+      $.dsv_var,
+      $.dsg_var,
+      $.time_var,
+      $.timef_var,
+      // TODO: config custom parameters $ccp(key)
+      // select vars
+      $.rcv,
+      $.rpl,
+      $.msg_buf_index,
+      $.hfitname,
+      $.hfitbody,
+      $.blitval,
+      $.snd,
+      $.sipdump,
+      $.siptrace,
+      $.bm_diff_time,
+      $.dlg_attr,
+      $.dlg_ctx,
+      $.dlg_var,
+      // TODO: ERLANG
+      // TODO: EVAPI
+      $.htable,
+      $.htable_exp,
+      $.htiterator,
+      $.mct,
+      $.mcinc_mcdec,
+      $.http_req_id,
+      $.http_req,
+      $.read_only,
+      $.xml,
+      $.tmx,
+      $.uac,
+      $.nathelper,
+      $.mqueue,
+      $.timeval,
+      $.nhaddr,
+      $.redis,
+      $.redisd,
+      $.gip2,
+      $.tlskey,
+      $.msgattr,
+      $.popops,
+      $.xhttp,
+      $.msrp,
+      $.sipt,
+      $.cfg_attr,
+      $.dns_q,
+      $.host_name,
+      $.random,
+      // TODO: lsock
+      // TODO evr(key)
+      $.var_,
+      $.catch_all_pseudo_variable
+    ),
+
+    jsonrpc_var: _ => seq(
+      token("jsonrpl"),
+      PUNC.LPAREN,
+      choice(
+        token("code"),
+        token("text"),
+        token("body"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    random: _ => token("RANDOM"),
+
+    host_name: _ => seq(
+      token("HN"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token('n'),
+        token('f'),
+        token('d'),
+        token('i'),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    dns_q: $ => seq(
+      token("dns"),
+      PUNC.LPAREN,
+      field('pvid', $.identifier),
+      token("=>"),
+      field('key', choice($.identifier, $.pseudo_variable)),
+      PUNC.RPAREN,
+    ),
+    cfg_attr: _ => seq(
+      token("cfg"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("line"),
+        token("name"),
+        token("file"),
+        token("route"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    sipt: _ => choice(
+      token("sipt_presentation"),
+      token("sipt_screening"),
+      token("sipt_hop_counter"),
+      token("sipt_cpc"),
+      token("sipt_calling_party_nai"),
+      token("sipt_called_party_nai"),
+      token("sipt_redirection_info"),
+      token("sipt_redirection_number"),
+      token("sipt_redirection_number_nai"),
+      seq(
+        token("sipt"),
+        PUNC.LPAREN,
+        choice(
+          token("calling_party_number.presentation"),
+          token("calling_party_number.screening"),
+          token("calling_party_category"),
+          token("cpc"),
+          token("calling_party_number.nature_of_address"),
+          token("calling_party_number.nai"),
+          token("called_party_number.nature_of_address"),
+          token("called_party_number.nai"),
+          token("event_info"),
+          token("backward_call_indicator.charge_indicator"),
+          token("redirection_info"),
+          token("redirection_number"),
+          token("redirection_number.nai"),
+          token("calling_party_number"),
+          token("called_party_number"),
+          token("sipt_redirection_information_reason"),
+          token("sipt_redirection_information_original_reason"),
+          token("redirecting_number.nai"),
+          token("redirecting_number"),
+          token("original_called_number.nai"),
+          token("original_called_number"),
+          token("generic_number.nai"),
+          token("generic_number"),
+        ),
+        PUNC.RPAREN
+      )
+    ),
+
+    msrp: $ => seq(
+      token("msrp"),
+      PUNC.LPAREN,
+      field('arg', choice($.identifier, $.string)),
+      PUNC.RPAREN,
+    ),
+    xhttp: _ => token("hu"),
+
+    popops: $ => seq(
+      token("pop"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("ret"),
+        token("idx"),
+        token("len"),
+        $.number_literal,
+      )),
+      PUNC.RPAREN,
+    ),
+
+    msgattr: _ => seq(
+      token("msg"),
+      PUNC.LPAREN,
+      field("attr", choice(
+        token("len"),
+        token("buf"),
+        token("body"),
+        token("body_len"),
+        token("hdrs"),
+        token("fline"),
+        token("fpart"),
+        token("lpart"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    tlskey: _ => choice(
+      token("tls_version"),
+      token("tls_description"),
+      token("tls_cipher_info"),
+      token("tls_cipher_bits"),
+      token("tls_peer_version"),
+      token("tls_my_version"),
+      token("tls_peer_serial"),
+      token("tls_my_serial"),
+      token("tls_peer_subject"),
+      token("tls_peer_issuer"),
+      token("tls_my_subject"),
+      token("tls_my_issuer"),
+      token("tls_peer_subject_cn"),
+      token("tls_peer_issuer_cn"),
+      token("tls_my_subject_cn"),
+      token("tls_my_issuer_cn"),
+      token("tls_peer_subject_locality"),
+      token("tls_peer_issuer_locality"),
+      token("tls_my_subject_locality"),
+      token("tls_my_issuer_locality"),
+      token("tls_peer_subject_country"),
+      token("tls_peer_issuer_country"),
+      token("tls_my_subject_country"),
+      token("tls_my_issuer_country"),
+      token("tls_peer_subject_state"),
+      token("tls_peer_issuer_state"),
+      token("tls_my_subject_state"),
+      token("tls_my_issuer_state"),
+      token("tls_peer_subject_organization"),
+      token("tls_peer_issuer_organization"),
+      token("tls_my_subject_organization"),
+      token("tls_my_issuer_organization"),
+      token("tls_peer_subject_unit"),
+      token("tls_peer_subject_uid"),
+      token("tls_peer_issuer_unit"),
+      token("tls_my_subject_unit"),
+      token("tls_my_subject_uid"),
+      token("tls_my_issuer_unit"),
+      token("tls_peer_san_email"),
+      token("tls_my_san_email"),
+      token("tls_peer_san_hostname"),
+      token("tls_my_san_hostname"),
+      token("tls_peer_san_uri"),
+      token("tls_my_san_uri"),
+      token("tls_peer_san_ip"),
+      token("tls_my_san_ip"),
+      token("tls_peer_verified"),
+      token("tls_peer_revoked"),
+      token("tls_peer_expired"),
+      token("tls_peer_selfsigned"),
+      token("tls_peer_notBefore"),
+      token("tls_peer_notAfter"),
+      token("tls_peer_server_name"),
+      token("tls_peer_raw_cert"),
+      token("tls_my_raw_cert"),
+      token("tls_peer_urlencoded_cert"),
+      token("tls_my_urlencoded_cert"),
+      seq(
+        token("tls"),
+        PUNC.LPAREN,
+        field('key', choice(
+          token("m_issuer_line"),
+          token("p_issuer_line"),
+          token("m_subject_line"),
+          token("p_subject_line"),
+        )),
+        PUNC.RPAREN,
+      )),
+    gip2: $ => seq(
+      token("gip2"),
+      PUNC.LPAREN,
+      field('pvc', $.identifier),
+      token("=>"),
+      field('key', choice(
+        token("cc"),
+        token("tz"),
+        token("zip"),
+        token("lat"),
+        token("lon"),
+        token("dma"),
+        token("ips"),
+        token("ipe"),
+        token("city"),
+        token("area"),
+        token("regc"),
+        token("regn"),
+        token("metro"),
+        token("contc"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    redisd: _ => seq(
+      token("redisd"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("rpl_str"),
+        token("rpl_arr"),
+        token("rpl_int"),
+        token("rpl_nil"),
+        token("rpl_sts"),
+        token("rpl_err"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    redis: $ => seq(
+      token("redis"),
+      PUNC.LPAREN,
+      field('key', choice(
+        seq(token("type"), optional(seq(PUNC.RBRACK, $.number_literal, PUNC.RBRACK))),
+        seq(token("value"), optional(seq(PUNC.RBRACK, $.number_literal, PUNC.RBRACK))),
+        token("info"),
+        token("size"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    nhaddr: _ => seq(
+      token("nh"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("u"),
+        token("U"),
+        token("d"),
+        token("p"),
+        token("P"),
+      )),
+      PUNC.RPAREN,
+
+    ),
+
+    timeval: _ => seq(
+      token("TV"),
+      PUNC.LPAREN,
+      choice(
+        token("s"),
+        token("u"),
+        token("sn"),
+        token("un"),
+        token("Sn"),
+        token("Sm"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    mqueue: $ => seq(
+      choice(token("mqk"), token("mqv")),
+      PUNC.LPAREN,
+      $.string,
+      PUNC.RPAREN,
+
+    ),
+
+    nathelper: _ => choice(
+      token("rr_count"),
+      token("rr_top_count"),
+    ),
+
+    uac: _ => seq(
+      token("uac_req"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("method"),
+        token("ruri"),
+        token("furi"),
+        token("turi"),
+        token("ouri"),
+        token("hdrs"),
+        token("body"),
+        token("flags"),
+        token("1"),
+        token("auser"),
+        token("apasswd"),
+        token("sock"),
+        token("callid"),
+        token("all"),
+        token("evroute"),
+        token("evcode"),
+        token("evtype"),
+        token("evparam")
+      )),
+      PUNC.RPAREN,
+    ),
+
+    tmx: $ => choice(
+      token("T_branch_idx"),
+      token("T_reply_ruid"),
+      seq(token("T_req"), PUNC.LPAREN, $.pseudo_variable, PUNC.RPAREN),
+      seq(token("T_rpl"), PUNC.LPAREN, $.pseudo_variable, PUNC.RPAREN),
+      seq(token("T_inv"), PUNC.LPAREN, $.pseudo_variable, PUNC.RPAREN),
+      seq(token("T_inv"), PUNC.LPAREN, choice(
+        token("id_index"),
+        token("id_label"),
+        token("id_index_n"),
+        token("id_label_n"),
+        token("reply_code"),
+        token("reply_reason"),
+        token("reply_last"),
+        token("branch_index"),
+        token("ruid"),
+        token("reply_type"),
+      ), PUNC.RPAREN),
+      seq(token("T_branch"), PUNC.LPAREN, choice($.pseudo_variable, $.identifier, $.string), PUNC.RPAREN),
+    ),
+
+    _path: _ => /[a-zA-Z\/()]/,
+
+    xml: $ => seq(
+      token("xml"),
+      PUNC.LPAREN,
+      field('name', $.identifier),
+      token("=>"),
+      field('spec', $.identifier),
+      optional(seq(PUNC.COLON, $._path)),
+      PUNC.RPAREN,
+    ),
+
+    read_only: $ => choice(
+      token("http_ok"),
+      token("http_err"),
+      token("http_rs"),
+      token("http_rr"),
+      seq(token("http_hdr"), PUNC.LPAREN, $.identifier, PUNC.RPAREN),
+      token("http_mb"),
+      token("http_ml"),
+      token("http_rb"),
+      token("http_bs"),
+    ),
+
+    http_req: _ => seq(
+      token("http_req"),
+      PUNC.LPAREN,
+      choice(
+        token("all"),
+        token("hdr"),
+        token("body"),
+        token("method"),
+        token("timeout"),
+        token("tls_client_cert"),
+        token("tls_client_key"),
+        token("tls_ca_path"),
+        token("authmethod"),
+        token("1"),
+        token("2"),
+        token("3"),
+        token("4"),
+        token("8"),
+        token("16"),
+        token("username"),
+        token("password"),
+        token("suspend"),
+        token("tcp_keepalive"),
+        token("tcp_ka_idle"),
+        token("tcp_ka_interval"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    http_req_id: _ => token("http_req_id"),
+
+    mcinc_mcdec: $ => seq(
+      choice(token("mcinc"), token("mcdec")),
+      PUNC.LPAREN,
+      choice($.identifier, $.string),
+      PUNC.RPAREN,
+    ),
+
+    mct: $ => seq(
+      PUNC.LPAREN,
+      choice($.identifier, $.string, seq($.identifier, token("=>"), $.number_literal)),
+      PUNC.RPAREN,
+    ),
+
+    htiterator: $ => seq(
+      choice(token("shtitkey"), token("shtitval"), token("shtrecord")),
+      PUNC.LPAREN,
+      $.identifier,
+      PUNC.RPAREN,
+    ),
+
+    htable_exp: $ => seq(
+      choice(token("shtcn"), token("shtcv")),
+      PUNC.LPAREN,
+      field("htable", $.identifier),
+      token("=>"),
+      field("key", choice(
+        $.regex_replacement,
+        seq(token("\~\~"), $.regex_replacement),
+        seq(token("\~%"), $.identifier),
+        seq(token("%\~"), $.identifier),
+        seq(token("=="), choice($.identifier, $.string)),
+        seq(token("eqvalue"), $.number_literal),
+        token("**"),
+      )),
+      PUNC.RPAREN,
+    ),
+    htable: $ => seq(
+      choice(token("sht"), token("shtex"), token("shtinc"), token("shtdec")),
+      PUNC.LPAREN,
+      field("htable", $.identifier),
+      token("=>"),
+      field("key", seq(choice($.pseudo_variable, $.identifier), optional(seq(token("::"), $.identifier)))),
+      PUNC.RPAREN,
+    ),
+
+    dlg_var: $ => seq(
+      choice(token("dlg"), token("dlg_var")),
+      PUNC.LPAREN,
+      $.identifier,
+      PUNC.RPAREN,
+    ),
+
+    dlg_ctx: _ => seq(
+      token("dlg_ctx"),
+      PUNC.LPAREN,
+      choice(
+        token("set"),
+        token("flags"),
+        token("timeout_route"),
+        token("timeout_route_id"),
+        token("timeout_bye"),
+        token("timeout"),
+        token("on"),
+        token("dir")
+      ),
+      PUNC.RPAREN,
+    ),
+
+    dlg_attr: _ => seq(
+      token("dlg"),
+      PUNC.LPAREN,
+      choice(
+        token("h_id"),
+        token("h_entry"),
+        token("ref"),
+        token("state"),
+        token("to_rs"),
+        token("from_rs"),
+        token("dflags"),
+        token("sflags"),
+        token("callid"),
+        token("to_uri"),
+        token("to_tag"),
+        token("from_uri"),
+        token("from_tag"),
+        token("toroute"),
+        token("lifetime"),
+        token("start_ts"),
+        token("to_cseq"),
+        token("from_cseq"),
+        token("to_contact"),
+        token("from_contact"),
+        token("to_bindaddr"),
+        token("from_bindaddr"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    bm_diff_time: _ => token("BM_time_diff"),
+
+    siptrace: _ => seq(
+      token("blitval"),
+      PUNC.LPAREN,
+      choice(
+        token("src_addr"),
+        token("dst_addr"),
+        token("src_host"),
+        token("dst_host"),
+        token("src_hostip"),
+        token("dst_hostip"),
+        token("src_port"),
+        token("dst_port"),
+        token("src_proto"),
+        token("dst_proto"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    sipdump: _ => seq(
+      token("blitval"),
+      PUNC.LPAREN,
+      choice(
+        token("tag"),
+        token("buf"),
+        token("len"),
+        token("af"),
+        token("src_ip"),
+        token("dst_ip"),
+        token("src_port"),
+        token("dst_port"),
+        token("proto")
+      ),
+      PUNC.LPAREN,
+    ),
+    snd: $ => seq(
+      choice(
+        token("sndfrom"),
+        token("snd"),
+        token("sndto"),
+      ),
+      PUNC.LPAREN,
+      $.identifier,
+      PUNC.LPAREN,
+    ),
+
+    blitval: $ => seq(
+      token("blitval"),
+      PUNC.LPAREN,
+      choice($.identifier, $.string),
+      PUNC.LPAREN,
+    ),
+
+    hfitbody: $ => seq(
+      token("hfitbody"),
+      PUNC.LPAREN,
+      choice($.identifier, $.string),
+      PUNC.LPAREN,
+    ),
+
+    hfitname: $ => seq(
+      token("hfitname"),
+      PUNC.LPAREN,
+      choice($.identifier, $.string),
+      PUNC.LPAREN,
+    ),
+
+    msg_buf_index: $ => seq(
+      token("msgbuf"),
+      PUNC.LPAREN,
+      $.number_literal,
+      PUNC.RPAREN,
+    ),
+
+    rpl: _ => seq(
+      token("rpl"),
+      PUNC.LPAREN,
+      choice(
+        token("duri"),
+        token("dhost"),
+        token("dport"),
+        token("dproto"),
+        token("dprotoid"),
+        token("cntvia"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    rcv: _ => seq(
+      token("rcv"),
+      PUNC.LPAREN,
+      choice(
+        token("buf"),
+        token("len"),
+        token("srcip"),
+        token("rcvip"),
+        token("scrport"),
+        token("rcvport"),
+        token("proto"),
+        token("sproto"),
+        token("af")
+      ),
+      PUNC.RPAREN,
+    ),
+
+    pseudo_variable: $ => seq(
+      ATTRIBUTES.VAR_MARK,
+      field('var', $.pseudo_content),
+    ),
+
+    hdrc: $ => seq(
+      choice(token("hdrc"), token("hlfc")),
+      PUNC.LPAREN,
+      field('name', $.identifier),
+      PUNC.RPAREN,
+    ),
+
+    avp_var: $ => prec.right(seq(
+      token("avp"),
+      PUNC.LPAREN,
+      field('name', $.pvar_argument),
+      PUNC.RPAREN,
+      optional(
+        seq(PUNC.LBRACK, choice(
+          PUNC.STAR,
+          $.number_literal,
+          prec(PREC.CONDITIONAL, seq(token("i:"), $.number_literal)),
+          prec(PREC.CONDITIONAL, seq(token("s:"), ($.identifier, $.string))),
+        ), PUNC.RBRACK))
+    )),
+
+    hdr: $ => prec.right(seq(
+      choice(token("hdr"), token("hfl")),
+      PUNC.LPAREN,
+      field('name', $.pvar_argument),
+      PUNC.RPAREN,
+      optional(
+        seq(PUNC.LBRACK, choice(
+          PUNC.STAR,
+          $.number_literal,
+        ), PUNC.RBRACK))
+    )),
+
+    xavp_values: $ => seq(
+      field('name', $.identifier), // single value
+      optional(field('index', seq(PUNC.LBRACK, choice($.identifier, $.number_literal, $.pseudo_variable), PUNC.RBRACK))),
+      optional(field('field', seq(token('=>'), $.identifier))),
+    ),
+
+    xavp_var: $ => seq(
+      token("xavp"),
+      PUNC.LPAREN,
+      field('name', $.xavp_values),
+      PUNC.RPAREN
+    ),
+
+    // case sensitive xavps
+    xavi_var: $ => seq(
+      token("xavi"),
+      PUNC.LPAREN,
+      field('name', $.xavp_values),
+      PUNC.RPAREN
+    ),
+
+    xavu_values: $ => seq(
+      field('name', $.identifier), // single value
+      optional(field('field', seq(token('=>'), $.identifier))),
+    ),
+
+    xavu_var: $ => seq(
+      token("xavu"),
+      PUNC.LPAREN,
+      field('name', $.xavu_values),
+      PUNC.RPAREN
+    ),
+
+    var_: $ => prec.left(seq(
+      choice(token("var"), token("vz"), token("vn")),
+      PUNC.LPAREN,
+      field('name', choice($.identifier, $.pvar_argument)),
+      PUNC.RPAREN
+    )),
+
+    shv_var: $ => seq(
+      token("shv"),
+      PUNC.LPAREN,
+      field('name', $.pvar_argument),
+      PUNC.RPAREN
+    ),
+
+    // TODO: $dsv(key)
+    // key can be code, reason flags
+    dsv_var: $ => seq(
+      token("dsv"),
+      PUNC.LPAREN,
+      field('name', $.pvar_argument),
+      PUNC.RPAREN
+    ),
+
+    dsg_var: _ => seq(
+      token("dsg"),
+      PUNC.LPAREN,
+      field('name', choice(
+        token('count'),
+        token('active'),
+        token('pactive'),
+        token('inactive'),
+        token('pinactive'),
+      )),
+      PUNC.RPAREN
+    ),
+
+    time_var: _ => seq(
+      choice(token("time"), token("utime")),
+      PUNC.LPAREN,
+      field('name', choice(
+        token('sec'),
+        token('min'),
+        token('hour'),
+        token('mday'),
+        token('mon'),
+        token('year'),
+        token('wday'),
+        token('yday'),
+        token('isdst'),
+      )),
+      PUNC.RPAREN
+    ),
+
+    timef_var: _ => seq(
+      choice(token("time"), token("utimef")),
+      PUNC.LPAREN,
+      field('name', /[a-zA-Z%/]/),
+      PUNC.RPAREN
+    ),
+
+    pvar_argument: $ => prec.right(choice(
       $.number_literal,
       $.string,
       $.identifier,
+      seq(token('i:'), $.number_literal),
+      seq(token('s:'), $.identifier),
       $.field_expression,
-      $.variable_content,
       $.subelement
-    ),
+    )),
 
     subelement: $ => prec(PREC.FIELD, seq(
       $.identifier,
       '=>',
       optional(ATTRIBUTES.VAR_MARK),
-      $.identifier
+      $.identifier,
+      optional(seq(PUNC.COLON, PUNC.COLON, $.identifier))
     )),
 
     modparam: $ => prec.right(seq(
@@ -1742,7 +2739,6 @@ module.exports = grammar({
         $.identifier,
         $.function_call,
         $.pseudo_variable,
-        $.variable_content
       )),
       PUNC.RPAREN,
       optional(PUNC.SEMICOLON),
@@ -1762,26 +2758,23 @@ module.exports = grammar({
         $.identifier,
         $.function_call,
         $.pseudo_variable,
-        $.variable_content
       )),
       PUNC.RPAREN
     ),
 
-    // if string arguments are passed and they are sip keywords, they should be tokenized as sip_keywords
     function_call: $ => seq(
-      // need to highlight the function name separeted from identifier
       field('function_name', $.identifier),
       PUNC.LPAREN,
       optional(seq(
         choice(
           field('argument', $.identifier),
-          field('argument', $.sip_keywords),
+          //field('argument', $.sip_keywords),
           field('argument', $.string),
           field('argument', $.number_literal)
         ),
         repeat(seq(PUNC.COMMA, choice(
           field('argument', $.identifier),
-          field('argument', $.sip_keywords),
+          //field('argument', $.sip_keywords),
           field('argument', $.string),
           field('argument', $.number_literal)
         ))),
@@ -1796,106 +2789,85 @@ module.exports = grammar({
       PUNC.RPAREN,
     ),
 
-    // TODO: may be
-    sip_keywords: _ => token(choice(
-      '"INVITE"',
-      '"ACK"',
-      '"BYE"',
-      '"CANCEL"',
-      '"PRACK"',
-      '"UPDATE"',
-      '"REGISTER"',
-      '"MESSAGE"',
-      '"INFO"',
-      '"OPTIONS"',
-      '"SUBSCRIBE"',
-      '"NOTIFY"',
-      '"PUBLISH"',
-      '"REFER"',
-      '"KDMQ"',
-      '"GET"',
-      '"POST"',
-      '"PUT"',
-      '"DELETE"',
-      '"SIP"',
-      '"From"',
-      '"To"',
-      '"Call-ID"',
-      '"CSeq"',
-      '"Route"',
-      '"Record-Route"',
-      '"Authorization"',
-      '"Proxy-Authorization"',
-      '"Contact"',
-      '"Expires"',
-      '"Content-Type"',
-      '"Content-Length"',
-      '"Via"',
-      '"User-Agent"',
-      '"P-Asserted-Identity"'
-    ))
+    //// TODO: may be
+    //sip_keywords: _ => token(choice(
+    //  '"INVITE"',
+    //  '"ACK"',
+    //  '"BYE"',
+    //  '"CANCEL"',
+    //  '"PRACK"',
+    //  '"UPDATE"',
+    //  '"REGISTER"',
+    //  '"MESSAGE"',
+    //  '"INFO"',
+    //  '"OPTIONS"',
+    //  '"SUBSCRIBE"',
+    //  '"NOTIFY"',
+    //  '"PUBLISH"',
+    //  '"REFER"',
+    //  '"KDMQ"',
+    //  '"GET"',
+    //  '"POST"',
+    //  '"PUT"',
+    //  '"DELETE"',
+    //  '"SIP"',
+    //  '"From"',
+    //  '"To"',
+    //  '"Call-ID"',
+    //  '"CSeq"',
+    //  '"Route"',
+    //  '"Record-Route"',
+    //  '"Authorization"',
+    //  '"Proxy-Authorization"',
+    //  '"Contact"',
+    //  '"Expires"',
+    //  '"Content-Type"',
+    //  '"Content-Length"',
+    //  '"Via"',
+    //  '"User-Agent"',
+    //  '"P-Asserted-Identity"'
+    //))
   }
 });
 
-/**
- * Creates a rule to optionally match one or more of the rules separated by a comma
- *
- * @param {Rule} rule
- *
- * @return {ChoiceRule}
- *
- */
 function commaSep(rule) {
   return optional(commaSep1(rule));
 }
 
-/**
- * Creates a rule to match one or more of the rules separated by a comma
- *
- * @param {Rule} rule
- *
- * @return {SeqRule}
- *
- */
 function commaSep1(rule) {
   return seq(rule, repeat(seq(PUNC.COMMA, rule)));
 }
 
-/**
-  * Creates a preprocessor regex rule
-  *
-  * @param {RegExp|Rule|String} command
-  *
-  * @return {AliasRule}
-  */
 function preprocessor(command) {
   return alias(new RegExp(PREP_START.HASH_BANG + command), PREP_START.HASH_BANG + command);
 }
 
-/**
- *
- * @param {string} suffix
- *
- * @param {RuleBuilder<string>} content
- *
- * @param {number} precedence
- *
- * @return {RuleBuilders<string, string>}
- */
 function preprocIf(suffix, content, precedence = 0) {
-  /**
-    *
-    * @param {GrammarSymbols<string>} $
-    *
-    * @return {ChoiceRule}
-    *
-    */
   function alternativeBlock($) {
     return choice(suffix ? alias($['preproc_else' + suffix], $.preproc_else) : $.preproc_else)
   }
   return {
     ['preproc_ifdef' + suffix]: $ => prec(precedence, seq(
-      choice(preprocessor('ifdef'), preprocessor('ifndef')),
+      preprocessor('ifdef'),
+      field('name', $.identifier),
+      repeat(content($)),
+      field('alternative', optional(alternativeBlock($))),
+      preprocessor('endif'),
+    )),
+    ['preproc_else' + suffix]: $ => prec(precedence, seq(
+      preprocessor('else'),
+      repeat(content($)),
+    )),
+  };
+}
+
+function preprocIfn(suffix, content, precedence = 0) {
+  function alternativeBlock($) {
+    return choice(suffix ? alias($['preproc_else' + suffix], $.preproc_else) : $.preproc_else)
+  }
+  return {
+    ['preproc_ifndef' + suffix]: $ => prec(precedence, seq(
+      preprocessor('ifndef'),
       field('name', $.identifier),
       repeat(content($)),
       field('alternative', optional(alternativeBlock($))),

@@ -111,6 +111,36 @@
     }
   },
   {
+    "type": "avp_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {
@@ -173,6 +203,10 @@
             "named": false
           },
           {
+            "type": "*",
+            "named": false
+          },
+          {
             "type": "+",
             "named": false
           },
@@ -182,6 +216,10 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": "/",
             "named": false
           },
           {
@@ -283,6 +321,25 @@
     }
   },
   {
+    "type": "blitval",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "block_item",
     "named": true,
     "fields": {},
@@ -332,6 +389,10 @@
         },
         {
           "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
           "named": true
         },
         {
@@ -479,6 +540,60 @@
     }
   },
   {
+    "type": "catch_all_pseudo_variable",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pvar_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cfg_attr",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "file",
+            "named": false
+          },
+          {
+            "type": "line",
+            "named": false
+          },
+          {
+            "type": "name",
+            "named": false
+          },
+          {
+            "type": "route",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "char_literal",
     "named": true,
     "fields": {},
@@ -606,6 +721,109 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "dlg_attr",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "dlg_ctx",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "dlg_var",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dns_q",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          }
+        ]
+      },
+      "pvid": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "dsg_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "active",
+            "named": false
+          },
+          {
+            "type": "count",
+            "named": false
+          },
+          {
+            "type": "inactive",
+            "named": false
+          },
+          {
+            "type": "pactive",
+            "named": false
+          },
+          {
+            "type": "pinactive",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "dsv_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -769,10 +987,6 @@
         "required": true,
         "types": [
           {
-            "type": "->",
-            "named": false
-          },
-          {
             "type": ".",
             "named": false
           },
@@ -806,10 +1020,6 @@
             "named": true
           },
           {
-            "type": "sip_keywords",
-            "named": true
-          },
-          {
             "type": "string",
             "named": true
           }
@@ -826,6 +1036,308 @@
         ]
       }
     }
+  },
+  {
+    "type": "gip2",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "area",
+            "named": false
+          },
+          {
+            "type": "cc",
+            "named": false
+          },
+          {
+            "type": "city",
+            "named": false
+          },
+          {
+            "type": "contc",
+            "named": false
+          },
+          {
+            "type": "dma",
+            "named": false
+          },
+          {
+            "type": "ipe",
+            "named": false
+          },
+          {
+            "type": "ips",
+            "named": false
+          },
+          {
+            "type": "lat",
+            "named": false
+          },
+          {
+            "type": "lon",
+            "named": false
+          },
+          {
+            "type": "metro",
+            "named": false
+          },
+          {
+            "type": "regc",
+            "named": false
+          },
+          {
+            "type": "regn",
+            "named": false
+          },
+          {
+            "type": "tz",
+            "named": false
+          },
+          {
+            "type": "zip",
+            "named": false
+          }
+        ]
+      },
+      "pvc": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "hdr",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hdrc",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "hfitbody",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hfitname",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "host_name",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "d",
+            "named": false
+          },
+          {
+            "type": "f",
+            "named": false
+          },
+          {
+            "type": "i",
+            "named": false
+          },
+          {
+            "type": "n",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "htable",
+    "named": true,
+    "fields": {
+      "htable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "htable_exp",
+    "named": true,
+    "fields": {
+      "htable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "%~",
+            "named": false
+          },
+          {
+            "type": "**",
+            "named": false
+          },
+          {
+            "type": "==",
+            "named": false
+          },
+          {
+            "type": "eqvalue",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "regex_replacement",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "~%",
+            "named": false
+          },
+          {
+            "type": "~~",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "htiterator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "http_req",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "if_statement",
@@ -916,11 +1428,6 @@
     }
   },
   {
-    "type": "index",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "index_expression",
     "named": true,
     "fields": {
@@ -933,15 +1440,7 @@
             "named": false
           },
           {
-            "type": "expression",
-            "named": true
-          },
-          {
             "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string",
             "named": true
           }
         ]
@@ -1005,6 +1504,48 @@
     }
   },
   {
+    "type": "mcinc_mcdec",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mct",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "modparam",
     "named": true,
     "fields": {
@@ -1054,10 +1595,6 @@
           },
           {
             "type": "string",
-            "named": true
-          },
-          {
-            "type": "variable_content",
             "named": true
           }
         ]
@@ -1115,9 +1652,99 @@
           {
             "type": "string",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "mqueue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "msg_buf_index",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "msgattr",
+    "named": true,
+    "fields": {
+      "attr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "body",
+            "named": false
           },
           {
-            "type": "variable_content",
+            "type": "body_len",
+            "named": false
+          },
+          {
+            "type": "buf",
+            "named": false
+          },
+          {
+            "type": "fline",
+            "named": false
+          },
+          {
+            "type": "fpart",
+            "named": false
+          },
+          {
+            "type": "hdrs",
+            "named": false
+          },
+          {
+            "type": "len",
+            "named": false
+          },
+          {
+            "type": "lpart",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "msrp",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           }
         ]
@@ -1133,6 +1760,43 @@
     "type": "nameaddr_transformation",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "nathelper",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nhaddr",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "P",
+            "named": false
+          },
+          {
+            "type": "U",
+            "named": false
+          },
+          {
+            "type": "d",
+            "named": false
+          },
+          {
+            "type": "p",
+            "named": false
+          },
+          {
+            "type": "u",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "null",
@@ -1214,6 +1878,34 @@
     }
   },
   {
+    "type": "popops",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "idx",
+            "named": false
+          },
+          {
+            "type": "len",
+            "named": false
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "ret",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "predef_route",
     "named": true,
     "fields": {}
@@ -1276,6 +1968,42 @@
   },
   {
     "type": "preproc_ifdef",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "block_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifndef",
     "named": true,
     "fields": {
       "alternative": {
@@ -1416,29 +2144,330 @@
     "fields": {}
   },
   {
+    "type": "pseudo_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "avp_var",
+          "named": true
+        },
+        {
+          "type": "blitval",
+          "named": true
+        },
+        {
+          "type": "bm_diff_time",
+          "named": true
+        },
+        {
+          "type": "catch_all_pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "cfg_attr",
+          "named": true
+        },
+        {
+          "type": "dlg_attr",
+          "named": true
+        },
+        {
+          "type": "dlg_ctx",
+          "named": true
+        },
+        {
+          "type": "dlg_var",
+          "named": true
+        },
+        {
+          "type": "dns_q",
+          "named": true
+        },
+        {
+          "type": "dsg_var",
+          "named": true
+        },
+        {
+          "type": "dsv_var",
+          "named": true
+        },
+        {
+          "type": "gip2",
+          "named": true
+        },
+        {
+          "type": "hdr",
+          "named": true
+        },
+        {
+          "type": "hdrc",
+          "named": true
+        },
+        {
+          "type": "hfitbody",
+          "named": true
+        },
+        {
+          "type": "hfitname",
+          "named": true
+        },
+        {
+          "type": "host_name",
+          "named": true
+        },
+        {
+          "type": "htable",
+          "named": true
+        },
+        {
+          "type": "htable_exp",
+          "named": true
+        },
+        {
+          "type": "htiterator",
+          "named": true
+        },
+        {
+          "type": "http_req",
+          "named": true
+        },
+        {
+          "type": "http_req_id",
+          "named": true
+        },
+        {
+          "type": "mcinc_mcdec",
+          "named": true
+        },
+        {
+          "type": "mct",
+          "named": true
+        },
+        {
+          "type": "mqueue",
+          "named": true
+        },
+        {
+          "type": "msg_buf_index",
+          "named": true
+        },
+        {
+          "type": "msgattr",
+          "named": true
+        },
+        {
+          "type": "msrp",
+          "named": true
+        },
+        {
+          "type": "nathelper",
+          "named": true
+        },
+        {
+          "type": "nhaddr",
+          "named": true
+        },
+        {
+          "type": "popops",
+          "named": true
+        },
+        {
+          "type": "pvar",
+          "named": true
+        },
+        {
+          "type": "random",
+          "named": true
+        },
+        {
+          "type": "rcv",
+          "named": true
+        },
+        {
+          "type": "read_only",
+          "named": true
+        },
+        {
+          "type": "redis",
+          "named": true
+        },
+        {
+          "type": "redisd",
+          "named": true
+        },
+        {
+          "type": "rpl",
+          "named": true
+        },
+        {
+          "type": "shv_var",
+          "named": true
+        },
+        {
+          "type": "sipdump",
+          "named": true
+        },
+        {
+          "type": "sipt",
+          "named": true
+        },
+        {
+          "type": "siptrace",
+          "named": true
+        },
+        {
+          "type": "snd",
+          "named": true
+        },
+        {
+          "type": "time_var",
+          "named": true
+        },
+        {
+          "type": "timef_var",
+          "named": true
+        },
+        {
+          "type": "timeval",
+          "named": true
+        },
+        {
+          "type": "tlskey",
+          "named": true
+        },
+        {
+          "type": "tmx",
+          "named": true
+        },
+        {
+          "type": "uac",
+          "named": true
+        },
+        {
+          "type": "var_",
+          "named": true
+        },
+        {
+          "type": "xavp_var",
+          "named": true
+        },
+        {
+          "type": "xavu_var",
+          "named": true
+        },
+        {
+          "type": "xhttp",
+          "named": true
+        },
+        {
+          "type": "xml",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "pseudo_variable",
     "named": true,
     "fields": {
-      "argument": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "pvar_argument",
-            "named": true
-          }
-        ]
-      },
-      "pvar": {
+      "var": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "pvar_type",
+            "type": "pseudo_content",
             "named": true
           }
         ]
       }
+    }
+  },
+  {
+    "type": "pvar",
+    "named": true,
+    "fields": {
+      "attr": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "format": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "max",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "pvar_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1468,54 +2497,14 @@
         {
           "type": "subelement",
           "named": true
-        },
-        {
-          "type": "variable_content",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "pvar_attribute",
+    "type": "pvar_expression",
     "named": true,
     "fields": {
-      "attribute": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "pseudo_variable",
-            "named": true
-          },
-          {
-            "type": "pvar_expression",
-            "named": true
-          },
-          {
-            "type": "range_expression",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          }
-        ]
-      },
-      "index": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "index_expression",
-            "named": true
-          }
-        ]
-      },
       "transformations": {
         "multiple": true,
         "required": false,
@@ -1525,29 +2514,13 @@
             "named": true
           }
         ]
-      }
-    }
-  },
-  {
-    "type": "pvar_expression",
-    "named": true,
-    "fields": {
-      "pvar": {
+      },
+      "var": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "pvar_attribute",
+            "type": "pseudo_content",
             "named": true
           }
         ]
@@ -1570,34 +2543,92 @@
     }
   },
   {
-    "type": "range_expression",
+    "type": "rcv",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "read_only",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "redis",
     "named": true,
     "fields": {
-      "range_end": {
-        "multiple": false,
+      "key": {
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "info",
+            "named": false
           },
           {
             "type": "number_literal",
             "named": true
+          },
+          {
+            "type": "size",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": false
+          },
+          {
+            "type": "value",
+            "named": false
           }
         ]
-      },
-      "range_start": {
+      }
+    }
+  },
+  {
+    "type": "redisd",
+    "named": true,
+    "fields": {
+      "key": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
+            "type": "rpl_arr",
+            "named": false
           },
           {
-            "type": "number_literal",
-            "named": true
+            "type": "rpl_err",
+            "named": false
+          },
+          {
+            "type": "rpl_int",
+            "named": false
+          },
+          {
+            "type": "rpl_nil",
+            "named": false
+          },
+          {
+            "type": "rpl_str",
+            "named": false
+          },
+          {
+            "type": "rpl_sts",
+            "named": false
           }
         ]
       }
@@ -1730,6 +2761,57 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "rpl",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "shv_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "sipdump",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "sipt",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "siptrace",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "snd",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1906,6 +2988,115 @@
     }
   },
   {
+    "type": "time_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "hour",
+            "named": false
+          },
+          {
+            "type": "isdst",
+            "named": false
+          },
+          {
+            "type": "mday",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          },
+          {
+            "type": "mon",
+            "named": false
+          },
+          {
+            "type": "sec",
+            "named": false
+          },
+          {
+            "type": "wday",
+            "named": false
+          },
+          {
+            "type": "yday",
+            "named": false
+          },
+          {
+            "type": "year",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "timef_var",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "timeval",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tlskey",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "m_issuer_line",
+            "named": false
+          },
+          {
+            "type": "m_subject_line",
+            "named": false
+          },
+          {
+            "type": "p_issuer_line",
+            "named": false
+          },
+          {
+            "type": "p_subject_line",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "tmx",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "tobody_transformation",
     "named": true,
     "fields": {}
@@ -2024,6 +3215,10 @@
         },
         {
           "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
           "named": true
         },
         {
@@ -2181,6 +3376,90 @@
     }
   },
   {
+    "type": "uac",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "1",
+            "named": false
+          },
+          {
+            "type": "all",
+            "named": false
+          },
+          {
+            "type": "apasswd",
+            "named": false
+          },
+          {
+            "type": "auser",
+            "named": false
+          },
+          {
+            "type": "body",
+            "named": false
+          },
+          {
+            "type": "callid",
+            "named": false
+          },
+          {
+            "type": "evcode",
+            "named": false
+          },
+          {
+            "type": "evparam",
+            "named": false
+          },
+          {
+            "type": "evroute",
+            "named": false
+          },
+          {
+            "type": "evtype",
+            "named": false
+          },
+          {
+            "type": "flags",
+            "named": false
+          },
+          {
+            "type": "furi",
+            "named": false
+          },
+          {
+            "type": "hdrs",
+            "named": false
+          },
+          {
+            "type": "method",
+            "named": false
+          },
+          {
+            "type": "ouri",
+            "named": false
+          },
+          {
+            "type": "ruri",
+            "named": false
+          },
+          {
+            "type": "sock",
+            "named": false
+          },
+          {
+            "type": "turi",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {
@@ -2319,22 +3598,23 @@
     "fields": {}
   },
   {
-    "type": "variable_content",
+    "type": "var_",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "index",
-          "named": true
-        },
-        {
-          "type": "transformation",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2357,6 +3637,150 @@
         "types": [
           {
             "type": "parenthesized_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavp_values",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=>",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "index": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavp_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "xavp_values",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavu_values",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=>",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavu_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "xavu_values",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xml",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "spec": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -2436,6 +3860,10 @@
     "named": false
   },
   {
+    "type": "%~",
+    "named": false
+  },
+  {
     "type": "&",
     "named": false
   },
@@ -2468,6 +3896,10 @@
     "named": false
   },
   {
+    "type": "**",
+    "named": false
+  },
+  {
     "type": "+",
     "named": false
   },
@@ -2492,10 +3924,6 @@
     "named": false
   },
   {
-    "type": "->",
-    "named": false
-  },
-  {
     "type": ".",
     "named": false
   },
@@ -2504,7 +3932,35 @@
     "named": false
   },
   {
+    "type": "1",
+    "named": false
+  },
+  {
+    "type": "16",
+    "named": false
+  },
+  {
+    "type": "2",
+    "named": false
+  },
+  {
+    "type": "3",
+    "named": false
+  },
+  {
+    "type": "4",
+    "named": false
+  },
+  {
+    "type": "8",
+    "named": false
+  },
+  {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
@@ -2552,7 +4008,155 @@
     "named": false
   },
   {
+    "type": "AU",
+    "named": false
+  },
+  {
+    "type": "Au",
+    "named": false
+  },
+  {
+    "type": "Eb",
+    "named": false
+  },
+  {
+    "type": "Ec",
+    "named": false
+  },
+  {
+    "type": "Ei",
+    "named": false
+  },
+  {
+    "type": "Ej",
+    "named": false
+  },
+  {
+    "type": "Ek",
+    "named": false
+  },
+  {
+    "type": "En",
+    "named": false
+  },
+  {
+    "type": "Eq",
+    "named": false
+  },
+  {
+    "type": "Es",
+    "named": false
+  },
+  {
+    "type": "Et",
+    "named": false
+  },
+  {
+    "type": "Ev",
+    "named": false
+  },
+  {
+    "type": "HN",
+    "named": false
+  },
+  {
     "type": "L'",
+    "named": false
+  },
+  {
+    "type": "P",
+    "named": false
+  },
+  {
+    "type": "RAp",
+    "named": false
+  },
+  {
+    "type": "RAu",
+    "named": false
+  },
+  {
+    "type": "RAut",
+    "named": false
+  },
+  {
+    "type": "Ri",
+    "named": false
+  },
+  {
+    "type": "Rn",
+    "named": false
+  },
+  {
+    "type": "Rp",
+    "named": false
+  },
+  {
+    "type": "Ru",
+    "named": false
+  },
+  {
+    "type": "Rut",
+    "named": false
+  },
+  {
+    "type": "Sm",
+    "named": false
+  },
+  {
+    "type": "Sn",
+    "named": false
+  },
+  {
+    "type": "TF",
+    "named": false
+  },
+  {
+    "type": "TS",
+    "named": false
+  },
+  {
+    "type": "TV",
+    "named": false
+  },
+  {
+    "type": "T_branch",
+    "named": false
+  },
+  {
+    "type": "T_branch_idx",
+    "named": false
+  },
+  {
+    "type": "T_inv",
+    "named": false
+  },
+  {
+    "type": "T_reply_ruid",
+    "named": false
+  },
+  {
+    "type": "T_req",
+    "named": false
+  },
+  {
+    "type": "T_rpl",
+    "named": false
+  },
+  {
+    "type": "Tb",
+    "named": false
+  },
+  {
+    "type": "Tf",
+    "named": false
+  },
+  {
+    "type": "Ts",
+    "named": false
+  },
+  {
+    "type": "U",
     "named": false
   },
   {
@@ -2572,12 +4176,112 @@
     "named": false
   },
   {
+    "type": "_s",
+    "named": false
+  },
+  {
+    "type": "aU",
+    "named": false
+  },
+  {
+    "type": "aa",
+    "named": false
+  },
+  {
+    "type": "active",
+    "named": false
+  },
+  {
+    "type": "ad",
+    "named": false
+  },
+  {
+    "type": "adu",
+    "named": false
+  },
+  {
+    "type": "af",
+    "named": false
+  },
+  {
+    "type": "ai",
+    "named": false
+  },
+  {
+    "type": "all",
+    "named": false
+  },
+  {
     "type": "and",
+    "named": false
+  },
+  {
+    "type": "apasswd",
+    "named": false
+  },
+  {
+    "type": "ar",
+    "named": false
+  },
+  {
+    "type": "area",
+    "named": false
+  },
+  {
+    "type": "au",
+    "named": false
+  },
+  {
+    "type": "auser",
+    "named": false
+  },
+  {
+    "type": "authmethod",
+    "named": false
+  },
+  {
+    "type": "avp",
+    "named": false
+  },
+  {
+    "type": "bF",
+    "named": false
+  },
+  {
+    "type": "backward_call_indicator.charge_indicator",
+    "named": false
+  },
+  {
+    "type": "blitval",
+    "named": false
+  },
+  {
+    "type": "bm_diff_time",
+    "named": true
+  },
+  {
+    "type": "body",
+    "named": false
+  },
+  {
+    "type": "body_len",
     "named": false
   },
   {
     "type": "boolean_constant",
     "named": true
+  },
+  {
+    "type": "br",
+    "named": false
+  },
+  {
+    "type": "branch",
+    "named": false
+  },
+  {
+    "type": "branch_index",
+    "named": false
   },
   {
     "type": "branch_route",
@@ -2588,7 +4292,67 @@
     "named": false
   },
   {
+    "type": "bs",
+    "named": false
+  },
+  {
+    "type": "buf",
+    "named": false
+  },
+  {
+    "type": "cT",
+    "named": false
+  },
+  {
+    "type": "called_party_number",
+    "named": false
+  },
+  {
+    "type": "called_party_number.nai",
+    "named": false
+  },
+  {
+    "type": "called_party_number.nature_of_address",
+    "named": false
+  },
+  {
+    "type": "callid",
+    "named": false
+  },
+  {
+    "type": "calling_party_category",
+    "named": false
+  },
+  {
+    "type": "calling_party_number",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.nai",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.nature_of_address",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.presentation",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.screening",
+    "named": false
+  },
+  {
     "type": "case",
+    "named": false
+  },
+  {
+    "type": "cc",
+    "named": false
+  },
+  {
+    "type": "cfg",
     "named": false
   },
   {
@@ -2600,11 +4364,79 @@
     "named": true
   },
   {
+    "type": "ci",
+    "named": false
+  },
+  {
+    "type": "city",
+    "named": false
+  },
+  {
+    "type": "cl",
+    "named": false
+  },
+  {
+    "type": "cnt",
+    "named": false
+  },
+  {
+    "type": "cntvia",
+    "named": false
+  },
+  {
+    "type": "code",
+    "named": false
+  },
+  {
     "type": "comment_line",
     "named": true
   },
   {
+    "type": "conid",
+    "named": false
+  },
+  {
+    "type": "contc",
+    "named": false
+  },
+  {
     "type": "continue",
+    "named": false
+  },
+  {
+    "type": "count",
+    "named": false
+  },
+  {
+    "type": "cpc",
+    "named": false
+  },
+  {
+    "type": "cs",
+    "named": false
+  },
+  {
+    "type": "csb",
+    "named": false
+  },
+  {
+    "type": "ct",
+    "named": false
+  },
+  {
+    "type": "cts",
+    "named": false
+  },
+  {
+    "type": "d",
+    "named": false
+  },
+  {
+    "type": "dd",
+    "named": false
+  },
+  {
+    "type": "def",
     "named": false
   },
   {
@@ -2620,11 +4452,119 @@
     "named": false
   },
   {
+    "type": "defn",
+    "named": false
+  },
+  {
     "type": "deprecated_comment",
     "named": true
   },
   {
+    "type": "dflags",
+    "named": false
+  },
+  {
+    "type": "dhost",
+    "named": false
+  },
+  {
+    "type": "di",
+    "named": false
+  },
+  {
+    "type": "dic",
+    "named": false
+  },
+  {
+    "type": "dip",
+    "named": false
+  },
+  {
+    "type": "dir",
+    "named": false
+  },
+  {
+    "type": "dlg",
+    "named": false
+  },
+  {
+    "type": "dlg_ctx",
+    "named": false
+  },
+  {
+    "type": "dlg_var",
+    "named": false
+  },
+  {
+    "type": "dma",
+    "named": false
+  },
+  {
+    "type": "dns",
+    "named": false
+  },
+  {
+    "type": "dp",
+    "named": false
+  },
+  {
+    "type": "dport",
+    "named": false
+  },
+  {
+    "type": "dproto",
+    "named": false
+  },
+  {
+    "type": "dprotoid",
+    "named": false
+  },
+  {
     "type": "drop",
+    "named": false
+  },
+  {
+    "type": "ds",
+    "named": false
+  },
+  {
+    "type": "dsg",
+    "named": false
+  },
+  {
+    "type": "dst_addr",
+    "named": false
+  },
+  {
+    "type": "dst_host",
+    "named": false
+  },
+  {
+    "type": "dst_hostip",
+    "named": false
+  },
+  {
+    "type": "dst_ip",
+    "named": false
+  },
+  {
+    "type": "dst_port",
+    "named": false
+  },
+  {
+    "type": "dst_proto",
+    "named": false
+  },
+  {
+    "type": "dsv",
+    "named": false
+  },
+  {
+    "type": "du",
+    "named": false
+  },
+  {
+    "type": "duri",
     "named": false
   },
   {
@@ -2632,15 +4572,59 @@
     "named": false
   },
   {
+    "type": "env",
+    "named": false
+  },
+  {
+    "type": "eqvalue",
+    "named": false
+  },
+  {
     "type": "escape_sequence",
     "named": true
+  },
+  {
+    "type": "evcode",
+    "named": false
+  },
+  {
+    "type": "event_info",
+    "named": false
   },
   {
     "type": "event_route",
     "named": false
   },
   {
+    "type": "evparam",
+    "named": false
+  },
+  {
+    "type": "evroute",
+    "named": false
+  },
+  {
+    "type": "evtype",
+    "named": false
+  },
+  {
     "type": "exit",
+    "named": false
+  },
+  {
+    "type": "expires",
+    "named": false
+  },
+  {
+    "type": "f",
+    "named": false
+  },
+  {
+    "type": "fU",
+    "named": false
+  },
+  {
+    "type": "fUl",
     "named": false
   },
   {
@@ -2652,16 +4636,212 @@
     "named": true
   },
   {
+    "type": "fd",
+    "named": false
+  },
+  {
     "type": "field_identifier",
     "named": true
+  },
+  {
+    "type": "file",
+    "named": false
+  },
+  {
+    "type": "flags",
+    "named": false
+  },
+  {
+    "type": "fline",
+    "named": false
+  },
+  {
+    "type": "fn",
+    "named": false
+  },
+  {
+    "type": "fpart",
+    "named": false
+  },
+  {
+    "type": "from_bindaddr",
+    "named": false
+  },
+  {
+    "type": "from_contact",
+    "named": false
+  },
+  {
+    "type": "from_cseq",
+    "named": false
+  },
+  {
+    "type": "from_rs",
+    "named": false
+  },
+  {
+    "type": "from_tag",
+    "named": false
+  },
+  {
+    "type": "from_uri",
+    "named": false
+  },
+  {
+    "type": "fs",
+    "named": false
+  },
+  {
+    "type": "fsn",
+    "named": false
+  },
+  {
+    "type": "ft",
+    "named": false
+  },
+  {
+    "type": "fti",
+    "named": false
+  },
+  {
+    "type": "fu",
+    "named": false
+  },
+  {
+    "type": "furi",
+    "named": false
   },
   {
     "type": "general_transformation",
     "named": true
   },
   {
+    "type": "generic_number",
+    "named": false
+  },
+  {
+    "type": "generic_number.nai",
+    "named": false
+  },
+  {
+    "type": "gip2",
+    "named": false
+  },
+  {
+    "type": "h_entry",
+    "named": false
+  },
+  {
+    "type": "h_id",
+    "named": false
+  },
+  {
+    "type": "hdr",
+    "named": false
+  },
+  {
+    "type": "hdrc",
+    "named": false
+  },
+  {
+    "type": "hdrs",
+    "named": false
+  },
+  {
+    "type": "hfitbody",
+    "named": false
+  },
+  {
+    "type": "hfitname",
+    "named": false
+  },
+  {
+    "type": "hfl",
+    "named": false
+  },
+  {
+    "type": "hlfc",
+    "named": false
+  },
+  {
+    "type": "hour",
+    "named": false
+  },
+  {
+    "type": "http_bs",
+    "named": false
+  },
+  {
+    "type": "http_err",
+    "named": false
+  },
+  {
+    "type": "http_hdr",
+    "named": false
+  },
+  {
+    "type": "http_mb",
+    "named": false
+  },
+  {
+    "type": "http_ml",
+    "named": false
+  },
+  {
+    "type": "http_ok",
+    "named": false
+  },
+  {
+    "type": "http_rb",
+    "named": false
+  },
+  {
+    "type": "http_req",
+    "named": false
+  },
+  {
+    "type": "http_req_id",
+    "named": true
+  },
+  {
+    "type": "http_rr",
+    "named": false
+  },
+  {
+    "type": "http_rs",
+    "named": false
+  },
+  {
+    "type": "i",
+    "named": false
+  },
+  {
+    "type": "i:",
+    "named": false
+  },
+  {
+    "type": "id_index",
+    "named": false
+  },
+  {
+    "type": "id_index_n",
+    "named": false
+  },
+  {
+    "type": "id_label",
+    "named": false
+  },
+  {
+    "type": "id_label_n",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "idx",
+    "named": false
   },
   {
     "type": "if",
@@ -2672,12 +4852,52 @@
     "named": false
   },
   {
+    "type": "inactive",
+    "named": false
+  },
+  {
     "type": "include_file",
+    "named": false
+  },
+  {
+    "type": "info",
+    "named": false
+  },
+  {
+    "type": "ipe",
+    "named": false
+  },
+  {
+    "type": "ips",
+    "named": false
+  },
+  {
+    "type": "isdst",
     "named": false
   },
   {
     "type": "json_transformation",
     "named": true
+  },
+  {
+    "type": "jsonrpl",
+    "named": false
+  },
+  {
+    "type": "lat",
+    "named": false
+  },
+  {
+    "type": "len",
+    "named": false
+  },
+  {
+    "type": "lifetime",
+    "named": false
+  },
+  {
+    "type": "line",
+    "named": false
   },
   {
     "type": "line.at",
@@ -2700,11 +4920,99 @@
     "named": false
   },
   {
+    "type": "lon",
+    "named": false
+  },
+  {
+    "type": "lpart",
+    "named": false
+  },
+  {
+    "type": "mF",
+    "named": false
+  },
+  {
+    "type": "m_issuer_line",
+    "named": false
+  },
+  {
+    "type": "m_subject_line",
+    "named": false
+  },
+  {
+    "type": "max",
+    "named": false
+  },
+  {
+    "type": "mb",
+    "named": false
+  },
+  {
+    "type": "mbu",
+    "named": false
+  },
+  {
+    "type": "mcdec",
+    "named": false
+  },
+  {
+    "type": "mcinc",
+    "named": false
+  },
+  {
+    "type": "mday",
+    "named": false
+  },
+  {
+    "type": "method",
+    "named": false
+  },
+  {
+    "type": "metro",
+    "named": false
+  },
+  {
+    "type": "mf",
+    "named": false
+  },
+  {
+    "type": "mi",
+    "named": false
+  },
+  {
+    "type": "min",
+    "named": false
+  },
+  {
     "type": "modparam",
     "named": false
   },
   {
     "type": "modparamx",
+    "named": false
+  },
+  {
+    "type": "mon",
+    "named": false
+  },
+  {
+    "type": "mqk",
+    "named": false
+  },
+  {
+    "type": "mqv",
+    "named": false
+  },
+  {
+    "type": "msg",
+    "named": false
+  },
+  {
+    "type": "msgbuf",
+    "named": false
+  },
+  {
+    "type": "msrp",
     "named": false
   },
   {
@@ -2736,19 +5044,35 @@
     "named": false
   },
   {
+    "type": "mt",
+    "named": false
+  },
+  {
     "type": "multiline_comment",
     "named": true
   },
   {
-    "type": "nameaddr.len ",
+    "type": "n",
     "named": false
   },
   {
-    "type": "nameaddr.name ",
+    "type": "name",
     "named": false
   },
   {
-    "type": "nameaddr.uri ",
+    "type": "nameaddr.len",
+    "named": false
+  },
+  {
+    "type": "nameaddr.name",
+    "named": false
+  },
+  {
+    "type": "nameaddr.uri",
+    "named": false
+  },
+  {
+    "type": "nh",
     "named": false
   },
   {
@@ -2760,6 +5084,26 @@
     "named": true
   },
   {
+    "type": "oP",
+    "named": false
+  },
+  {
+    "type": "oU",
+    "named": false
+  },
+  {
+    "type": "oUl",
+    "named": false
+  },
+  {
+    "type": "od",
+    "named": false
+  },
+  {
+    "type": "on",
+    "named": false
+  },
+  {
     "type": "onreply_route",
     "named": false
   },
@@ -2769,6 +5113,42 @@
   },
   {
     "type": "or",
+    "named": false
+  },
+  {
+    "type": "original_called_number",
+    "named": false
+  },
+  {
+    "type": "original_called_number.nai",
+    "named": false
+  },
+  {
+    "type": "ou",
+    "named": false
+  },
+  {
+    "type": "ouri",
+    "named": false
+  },
+  {
+    "type": "p",
+    "named": false
+  },
+  {
+    "type": "pU",
+    "named": false
+  },
+  {
+    "type": "p_issuer_line",
+    "named": false
+  },
+  {
+    "type": "p_subject_line",
+    "named": false
+  },
+  {
+    "type": "pactive",
     "named": false
   },
   {
@@ -2784,7 +5164,39 @@
     "named": false
   },
   {
+    "type": "param.value",
+    "named": false
+  },
+  {
     "type": "param.valueat",
+    "named": false
+  },
+  {
+    "type": "password",
+    "named": false
+  },
+  {
+    "type": "pd",
+    "named": false
+  },
+  {
+    "type": "pinactive",
+    "named": false
+  },
+  {
+    "type": "pn",
+    "named": false
+  },
+  {
+    "type": "pop",
+    "named": false
+  },
+  {
+    "type": "pp",
+    "named": false
+  },
+  {
+    "type": "pr",
     "named": false
   },
   {
@@ -2792,7 +5204,103 @@
     "named": true
   },
   {
+    "type": "prid",
+    "named": false
+  },
+  {
+    "type": "proto",
+    "named": false
+  },
+  {
+    "type": "pu",
+    "named": false
+  },
+  {
+    "type": "rP",
+    "named": false
+  },
+  {
+    "type": "rU",
+    "named": false
+  },
+  {
+    "type": "rUl",
+    "named": false
+  },
+  {
+    "type": "random",
+    "named": true
+  },
+  {
+    "type": "rb",
+    "named": false
+  },
+  {
+    "type": "rc",
+    "named": false
+  },
+  {
+    "type": "rcv",
+    "named": false
+  },
+  {
+    "type": "rcvip",
+    "named": false
+  },
+  {
+    "type": "rcvport",
+    "named": false
+  },
+  {
+    "type": "rd",
+    "named": false
+  },
+  {
+    "type": "rdir",
+    "named": false
+  },
+  {
+    "type": "re",
+    "named": false
+  },
+  {
     "type": "re.subst",
+    "named": false
+  },
+  {
+    "type": "redirecting_number",
+    "named": false
+  },
+  {
+    "type": "redirecting_number.nai",
+    "named": false
+  },
+  {
+    "type": "redirection_info",
+    "named": false
+  },
+  {
+    "type": "redirection_number",
+    "named": false
+  },
+  {
+    "type": "redirection_number.nai",
+    "named": false
+  },
+  {
+    "type": "redis",
+    "named": false
+  },
+  {
+    "type": "redisd",
+    "named": false
+  },
+  {
+    "type": "ref",
+    "named": false
+  },
+  {
+    "type": "regc",
     "named": false
   },
   {
@@ -2808,7 +5316,27 @@
     "named": true
   },
   {
+    "type": "regn",
+    "named": false
+  },
+  {
+    "type": "reply_code",
+    "named": false
+  },
+  {
+    "type": "reply_last",
+    "named": false
+  },
+  {
+    "type": "reply_reason",
+    "named": false
+  },
+  {
     "type": "reply_route",
+    "named": false
+  },
+  {
+    "type": "reply_type",
     "named": false
   },
   {
@@ -2816,11 +5344,107 @@
     "named": false
   },
   {
+    "type": "ret",
+    "named": false
+  },
+  {
+    "type": "retcode",
+    "named": false
+  },
+  {
     "type": "return",
     "named": false
   },
   {
+    "type": "rm",
+    "named": false
+  },
+  {
+    "type": "rmid",
+    "named": false
+  },
+  {
     "type": "route",
+    "named": false
+  },
+  {
+    "type": "route_uri",
+    "named": false
+  },
+  {
+    "type": "rp",
+    "named": false
+  },
+  {
+    "type": "rpl",
+    "named": false
+  },
+  {
+    "type": "rpl_arr",
+    "named": false
+  },
+  {
+    "type": "rpl_err",
+    "named": false
+  },
+  {
+    "type": "rpl_int",
+    "named": false
+  },
+  {
+    "type": "rpl_nil",
+    "named": false
+  },
+  {
+    "type": "rpl_str",
+    "named": false
+  },
+  {
+    "type": "rpl_sts",
+    "named": false
+  },
+  {
+    "type": "rr",
+    "named": false
+  },
+  {
+    "type": "rr_count",
+    "named": false
+  },
+  {
+    "type": "rr_top_count",
+    "named": false
+  },
+  {
+    "type": "rs",
+    "named": false
+  },
+  {
+    "type": "rt",
+    "named": false
+  },
+  {
+    "type": "ru",
+    "named": false
+  },
+  {
+    "type": "ruid",
+    "named": false
+  },
+  {
+    "type": "ruri",
+    "named": false
+  },
+  {
+    "type": "rv",
+    "named": false
+  },
+  {
+    "type": "rz",
+    "named": false
+  },
+  {
+    "type": "s",
     "named": false
   },
   {
@@ -3020,6 +5644,10 @@
     "named": false
   },
   {
+    "type": "s.unbracket",
+    "named": false
+  },
+  {
     "type": "s.unescape.common",
     "named": false
   },
@@ -3044,8 +5672,160 @@
     "named": false
   },
   {
-    "type": "sip_keywords",
-    "named": true
+    "type": "s:",
+    "named": false
+  },
+  {
+    "type": "sF",
+    "named": false
+  },
+  {
+    "type": "sas",
+    "named": false
+  },
+  {
+    "type": "sbranch",
+    "named": false
+  },
+  {
+    "type": "scrport",
+    "named": false
+  },
+  {
+    "type": "sec",
+    "named": false
+  },
+  {
+    "type": "set",
+    "named": false
+  },
+  {
+    "type": "sflags",
+    "named": false
+  },
+  {
+    "type": "sht",
+    "named": false
+  },
+  {
+    "type": "shtcn",
+    "named": false
+  },
+  {
+    "type": "shtcv",
+    "named": false
+  },
+  {
+    "type": "shtdec",
+    "named": false
+  },
+  {
+    "type": "shtex",
+    "named": false
+  },
+  {
+    "type": "shtinc",
+    "named": false
+  },
+  {
+    "type": "shtitkey",
+    "named": false
+  },
+  {
+    "type": "shtitval",
+    "named": false
+  },
+  {
+    "type": "shtrecord",
+    "named": false
+  },
+  {
+    "type": "shv",
+    "named": false
+  },
+  {
+    "type": "si",
+    "named": false
+  },
+  {
+    "type": "sid",
+    "named": false
+  },
+  {
+    "type": "sipt",
+    "named": false
+  },
+  {
+    "type": "sipt_called_party_nai",
+    "named": false
+  },
+  {
+    "type": "sipt_calling_party_nai",
+    "named": false
+  },
+  {
+    "type": "sipt_cpc",
+    "named": false
+  },
+  {
+    "type": "sipt_hop_counter",
+    "named": false
+  },
+  {
+    "type": "sipt_presentation",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_info",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_information_original_reason",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_information_reason",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_number",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_number_nai",
+    "named": false
+  },
+  {
+    "type": "sipt_screening",
+    "named": false
+  },
+  {
+    "type": "siz",
+    "named": false
+  },
+  {
+    "type": "size",
+    "named": false
+  },
+  {
+    "type": "sn",
+    "named": false
+  },
+  {
+    "type": "snd",
+    "named": false
+  },
+  {
+    "type": "sndfrom",
+    "named": false
+  },
+  {
+    "type": "sndto",
+    "named": false
+  },
+  {
+    "type": "sock",
+    "named": false
   },
   {
     "type": "sock.host",
@@ -3064,8 +5844,16 @@
     "named": false
   },
   {
+    "type": "sp",
+    "named": false
+  },
+  {
     "type": "special_name",
     "named": true
+  },
+  {
+    "type": "sproto",
+    "named": false
   },
   {
     "type": "sql.val",
@@ -3080,11 +5868,383 @@
     "named": false
   },
   {
+    "type": "src_addr",
+    "named": false
+  },
+  {
+    "type": "src_host",
+    "named": false
+  },
+  {
+    "type": "src_hostip",
+    "named": false
+  },
+  {
+    "type": "src_ip",
+    "named": false
+  },
+  {
+    "type": "src_port",
+    "named": false
+  },
+  {
+    "type": "src_proto",
+    "named": false
+  },
+  {
+    "type": "srcip",
+    "named": false
+  },
+  {
+    "type": "start_ts",
+    "named": false
+  },
+  {
+    "type": "state",
+    "named": false
+  },
+  {
     "type": "statement_identifier",
     "named": true
   },
   {
+    "type": "su",
+    "named": false
+  },
+  {
+    "type": "suspend",
+    "named": false
+  },
+  {
+    "type": "sut",
+    "named": false
+  },
+  {
     "type": "switch",
+    "named": false
+  },
+  {
+    "type": "tU",
+    "named": false
+  },
+  {
+    "type": "tUl",
+    "named": false
+  },
+  {
+    "type": "tag",
+    "named": false
+  },
+  {
+    "type": "tcp_ka_idle",
+    "named": false
+  },
+  {
+    "type": "tcp_ka_interval",
+    "named": false
+  },
+  {
+    "type": "tcp_keepalive",
+    "named": false
+  },
+  {
+    "type": "td",
+    "named": false
+  },
+  {
+    "type": "text",
+    "named": false
+  },
+  {
+    "type": "time",
+    "named": false
+  },
+  {
+    "type": "timeout",
+    "named": false
+  },
+  {
+    "type": "timeout_bye",
+    "named": false
+  },
+  {
+    "type": "timeout_route",
+    "named": false
+  },
+  {
+    "type": "timeout_route_id",
+    "named": false
+  },
+  {
+    "type": "tls",
+    "named": false
+  },
+  {
+    "type": "tls_ca_path",
+    "named": false
+  },
+  {
+    "type": "tls_cipher_bits",
+    "named": false
+  },
+  {
+    "type": "tls_cipher_info",
+    "named": false
+  },
+  {
+    "type": "tls_client_cert",
+    "named": false
+  },
+  {
+    "type": "tls_client_key",
+    "named": false
+  },
+  {
+    "type": "tls_description",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_cn",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_country",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_locality",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_organization",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_state",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_unit",
+    "named": false
+  },
+  {
+    "type": "tls_my_raw_cert",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_email",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_hostname",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_ip",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_uri",
+    "named": false
+  },
+  {
+    "type": "tls_my_serial",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_cn",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_country",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_locality",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_organization",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_state",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_uid",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_unit",
+    "named": false
+  },
+  {
+    "type": "tls_my_urlencoded_cert",
+    "named": false
+  },
+  {
+    "type": "tls_my_version",
+    "named": false
+  },
+  {
+    "type": "tls_peer_expired",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_cn",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_country",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_locality",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_organization",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_state",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_unit",
+    "named": false
+  },
+  {
+    "type": "tls_peer_notAfter",
+    "named": false
+  },
+  {
+    "type": "tls_peer_notBefore",
+    "named": false
+  },
+  {
+    "type": "tls_peer_raw_cert",
+    "named": false
+  },
+  {
+    "type": "tls_peer_revoked",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_email",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_hostname",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_ip",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_uri",
+    "named": false
+  },
+  {
+    "type": "tls_peer_selfsigned",
+    "named": false
+  },
+  {
+    "type": "tls_peer_serial",
+    "named": false
+  },
+  {
+    "type": "tls_peer_server_name",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_cn",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_country",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_locality",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_organization",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_state",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_uid",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_unit",
+    "named": false
+  },
+  {
+    "type": "tls_peer_urlencoded_cert",
+    "named": false
+  },
+  {
+    "type": "tls_peer_verified",
+    "named": false
+  },
+  {
+    "type": "tls_peer_version",
+    "named": false
+  },
+  {
+    "type": "tls_version",
+    "named": false
+  },
+  {
+    "type": "tn",
+    "named": false
+  },
+  {
+    "type": "to_bindaddr",
+    "named": false
+  },
+  {
+    "type": "to_contact",
+    "named": false
+  },
+  {
+    "type": "to_cseq",
+    "named": false
+  },
+  {
+    "type": "to_rs",
+    "named": false
+  },
+  {
+    "type": "to_tag",
+    "named": false
+  },
+  {
+    "type": "to_uri",
     "named": false
   },
   {
@@ -3112,12 +6272,44 @@
     "named": false
   },
   {
+    "type": "toroute",
+    "named": false
+  },
+  {
     "type": "true",
     "named": true
   },
   {
+    "type": "tt",
+    "named": false
+  },
+  {
+    "type": "tti",
+    "named": false
+  },
+  {
+    "type": "tu",
+    "named": false
+  },
+  {
+    "type": "turi",
+    "named": false
+  },
+  {
+    "type": "type",
+    "named": false
+  },
+  {
     "type": "type_identifier",
     "named": true
+  },
+  {
+    "type": "tz",
+    "named": false
+  },
+  {
+    "type": "u",
+    "named": false
   },
   {
     "type": "u'",
@@ -3128,7 +6320,15 @@
     "named": false
   },
   {
-    "type": "unbracket",
+    "type": "ua",
+    "named": false
+  },
+  {
+    "type": "uac_req",
+    "named": false
+  },
+  {
+    "type": "un",
     "named": false
   },
   {
@@ -3156,7 +6356,7 @@
     "named": false
   },
   {
-    "type": "uri.param,name",
+    "type": "uri.param",
     "named": false
   },
   {
@@ -3224,6 +6424,18 @@
     "named": false
   },
   {
+    "type": "username",
+    "named": false
+  },
+  {
+    "type": "utime",
+    "named": false
+  },
+  {
+    "type": "utimef",
+    "named": false
+  },
+  {
     "type": "val.json",
     "named": false
   },
@@ -3240,7 +6452,63 @@
     "named": false
   },
   {
+    "type": "value",
+    "named": false
+  },
+  {
+    "type": "var",
+    "named": false
+  },
+  {
+    "type": "version",
+    "named": false
+  },
+  {
+    "type": "vn",
+    "named": false
+  },
+  {
+    "type": "vz",
+    "named": false
+  },
+  {
+    "type": "wday",
+    "named": false
+  },
+  {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "xavi",
+    "named": false
+  },
+  {
+    "type": "xavp",
+    "named": false
+  },
+  {
+    "type": "xavu",
+    "named": false
+  },
+  {
+    "type": "xhttp",
+    "named": true
+  },
+  {
+    "type": "xml",
+    "named": false
+  },
+  {
+    "type": "yday",
+    "named": false
+  },
+  {
+    "type": "year",
+    "named": false
+  },
+  {
+    "type": "zip",
     "named": false
   },
   {
@@ -3261,6 +6529,14 @@
   },
   {
     "type": "~",
+    "named": false
+  },
+  {
+    "type": "~%",
+    "named": false
+  },
+  {
+    "type": "~~",
     "named": false
   }
 ]
