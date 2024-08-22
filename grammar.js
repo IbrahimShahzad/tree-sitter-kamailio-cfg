@@ -1879,6 +1879,7 @@ module.exports = grammar({
       token(PSEUDO_VARS.SOURCE_IP_ADDRESS_REF),
       token(PSEUDO_VARS.SOURCE_PORT),
       token(PSEUDO_VARS.SOURCE_ADDRESS_AS_URI),
+      seq(token(PSEUDO_VARS.STATISTICS), PUNC.LPAREN, field('name', choice($.identifier, $.string)), PUNC.RPAREN),
       token(PSEUDO_VARS.SOURCE_ADDRESS_AS_FULL_URI),
       token(PSEUDO_VARS.TO_URI_DOMAIN),
       token(PSEUDO_VARS.TO_DISPLAY_NAME),
@@ -1925,8 +1926,8 @@ module.exports = grammar({
       $.dlg_attr,
       $.dlg_ctx,
       $.dlg_var,
-      // TODO: ERLANG
-      // TODO: EVAPI
+      $.erlang,
+      $.evapi,
       $.htable,
       $.htable_exp,
       $.htiterator,
@@ -1956,9 +1957,199 @@ module.exports = grammar({
       $.host_name,
       $.random,
       // TODO: lsock
-      // TODO evr(key)
+      $.evr,
+      $.subscription,
+      $.registrar,
+      $.hep,
+      $.phn,
+      $.secsipid,
+      $.sdpops,
+      $.sruid,
+      $.via_attr,
+      $.tcpops,
       $.var_,
+      $.pv_header,
+      // TODO: C(XY)
+      $.k_var,
       $.catch_all_pseudo_variable
+    ),
+
+    k_var: _ => seq(
+      token("K"),
+      PUNC.LPAREN,
+      choice(
+        token("IPv4"),
+        token("IPv6"),
+        token("UDP"),
+        token("TCP"),
+        token("TLS"),
+        token("SCTP"),
+        token("WS"),
+        token("WSS"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    pv_header: $ => choice(
+      seq(token("x_hdr"), PUNC.LPAREN, $.identifier, PUNC.RPAREN),
+      token("x_fu"),
+      token("x_fU"),
+      token("x_fd"),
+      token("x_fn"),
+      token("x_ft"),
+      token("x_tu"),
+      token("x_tU"),
+      token("x_td"),
+      token("x_tn"),
+      token("x_tt"),
+      token("x_rs"),
+      token("x_rr"),
+    ),
+
+    tcpops: _ => seq(
+      token("tcpops"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("c_si"),
+        token("c_sp"),
+        token("conid"),
+        token("ac_si"),
+        token("ac_sp"),
+        token("aconid"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    via_attr: _ => seq(
+      choice(
+        token("via0"),
+        token("via1"),
+        token("viaZ"),
+      ),
+      PUNC.LPAREN,
+      choice(
+        token("host"),
+        token("port"),
+        token("proto"),
+        token("protoid"),
+        token("branch"),
+        token("rport"),
+        token("received"),
+        token("i"),
+        token("params"),
+        token("oc"),
+        token("ocval"),
+        token("ocalgo"),
+        token("ocvalidity"),
+        token("ocseq"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    sruid: _ => token("sruid"),
+
+    sdpops: _ => seq(
+      token("sdp"),
+      PUNC.LPAREN,
+      choice(
+        token("body"),
+        token("raw"),
+        token("sess_version"),
+        token("sess-version"),
+        token("c:ip"),
+        token("c:af"),
+        token("o:ip"),
+        token("m0:raw"),
+        token("m0:rtp:port"),
+        token("m0:rtcp:port"),
+        token("m0:b:AS"),
+        token("m0:b:RR"),
+        token("m0:b:RS"),
+      ),
+      PUNC.RPAREN,
+    ),
+
+    secsipid: _ => seq(
+      token("secsipid"),
+      choice(token("val"), token("ret"))
+    ),
+
+    phn: $ => seq(
+      token("phn"),
+      PUNC.LPAREN,
+      field('rid', $.identifier),
+      token("=>"),
+      field('key', choice(
+        token("number"),
+        token("valid"),
+        token("normalized"),
+        token("cctel"),
+        token("ltype"),
+        token("ndesc"),
+        token("error"),
+      )),
+      PUNC.RPAREN,
+    ),
+    hep: _ => seq(
+      token("hep"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("version"),
+        token("src_ip"),
+        token("dst_ip"),
+        token("0x000"),
+        token("0x999"),
+      )),
+      PUNC.RPAREN,
+    ),
+
+    registrar: $ => seq(
+      token("ulc"),
+      PUNC.LPAREN,
+      field('profile', choice($.identifier, $.string)),
+      token("=>"),
+      field('attr', choice($.identifier, $.string)),
+      PUNC.RPAREN,
+    ),
+
+    subscription: _ => token("subs(uri)"),
+
+    evr: _ => seq(
+      token("evr"),
+      PUNC.LPAREN,
+      field('key', choice(
+        token("data"),
+        token("srcip"),
+        token("srcport"),
+        token("srcportno"),
+      )),
+      PUNC.LPAREN
+    ),
+    evapi: _ => seq(
+      token("evapi(srcaddr)"),
+      token("evapi(srcport)"),
+      token("evapi(msg)"),
+      token("evapi(conidx)"),
+    ),
+
+    erlang: $ => seq(
+      choice(
+        token("erl_atom"),
+        token("erl_list"),
+        token("erl_tuple"),
+        token("erl_pid"),
+        token("erl_ref"),
+        token("erl_xbuff")
+      ),
+      PUNC.LPAREN,
+      field('name', $.identifier),
+      token("=>"),
+      field('attribute', choice(
+        token("type"),
+        token("length"),
+        token("format"),
+      )),
+      PUNC.RPAREN,
     ),
 
     jsonrpc_var: _ => seq(
