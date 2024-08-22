@@ -1,4 +1,4 @@
-
+(file_starter) @module
 (comment) @comment
 
 (preproc_def
@@ -21,15 +21,18 @@
   file_name: (string) @string.special.path) @keyword.directive
 (route_call) @function
 
+(regex_pattern) @string.regexp
+(regex_replacement) @string.regexp
+(regex_flags) @string.regexp
 (pseudo_variable
-   "$" @attribute.builtin
+   "$" @keyword.operator
    var: (pseudo_content) @attribute.builtin)
 (var_
   name: (identifier) @variable.parameter)
 (avp_var
   name: (pvar_argument) @variable.parameter)
  (pvar_expression
-   "$" @attribute.builtin
+   "$" @keyword.operator
    var: (pseudo_content) @attribute.builtin)
 (xavp_values
   name: (identifier) @variable.parameter
@@ -40,17 +43,22 @@
   htable: (identifier) @variable.parameter
   "=>" @punctuation.special)
 
-    
-(modparam) @function.builtin
-(loadmodule) @function.builtin
-(modparamx) @function.builtin
-(loadmodulex) @function.builtin
+(modparam
+  module_name: (string) @string.special.path) @function.builtin
+(modparamx
+  module_name: (string) @string.special.path) @function.builtin
+(loadmodule
+  module_name: (string) @string.special.path) @keyword.import
+(loadmodulex
+  module_name: (string) @string.special.path) @keyword.import
+
+(loadpath
+  path: (string) @string.special.path) @keyword.import
 
 (top_level_assignment_expression
   key: (identifier) @variable.member
   value: (expression) @variable.parameter)
 
-(file_starter) @module
 
 (string) @string
 (call_expression
@@ -96,8 +104,10 @@
 "-" @operator
 
 "." @punctuation.delimiter
+"," @punctuation.delimiter
 ";" @punctuation.delimiter
 ":" @punctuation.delimiter
+"::" @character.special
 
 "or" @keyword.operator
 "not" @keyword.operator
@@ -112,7 +122,6 @@
 
 [ "while" ] @keyword.repeat
 [  "if"
- "else"  
- "default"
-  "case" ] @keyword.conditional 
-
+   "else"  
+   "default"
+   "case" ] @keyword.conditional 

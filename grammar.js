@@ -974,6 +974,7 @@ module.exports = grammar({
       $.keyword,
       $.loadmodule,
       $.loadmodulex,
+      $.loadpath,
       $.modparam,
       $.modparamx,
       $.preproc_def,
@@ -1001,6 +1002,7 @@ module.exports = grammar({
       $.preproc_substdef,
       $.loadmodule,
       $.loadmodulex,
+      $.loadpath,
       $.modparam,
       $.modparamx,
       $.import_file,
@@ -1123,13 +1125,24 @@ module.exports = grammar({
     // TODO: go back Example: loadmodule "module_name"
     loadmodule: $ => seq(
       token(CFG_VARS.LOADMODULE),
-      field('module_name', $.string)
+      choice(
+        field('module_name', $.string),
+        seq(PUNC.LPAREN, field('module_name', $.string), PUNC.RPAREN),
+        seq(PUNC.LPAREN, field('module_name', $.string), PUNC.COMMA, $.string, PUNC.RPAREN)),
     ),
 
     // TODO: go back Example: loadmodulex "module_name"
     loadmodulex: $ => seq(
       token(CFG_VARS.LOADMODULEX),
-      field('module_name', $.string)
+      choice(
+        field('module_name', $.string),
+        seq(PUNC.LPAREN, field('module_name', $.string), PUNC.RPAREN),
+        seq(PUNC.LPAREN, field('module_name', $.string), PUNC.COMMA, $.string, PUNC.RPAREN)),
+    ),
+
+    loadpath: $ => seq(
+      token(CFG_VARS.LOADPATH.LOADPATH),
+      field('path', $.string),
     ),
 
 
@@ -1229,22 +1242,6 @@ module.exports = grammar({
       field('file_name', $.string)
     )),
 
-    // Available directives:
-    //
-    // #!define NAME - define a keyword
-    // #!define NAME VALUE - define a keyword with value
-    // #!ifdef NAME - check if a keyword is defined
-    // #!ifndef - check if a keyword is not defined
-    // #!else - switch to false branch of ifdef/ifndef region
-    // #!endif - end ifdef/ifndef region
-    // #!trydef - add a define if not already defined
-    // #!redefine - force redefinition even if already defined
-    preprocessor_define: $ => prec.right(seq(
-      PREP_START.HASH_BANG,
-      token.immediate('define'),
-      seq(field('name', $.identifier), optional(field('value', choice($.number_literal, $.string, $.identifier))))
-    )),
-
     preproc_def: $ => prec.right(seq(
       preprocessor('define'),
       field('name', $.identifier),
@@ -1281,8 +1278,6 @@ module.exports = grammar({
 
 
     preproc_arg: _ => token(prec(-1, /\S([^/\n]|\/[^*]|\\\r?\n)*/)),
-    preproc_directive: _ => /#![ \t]*[a-zA-Z0-9]\w*/,
-
 
     ...preprocIf('', $ => $.block_item),
     ...preprocIfn('', $ => $.block_item),
@@ -1379,7 +1374,6 @@ module.exports = grammar({
       $.pseudo_variable,
       $.pvar_expression,
       $.unary_expression,
-      $.update_expression,
       $.cast_expression,
       $.subscript_expression,
       $.call_expression,
@@ -1457,16 +1451,6 @@ module.exports = grammar({
           field('right', $.expression),
         ));
       }));
-    },
-
-    //TODO: do we need this
-    update_expression: $ => {
-      const argument = field('argument', $.expression);
-      const operator = field('operator', choice('--', '++'));
-      return prec.right(PREC.UNARY, choice(
-        seq(operator, argument),
-        seq(argument, operator),
-      ));
     },
 
     cast_expression: $ => prec(PREC.CAST, seq(
@@ -1767,22 +1751,12 @@ module.exports = grammar({
       token(STRING_TRANSFORMATIONS.URLDECODE_PARAM),
     ),
 
-    // range expression (i:3)
-    //range_expression: $ => seq(
-    //  field('range_start', choice($.identifier, $.number_literal)),
-    //  PUNC.COLON,
-    //  field('range_end', choice($.identifier, $.number_literal)),
-    //),
-
-    // index expression [2] or [*]
     index_expression: $ => seq(
       PUNC.LBRACK,
       field('index', choice($.number_literal, token(PUNC.STAR))),
       PUNC.RBRACK
     ),
 
-    // $avp(i:3)
-    //
     catch_all_pseudo_variable: $ => prec.right(seq(
       $.pvar_type,
       optional(
@@ -2408,6 +2382,7 @@ module.exports = grammar({
       )),
       PUNC.RPAREN,
     ),
+
     htable: $ => seq(
       choice(token("sht"), token("shtex"), token("shtinc"), token("shtdec")),
       PUNC.LPAREN,
@@ -2735,10 +2710,7 @@ module.exports = grammar({
       field('value', choice(
         $.string,
         $.number_literal,
-        $.boolean_constant,
         $.identifier,
-        $.function_call,
-        $.pseudo_variable,
       )),
       PUNC.RPAREN,
       optional(PUNC.SEMICOLON),
@@ -2754,9 +2726,7 @@ module.exports = grammar({
       field('value', choice(
         $.string,
         $.number_literal,
-        $.boolean_constant,
         $.identifier,
-        $.function_call,
         $.pseudo_variable,
       )),
       PUNC.RPAREN

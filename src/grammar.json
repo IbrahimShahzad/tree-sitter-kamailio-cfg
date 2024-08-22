@@ -54,6 +54,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "loadpath"
+        },
+        {
+          "type": "SYMBOL",
           "name": "modparam"
         },
         {
@@ -152,6 +156,10 @@
         {
           "type": "SYMBOL",
           "name": "loadmodulex"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loadpath"
         },
         {
           "type": "SYMBOL",
@@ -655,12 +663,67 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "module_name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "module_name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "string"
+              }
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "FIELD",
+                  "name": "module_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "FIELD",
+                  "name": "module_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -675,8 +738,83 @@
           }
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "module_name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "string"
+              }
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "FIELD",
+                  "name": "module_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "FIELD",
+                  "name": "module_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "string"
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "loadpath": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "loadpath"
+          }
+        },
+        {
           "type": "FIELD",
-          "name": "module_name",
+          "name": "path",
           "content": {
             "type": "SYMBOL",
             "name": "string"
@@ -1197,68 +1335,6 @@
         ]
       }
     },
-    "preprocessor_define": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "#!"
-          },
-          {
-            "type": "IMMEDIATE_TOKEN",
-            "content": {
-              "type": "STRING",
-              "value": "define"
-            }
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "name",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "value",
-                    "content": {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "number_literal"
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "string"
-                        },
-                        {
-                          "type": "SYMBOL",
-                          "name": "identifier"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
     "preproc_def": {
       "type": "PREC_RIGHT",
       "value": 0,
@@ -1503,10 +1579,6 @@
           "value": "\\S([^/\\n]|\\/[^*]|\\\\\\r?\\n)*"
         }
       }
-    },
-    "preproc_directive": {
-      "type": "PATTERN",
-      "value": "#![ \\t]*[a-zA-Z0-9]\\w*"
     },
     "preproc_ifdef": {
       "type": "PREC",
@@ -11812,19 +11884,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "boolean_constant"
-                },
-                {
-                  "type": "SYMBOL",
                   "name": "identifier"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "function_call"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "pseudo_variable"
                 }
               ]
             }
@@ -11902,15 +11962,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "boolean_constant"
-              },
-              {
-                "type": "SYMBOL",
                 "name": "identifier"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "function_call"
               },
               {
                 "type": "SYMBOL",
