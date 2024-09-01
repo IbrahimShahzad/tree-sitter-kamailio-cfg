@@ -62,7 +62,7 @@
 
 (string) @string
 (call_expression
-  function: (expression) @function.call
+  function: (identifier) @function.call
   arguments: (argument_list
     "(" @punctuation.bracket
     ")" @punctuation.bracket) @variable.parameter)
@@ -121,7 +121,8 @@
   "exit"] @keyword.return
 
 [ "while" ] @keyword.repeat
-[  "if"
-   "else"  
+[  "if"s
+   "else"
    "default"
-   "case" ] @keyword.conditional 
+   "case" ] @keyword.conditional
+
