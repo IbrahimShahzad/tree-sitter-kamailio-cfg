@@ -43,19 +43,12 @@ const PUNC = {
 
 /*action keywords*/
 const ACTION_KEYWORDS = {
-  //FORWARD: "forward",
-  //FORWARD_TCP: "forward_tcp",
-  //FORWARD_UDP: "forward_udp",
-  //FORWARD_TLS: "forward_tls",
-  //FORWARD_SCTP: "forward_sctp",
-  DROP: "drop", // done
+ DROP: "drop", // done
   EXIT: "exit", // done
   RETURN: "return", // done
   RETURN_MODE: "return_mode",
   BREAK: "break", // done
-  //LOG: "log",
-  //ERROR: "error",
-  ROUTE: "route", // done
+ ROUTE: "route", // done
   ROUTE_REQUEST: "request_route", // done
   ROUTE_FAILURE: "failure_route", // done
   ROUTE_REPLY: "reply_route", // done
@@ -63,90 +56,12 @@ const ACTION_KEYWORDS = {
   ROUTE_BRANCH: "branch_route", // done
   ROUTE_SEND: "onsend_route", // done
   ROUTE_EVENT: "event_route", // done
-  //EXEC: "exec",
-  //FORCE_RPORT: {
-  //  FORCE_RPORT: "force_rport",
-  //  ADD_RPORT: "add_rport"
-  //},
-  //LOCAL_RPORT: "local_rport",
-  //ADD_LOCAL_RPORT: "add_local_rport",
-  //FORCE_TCP_ALIAS: {
-  //  FORCE_TCP_ALIAS: "force_tcp_alias",
-  //  ADD_TCP_ALIAS: "add_tcp_alias"
-  //},
-  //UDP_MTU: "udp_mtu",
-  //UDP_MTU_TRY_PROTO: "udp_mtu_try_proto",
-  //UDP_RECEIVER_MODE: "udp_receiver_mode",
-  //UDP4_RAW: "udp4_raw",
-  //UDP4_RAW_MTU: "udp4_raw_mtu",
-  //UDP4_RAW_TTL: "udp4_raw_ttl",
-  //SETFLAG: "setflag",
-  //RESETFLAG: "resetflag",
-  //ISFLAGSET: "isflagset",
-  //FLAGS_DECL: {
-  //  FLAG: "flags",
-  //  BOOL: "bool",
-  //},
-  //SETAVPFLAG: "setavpflag",
-  //RESETAVPFLAG: "resetavpflag",
-  //ISAVPFLAGSET: "isavpflagset",
-  //AVPFLAGS_DECL: "avpflags",
-  //SET_HOST: {
-  //  REWRITEHOST: "rewritehost",
-  //  SETHOST: "sethost",
-  //  SETH: "seth"
-  //},
-  //SET_HOSTPORT: {
-  //  REWRITEHOSTPORT: "rewritehostport",
-  //  SETHOSTPORT: "sethostport",
-  //  SETHP: "sethp"
-  //},
-  //SET_HOSTPORTTRANS: {
-  //  REWRITEHOSTPORTTRANS: "rewritehostporttrans",
-  //  SETHOSTPORTTRANS: "sethostporttrans",
-  //  SETHPT: "sethpt",
-  //},
-  //SET_USER: {
-  //  REWRITEUSER: "rewriteuser",
-  //  SETUSER: "setuser",
-  //  SETU: "setu"
-  //},
-  //SET_USERPASS: {
-  //  REWRITEUSERPASS: "rewriteuserpass",
-  //  SETUSERPASS: "setuserpass",
-  //  SETUP: "setup"
-  //},
-  //SET_PORT: {
-  //  REWRITEPORT: "rewriteport",
-  //  SETPORT: "setport",
-  //  SETP: "setp",
-  //},
-  //SET_URI: {
-  //  REWRITEURI: "rewriteuri",
-  //  SETURI: "seturi"
-  //},
-  //REVERT_URI: "revert_uri",
-  //PREFIX: "prefix",
-  //STRIP: "strip",
-  //STRIP_TAIL: "strip_tail",
-  //SET_USERPHONE: "userphone",
-  //REMOVE_BRANCH: "remove_branch",
-  //CLEAR_BRANCHES: "clear_branches",
-  IF: "if", // done
+ IF: "if", // done
   ELSE: "else", // done
-  //SET_ADV_ADDRESS: "set_advertised_address",
-  //SET_ADV_PORT: "set_advertised_port",
-  //FORCE_SEND_SOCKET: "force_send_socket",
-  //SET_FWD_NO_CONNECT: "set_forward_no_connect",
-  //SET_RPL_NO_CONNECT: "set_reply_no_connect",
-  //SET_FWD_CLOSE: "set_forward_close",
-  //SET_RPL_CLOSE: "set_reply_close",
-  SWITCH: "switch", //done
+ SWITCH: "switch", //done
   CASE: "case", // done
   DEFAULT: "default", // done
   WHILE: "while", // done
-  //CFG_SELECT: "cfg_select",
-  //CFG_RESET: "cfg_reset"
 };
 
 /*ACTION LVALUES*/
@@ -953,8 +868,8 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
-    [$.expression_not_binary, $.block_item],
-    [$.top_level_item, $.expression_not_binary],
+    [$._expression_not_binary, $._block_item],
+    [$.top_level_item, $._expression_not_binary],
   ],
 
   rules: {
@@ -971,7 +886,6 @@ module.exports = grammar({
       $.call_expression,
       $.routing_block,
       $.top_level_assignment_expression,
-      $.keyword,
       $.loadmodule,
       $.loadmodulex,
       $.loadpath,
@@ -989,7 +903,7 @@ module.exports = grammar({
       $.comment,
     ),
 
-    block_item: $ => choice(
+    _block_item: $ => choice(
       $.statement,
       $.assignment_expression,
       $.preproc_def,
@@ -1016,7 +930,7 @@ module.exports = grammar({
     top_level_statement: $ => choice(
       $.case_statement,
       $.compound_statement,
-      alias($.top_level_expression_statement, $.expression_statement),
+      alias($._top_level_expression_statement, $._expression_statement),
       $.if_statement,
       $.switch_statement,
       $.while_statement,
@@ -1043,21 +957,21 @@ module.exports = grammar({
 
 
 
-    top_level_expression_statement: $ => prec(10, seq(
-      $.expression_not_binary,
-      optional(PUNC.SEMICOLON),
+    _top_level_expression_statement: $ => prec(10, seq(
+      $._expression_not_binary,
+      optional(field("eos", PUNC.SEMICOLON)),
     )),
     statement: $ => choice(
       $.case_statement,
       $._non_case_statement,
     ),
 
-    expression_statement: $ => seq(
+    _expression_statement: $ => seq(
       optional(choice(
         $.expression,
         $.comma_expression,
       )),
-      PUNC.SEMICOLON,
+      field("eos", PUNC.SEMICOLON),
     ),
 
 
@@ -1076,23 +990,23 @@ module.exports = grammar({
     return_statement: $ => seq(
       token(ACTION_KEYWORDS.RETURN),
       optional(choice($.expression, $.comma_expression)),
-      PUNC.SEMICOLON,
+      field("eos", PUNC.SEMICOLON),
     ),
 
     break_statement: _ => seq(
       token(ACTION_KEYWORDS.BREAK),
-      PUNC.SEMICOLON,
+      field("eos", PUNC.SEMICOLON),
     ),
 
     continue_statement: _ => seq(
       token('continue'),
-      PUNC.SEMICOLON,
+      field("eos", PUNC.SEMICOLON),
     ),
 
     _non_case_statement: $ => choice(
       $.core_function_statement,
       $.compound_statement,
-      $.expression_statement,
+      $._expression_statement,
       $.if_statement,
       $.switch_statement,
       $.while_statement,
@@ -1103,13 +1017,13 @@ module.exports = grammar({
 
     core_function_statement: $ => seq(
       $.core_function,
-      PUNC.SEMICOLON
+      field("eos", PUNC.SEMICOLON),
     ),
 
     core_function: $ => seq(
-      choice(
+      field('keyword', choice(
         token(ACTION_KEYWORDS.EXIT),
-        token(ACTION_KEYWORDS.DROP)),
+        token(ACTION_KEYWORDS.DROP))),
       optional(seq(PUNC.LPAREN, optional(choice($.identifier, $.string, $.number_literal)), PUNC.RPAREN)),
     ),
 
@@ -1122,7 +1036,6 @@ module.exports = grammar({
     ),
 
 
-    // TODO: go back Example: loadmodule "module_name"
     loadmodule: $ => seq(
       token(CFG_VARS.LOADMODULE),
       choice(
@@ -1131,7 +1044,6 @@ module.exports = grammar({
         seq(PUNC.LPAREN, field('module_name', $.string), PUNC.COMMA, $.string, PUNC.RPAREN)),
     ),
 
-    // TODO: go back Example: loadmodulex "module_name"
     loadmodulex: $ => seq(
       token(CFG_VARS.LOADMODULEX),
       choice(
@@ -1182,11 +1094,6 @@ module.exports = grammar({
       $.multiline_comment
     )),
 
-    // TODO: keywords separately?
-    keyword: _ => choice(
-      token(prec(1, 'cfgengine')),
-    ),
-
 
     if_statement: $ => prec.right(seq(
       token(ACTION_KEYWORDS.IF),
@@ -1217,10 +1124,13 @@ module.exports = grammar({
       )),
     )),
 
+    block_start: _ => PUNC.LBRACE,
+    block_end: _ => PUNC.RBRACE,
+
     compound_statement: $ => seq(
-      PUNC.LBRACE,
-      repeat($.block_item),
-      PUNC.RBRACE,
+      $.block_start,
+      repeat($._block_item),
+      $.block_end
     ),
 
     string: $ => choice(
@@ -1279,8 +1189,8 @@ module.exports = grammar({
 
     preproc_arg: _ => token(prec(-1, /\S([^/\n]|\/[^*]|\\\r?\n)*/)),
 
-    ...preprocIf('', $ => $.block_item),
-    ...preprocIfn('', $ => $.block_item),
+    ...preprocIf('', $ => $._block_item),
+    ...preprocIfn('', $ => $._block_item),
 
     _preproc_expression: $ => choice(
       $.identifier,
@@ -1365,11 +1275,11 @@ module.exports = grammar({
     )),
 
     expression: $ => choice(
-      $.expression_not_binary,
+      $._expression_not_binary,
       $.binary_expression,
     ),
 
-    expression_not_binary: $ => choice(
+    _expression_not_binary: $ => choice(
       $.assignment_expression,
       $.pseudo_variable,
       $.pvar_expression,
@@ -1378,6 +1288,7 @@ module.exports = grammar({
       $.subscript_expression,
       $.call_expression,
       $.field_expression,
+      $.select_param,
       $.identifier,
       $.number_literal,
       $.string,
@@ -1764,7 +1675,7 @@ module.exports = grammar({
           PUNC.LPAREN,
           field('name', $.pvar_argument),
           PUNC.RPAREN,
-          optional(PUNC.SEMICOLON)
+          optional(field("eos", PUNC.SEMICOLON)),
         ))
     )),
 
@@ -1903,6 +1814,7 @@ module.exports = grammar({
       $.pvar,
       $.avp_var,
       $.xavp_var,
+      $.xavi_var,
       $.xavu_var,
       $.hdr,
       $.hdrc,
@@ -1913,6 +1825,7 @@ module.exports = grammar({
       $.timef_var,
       // TODO: config custom parameters $ccp(key)
       // select vars
+      $.select_var,
       $.rcv,
       $.rpl,
       $.msg_buf_index,
@@ -1973,6 +1886,39 @@ module.exports = grammar({
       $.k_var,
       $.catch_all_pseudo_variable
     ),
+
+
+    select_var: $ => prec(PREC.SUBSCRIPT,seq(
+      token("sel"),
+      PUNC.LPAREN,
+      field('name', choice($.select_attr, $.expression)),
+      PUNC.RPAREN,
+    )),
+
+    select_param: $ => prec.right(seq(
+      ATTRIBUTES.SELECT_MARK,
+      field('name', choice($.select_class, $.identifier)),
+      optional(field('value', repeat($.select_attr))),
+    )),
+
+
+    select_attr: $ => seq(
+      optional(seq(PUNC.LBRACK,choice( token("%s"), token("%i"), $.expression), PUNC.RBRACK)),
+      PUNC.DOT,
+      $.identifier,
+    ),
+
+    select_class: $ => choice(
+        token("contact"),
+        token("from"),
+        token("msg"),
+        token("ruri"),
+        token("tls"),
+        token("to"),
+        token("sys"),
+        token("via"),
+        token("xlmrpc"),
+      ),
 
     k_var: _ => seq(
       token("K"),
@@ -2482,7 +2428,11 @@ module.exports = grammar({
       seq(token("T_branch"), PUNC.LPAREN, choice($.pseudo_variable, $.identifier, $.string), PUNC.RPAREN),
     ),
 
-    _path: _ => /[a-zA-Z\/()]/,
+    // path example /a/b/text()
+    // path example /a/b/c/attrubute::value
+    // /pidf:presence/pidf:tuple/pidf:status/pidf:basic
+    // The following regex is used to match the path, there could be () at the end of the path
+    _path: _ => /\/[a-zA-Z0-9_\-:]+(\/[a-zA-Z0-9_\-:]+)*(\(\))?/,
 
     xml: $ => seq(
       token("xml"),
@@ -2903,8 +2853,9 @@ module.exports = grammar({
         $.number_literal,
         $.identifier,
       )),
+      optional(field('value_s', $.string)),
       PUNC.RPAREN,
-      optional(PUNC.SEMICOLON),
+      optional(field("eos", PUNC.SEMICOLON)),
     )),
 
     modparamx: $ => seq(
@@ -2929,13 +2880,11 @@ module.exports = grammar({
       optional(seq(
         choice(
           field('argument', $.identifier),
-          //field('argument', $.sip_keywords),
           field('argument', $.string),
           field('argument', $.number_literal)
         ),
         repeat(seq(PUNC.COMMA, choice(
           field('argument', $.identifier),
-          //field('argument', $.sip_keywords),
           field('argument', $.string),
           field('argument', $.number_literal)
         ))),
@@ -2949,45 +2898,6 @@ module.exports = grammar({
       field('route_name', choice($.identifier, $.string, $.number_literal)),
       PUNC.RPAREN,
     ),
-
-    //// TODO: may be
-    //sip_keywords: _ => token(choice(
-    //  '"INVITE"',
-    //  '"ACK"',
-    //  '"BYE"',
-    //  '"CANCEL"',
-    //  '"PRACK"',
-    //  '"UPDATE"',
-    //  '"REGISTER"',
-    //  '"MESSAGE"',
-    //  '"INFO"',
-    //  '"OPTIONS"',
-    //  '"SUBSCRIBE"',
-    //  '"NOTIFY"',
-    //  '"PUBLISH"',
-    //  '"REFER"',
-    //  '"KDMQ"',
-    //  '"GET"',
-    //  '"POST"',
-    //  '"PUT"',
-    //  '"DELETE"',
-    //  '"SIP"',
-    //  '"From"',
-    //  '"To"',
-    //  '"Call-ID"',
-    //  '"CSeq"',
-    //  '"Route"',
-    //  '"Record-Route"',
-    //  '"Authorization"',
-    //  '"Proxy-Authorization"',
-    //  '"Contact"',
-    //  '"Expires"',
-    //  '"Content-Type"',
-    //  '"Content-Length"',
-    //  '"Via"',
-    //  '"User-Agent"',
-    //  '"P-Asserted-Identity"'
-    //))
   }
 });
 
