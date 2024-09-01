@@ -121,7 +121,8 @@
   "exit"] @keyword.return
 
 [ "while" ] @keyword.repeat
-[  "if"
+[  "if"s
    "else"
    "default"
    "case" ] @keyword.conditional
+

@@ -19,7 +19,7 @@ parser_config.kamailio_cfg = {
   install_info = {
     url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
     files = { 'src/parser.c' },
-  },
+  },s
   branch = 'v0.1.1',
   filetype = 'kamailio',
 }
