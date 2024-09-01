@@ -1,5 +1,91 @@
 [
   {
+    "type": "_expression_statement",
+    "named": true,
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "cast_expression",
+          "named": true
+        },
+        {
+          "type": "false",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "pvar_expression",
+          "named": true
+        },
+        {
+          "type": "select_param",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "true",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "argument_list",
     "named": true,
     "fields": {},
@@ -111,6 +197,36 @@
     }
   },
   {
+    "type": "avp_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {
@@ -173,6 +289,10 @@
             "named": false
           },
           {
+            "type": "*",
+            "named": false
+          },
+          {
             "type": "+",
             "named": false
           },
@@ -182,6 +302,10 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": "/",
             "named": false
           },
           {
@@ -283,7 +407,7 @@
     }
   },
   {
-    "type": "block_item",
+    "type": "blitval",
     "named": true,
     "fields": {},
     "children": {
@@ -291,80 +415,41 @@
       "required": true,
       "types": [
         {
-          "type": "assignment_expression",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "loadmodule",
-          "named": true
-        },
-        {
-          "type": "loadmodulex",
-          "named": true
-        },
-        {
-          "type": "modparam",
-          "named": true
-        },
-        {
-          "type": "modparamx",
-          "named": true
-        },
-        {
-          "type": "preproc_def",
-          "named": true
-        },
-        {
-          "type": "preproc_ifdef",
-          "named": true
-        },
-        {
-          "type": "preproc_redef",
-          "named": true
-        },
-        {
-          "type": "preproc_subst",
-          "named": true
-        },
-        {
-          "type": "preproc_substdef",
-          "named": true
-        },
-        {
-          "type": "preproc_substdefs",
-          "named": true
-        },
-        {
-          "type": "preproc_trydef",
-          "named": true
-        },
-        {
-          "type": "route_call",
-          "named": true
-        },
-        {
-          "type": "routing_block",
-          "named": true
-        },
-        {
-          "type": "statement",
+          "type": "string",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "break_statement",
+    "type": "block_end",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "block_start",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "break_statement",
+    "named": true,
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "call_expression",
@@ -400,6 +485,16 @@
     "type": "case_statement",
     "named": true,
     "fields": {
+      "eos": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      },
       "value": {
         "multiple": false,
         "required": false,
@@ -420,6 +515,10 @@
           "named": true
         },
         {
+          "type": "comma_expression",
+          "named": true
+        },
+        {
           "type": "compound_statement",
           "named": true
         },
@@ -432,7 +531,7 @@
           "named": true
         },
         {
-          "type": "expression_statement",
+          "type": "expression",
           "named": true
         },
         {
@@ -465,6 +564,70 @@
           {
             "type": "expression",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "catch_all_pseudo_variable",
+    "named": true,
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pvar_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cfg_attr",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "file",
+            "named": false
+          },
+          {
+            "type": "line",
+            "named": false
+          },
+          {
+            "type": "name",
+            "named": false
+          },
+          {
+            "type": "route",
+            "named": false
           }
         ]
       }
@@ -548,10 +711,98 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "block_item",
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "block_end",
+          "named": true
+        },
+        {
+          "type": "block_start",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "import_file",
+          "named": true
+        },
+        {
+          "type": "include_file",
+          "named": true
+        },
+        {
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "loadpath",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
+          "named": true
+        },
+        {
+          "type": "preproc_redef",
+          "named": true
+        },
+        {
+          "type": "preproc_subst",
+          "named": true
+        },
+        {
+          "type": "preproc_substdef",
+          "named": true
+        },
+        {
+          "type": "preproc_substdefs",
+          "named": true
+        },
+        {
+          "type": "preproc_trydef",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "routing_block",
+          "named": true
+        },
+        {
+          "type": "statement",
           "named": true
         }
       ]
@@ -560,12 +811,38 @@
   {
     "type": "continue_statement",
     "named": true,
-    "fields": {}
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "core_function",
     "named": true,
-    "fields": {},
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "drop",
+            "named": false
+          },
+          {
+            "type": "exit",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": false,
@@ -588,7 +865,18 @@
   {
     "type": "core_function_statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -598,6 +886,109 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "dlg_attr",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "dlg_ctx",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "dlg_var",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dns_q",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          }
+        ]
+      },
+      "pvid": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "dsg_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "active",
+            "named": false
+          },
+          {
+            "type": "count",
+            "named": false
+          },
+          {
+            "type": "inactive",
+            "named": false
+          },
+          {
+            "type": "pactive",
+            "named": false
+          },
+          {
+            "type": "pinactive",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "dsv_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -616,6 +1007,73 @@
     }
   },
   {
+    "type": "erlang",
+    "named": true,
+    "fields": {
+      "attribute": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "format",
+            "named": false
+          },
+          {
+            "type": "length",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "evapi",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "evr",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "data",
+            "named": false
+          },
+          {
+            "type": "srcip",
+            "named": false
+          },
+          {
+            "type": "srcport",
+            "named": false
+          },
+          {
+            "type": "srcportno",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "expression",
     "named": true,
     "fields": {},
@@ -624,26 +1082,11 @@
       "required": true,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "assignment_expression",
           "named": true
         },
         {
-          "type": "expression_not_binary",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expression_not_binary",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "assignment_expression",
+          "type": "binary_expression",
           "named": true
         },
         {
@@ -687,6 +1130,10 @@
           "named": true
         },
         {
+          "type": "select_param",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -700,33 +1147,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "update_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expression_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "comma_expression",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "expression_not_binary",
           "named": true
         }
       ]
@@ -761,10 +1181,6 @@
         "required": true,
         "types": [
           {
-            "type": "->",
-            "named": false
-          },
-          {
             "type": ".",
             "named": false
           },
@@ -782,32 +1198,72 @@
     "fields": {}
   },
   {
-    "type": "function_call",
+    "type": "gip2",
     "named": true,
     "fields": {
-      "argument": {
-        "multiple": true,
-        "required": false,
+      "key": {
+        "multiple": false,
+        "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
+            "type": "area",
+            "named": false
           },
           {
-            "type": "number_literal",
-            "named": true
+            "type": "cc",
+            "named": false
           },
           {
-            "type": "sip_keywords",
-            "named": true
+            "type": "city",
+            "named": false
           },
           {
-            "type": "string",
-            "named": true
+            "type": "contc",
+            "named": false
+          },
+          {
+            "type": "dma",
+            "named": false
+          },
+          {
+            "type": "ipe",
+            "named": false
+          },
+          {
+            "type": "ips",
+            "named": false
+          },
+          {
+            "type": "lat",
+            "named": false
+          },
+          {
+            "type": "lon",
+            "named": false
+          },
+          {
+            "type": "metro",
+            "named": false
+          },
+          {
+            "type": "regc",
+            "named": false
+          },
+          {
+            "type": "regn",
+            "named": false
+          },
+          {
+            "type": "tz",
+            "named": false
+          },
+          {
+            "type": "zip",
+            "named": false
           }
         ]
       },
-      "function_name": {
+      "pvc": {
         "multiple": false,
         "required": true,
         "types": [
@@ -818,6 +1274,262 @@
         ]
       }
     }
+  },
+  {
+    "type": "hdr",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hdrc",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "hep",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "0x000",
+            "named": false
+          },
+          {
+            "type": "0x999",
+            "named": false
+          },
+          {
+            "type": "dst_ip",
+            "named": false
+          },
+          {
+            "type": "src_ip",
+            "named": false
+          },
+          {
+            "type": "version",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "hfitbody",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hfitname",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "host_name",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "d",
+            "named": false
+          },
+          {
+            "type": "f",
+            "named": false
+          },
+          {
+            "type": "i",
+            "named": false
+          },
+          {
+            "type": "n",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "htable",
+    "named": true,
+    "fields": {
+      "htable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "htable_exp",
+    "named": true,
+    "fields": {
+      "htable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "%~",
+            "named": false
+          },
+          {
+            "type": "**",
+            "named": false
+          },
+          {
+            "type": "==",
+            "named": false
+          },
+          {
+            "type": "eqvalue",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "regex_replacement",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "~%",
+            "named": false
+          },
+          {
+            "type": "~~",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "htiterator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "http_req",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "if_statement",
@@ -908,11 +1620,6 @@
     }
   },
   {
-    "type": "index",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "index_expression",
     "named": true,
     "fields": {
@@ -925,15 +1632,7 @@
             "named": false
           },
           {
-            "type": "expression",
-            "named": true
-          },
-          {
             "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string",
             "named": true
           }
         ]
@@ -941,9 +1640,28 @@
     }
   },
   {
-    "type": "keyword",
+    "type": "k_var",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "line_transformation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "loadmodule",
@@ -959,6 +1677,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -975,12 +1703,90 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "loadpath",
+    "named": true,
+    "fields": {
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "mcinc_mcdec",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mct",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
     "type": "modparam",
     "named": true,
     "fields": {
+      "eos": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      },
       "module_name": {
         "multiple": false,
         "required": true,
@@ -1006,14 +1812,6 @@
         "required": true,
         "types": [
           {
-            "type": "boolean_constant",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
             "type": "identifier",
             "named": true
           },
@@ -1022,15 +1820,17 @@
             "named": true
           },
           {
-            "type": "pseudo_variable",
-            "named": true
-          },
-          {
             "type": "string",
             "named": true
-          },
+          }
+        ]
+      },
+      "value_s": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
-            "type": "variable_content",
+            "type": "string",
             "named": true
           }
         ]
@@ -1066,14 +1866,6 @@
         "required": true,
         "types": [
           {
-            "type": "boolean_constant",
-            "named": true
-          },
-          {
-            "type": "function_call",
-            "named": true
-          },
-          {
             "type": "identifier",
             "named": true
           },
@@ -1088,10 +1880,147 @@
           {
             "type": "string",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "mqueue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "msg_buf_index",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "msgattr",
+    "named": true,
+    "fields": {
+      "attr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "body",
+            "named": false
           },
           {
-            "type": "variable_content",
+            "type": "body_len",
+            "named": false
+          },
+          {
+            "type": "buf",
+            "named": false
+          },
+          {
+            "type": "fline",
+            "named": false
+          },
+          {
+            "type": "fpart",
+            "named": false
+          },
+          {
+            "type": "hdrs",
+            "named": false
+          },
+          {
+            "type": "len",
+            "named": false
+          },
+          {
+            "type": "lpart",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "msrp",
+    "named": true,
+    "fields": {
+      "arg": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "msrpuri_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nameaddr_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nathelper",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "nhaddr",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "P",
+            "named": false
+          },
+          {
+            "type": "U",
+            "named": false
+          },
+          {
+            "type": "d",
+            "named": false
+          },
+          {
+            "type": "p",
+            "named": false
+          },
+          {
+            "type": "u",
+            "named": false
           }
         ]
       }
@@ -1101,6 +2030,29 @@
     "type": "null",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "parameter_list_transformation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "parenthesized_expression",
@@ -1151,6 +2103,84 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "phn",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "cctel",
+            "named": false
+          },
+          {
+            "type": "error",
+            "named": false
+          },
+          {
+            "type": "ltype",
+            "named": false
+          },
+          {
+            "type": "ndesc",
+            "named": false
+          },
+          {
+            "type": "normalized",
+            "named": false
+          },
+          {
+            "type": "number",
+            "named": false
+          },
+          {
+            "type": "valid",
+            "named": false
+          }
+        ]
+      },
+      "rid": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "popops",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "idx",
+            "named": false
+          },
+          {
+            "type": "len",
+            "named": false
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "ret",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -1208,7 +2238,87 @@
       "required": false,
       "types": [
         {
-          "type": "block_item",
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "import_file",
+          "named": true
+        },
+        {
+          "type": "include_file",
+          "named": true
+        },
+        {
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "loadpath",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
+          "named": true
+        },
+        {
+          "type": "preproc_redef",
+          "named": true
+        },
+        {
+          "type": "preproc_subst",
+          "named": true
+        },
+        {
+          "type": "preproc_substdef",
+          "named": true
+        },
+        {
+          "type": "preproc_substdefs",
+          "named": true
+        },
+        {
+          "type": "preproc_trydef",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "routing_block",
+          "named": true
+        },
+        {
+          "type": "statement",
           "named": true
         }
       ]
@@ -1244,7 +2354,203 @@
       "required": false,
       "types": [
         {
-          "type": "block_item",
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "import_file",
+          "named": true
+        },
+        {
+          "type": "include_file",
+          "named": true
+        },
+        {
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "loadpath",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
+          "named": true
+        },
+        {
+          "type": "preproc_redef",
+          "named": true
+        },
+        {
+          "type": "preproc_subst",
+          "named": true
+        },
+        {
+          "type": "preproc_substdef",
+          "named": true
+        },
+        {
+          "type": "preproc_substdefs",
+          "named": true
+        },
+        {
+          "type": "preproc_trydef",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "routing_block",
+          "named": true
+        },
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifndef",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "import_file",
+          "named": true
+        },
+        {
+          "type": "include_file",
+          "named": true
+        },
+        {
+          "type": "loadmodule",
+          "named": true
+        },
+        {
+          "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "loadpath",
+          "named": true
+        },
+        {
+          "type": "modparam",
+          "named": true
+        },
+        {
+          "type": "modparamx",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
+          "named": true
+        },
+        {
+          "type": "preproc_redef",
+          "named": true
+        },
+        {
+          "type": "preproc_subst",
+          "named": true
+        },
+        {
+          "type": "preproc_substdef",
+          "named": true
+        },
+        {
+          "type": "preproc_substdefs",
+          "named": true
+        },
+        {
+          "type": "preproc_trydef",
+          "named": true
+        },
+        {
+          "type": "route_call",
+          "named": true
+        },
+        {
+          "type": "routing_block",
+          "named": true
+        },
+        {
+          "type": "statement",
           "named": true
         }
       ]
@@ -1356,29 +2662,409 @@
     "fields": {}
   },
   {
+    "type": "pseudo_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "avp_var",
+          "named": true
+        },
+        {
+          "type": "blitval",
+          "named": true
+        },
+        {
+          "type": "bm_diff_time",
+          "named": true
+        },
+        {
+          "type": "catch_all_pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "cfg_attr",
+          "named": true
+        },
+        {
+          "type": "dlg_attr",
+          "named": true
+        },
+        {
+          "type": "dlg_ctx",
+          "named": true
+        },
+        {
+          "type": "dlg_var",
+          "named": true
+        },
+        {
+          "type": "dns_q",
+          "named": true
+        },
+        {
+          "type": "dsg_var",
+          "named": true
+        },
+        {
+          "type": "dsv_var",
+          "named": true
+        },
+        {
+          "type": "erlang",
+          "named": true
+        },
+        {
+          "type": "evapi",
+          "named": true
+        },
+        {
+          "type": "evr",
+          "named": true
+        },
+        {
+          "type": "gip2",
+          "named": true
+        },
+        {
+          "type": "hdr",
+          "named": true
+        },
+        {
+          "type": "hdrc",
+          "named": true
+        },
+        {
+          "type": "hep",
+          "named": true
+        },
+        {
+          "type": "hfitbody",
+          "named": true
+        },
+        {
+          "type": "hfitname",
+          "named": true
+        },
+        {
+          "type": "host_name",
+          "named": true
+        },
+        {
+          "type": "htable",
+          "named": true
+        },
+        {
+          "type": "htable_exp",
+          "named": true
+        },
+        {
+          "type": "htiterator",
+          "named": true
+        },
+        {
+          "type": "http_req",
+          "named": true
+        },
+        {
+          "type": "http_req_id",
+          "named": true
+        },
+        {
+          "type": "k_var",
+          "named": true
+        },
+        {
+          "type": "mcinc_mcdec",
+          "named": true
+        },
+        {
+          "type": "mct",
+          "named": true
+        },
+        {
+          "type": "mqueue",
+          "named": true
+        },
+        {
+          "type": "msg_buf_index",
+          "named": true
+        },
+        {
+          "type": "msgattr",
+          "named": true
+        },
+        {
+          "type": "msrp",
+          "named": true
+        },
+        {
+          "type": "nathelper",
+          "named": true
+        },
+        {
+          "type": "nhaddr",
+          "named": true
+        },
+        {
+          "type": "phn",
+          "named": true
+        },
+        {
+          "type": "popops",
+          "named": true
+        },
+        {
+          "type": "pv_header",
+          "named": true
+        },
+        {
+          "type": "pvar",
+          "named": true
+        },
+        {
+          "type": "random",
+          "named": true
+        },
+        {
+          "type": "rcv",
+          "named": true
+        },
+        {
+          "type": "read_only",
+          "named": true
+        },
+        {
+          "type": "redis",
+          "named": true
+        },
+        {
+          "type": "redisd",
+          "named": true
+        },
+        {
+          "type": "registrar",
+          "named": true
+        },
+        {
+          "type": "rpl",
+          "named": true
+        },
+        {
+          "type": "sdpops",
+          "named": true
+        },
+        {
+          "type": "secsipid",
+          "named": true
+        },
+        {
+          "type": "select_var",
+          "named": true
+        },
+        {
+          "type": "shv_var",
+          "named": true
+        },
+        {
+          "type": "sipdump",
+          "named": true
+        },
+        {
+          "type": "sipt",
+          "named": true
+        },
+        {
+          "type": "siptrace",
+          "named": true
+        },
+        {
+          "type": "snd",
+          "named": true
+        },
+        {
+          "type": "sruid",
+          "named": true
+        },
+        {
+          "type": "subscription",
+          "named": true
+        },
+        {
+          "type": "tcpops",
+          "named": true
+        },
+        {
+          "type": "time_var",
+          "named": true
+        },
+        {
+          "type": "timef_var",
+          "named": true
+        },
+        {
+          "type": "timeval",
+          "named": true
+        },
+        {
+          "type": "tlskey",
+          "named": true
+        },
+        {
+          "type": "tmx",
+          "named": true
+        },
+        {
+          "type": "uac",
+          "named": true
+        },
+        {
+          "type": "var_",
+          "named": true
+        },
+        {
+          "type": "via_attr",
+          "named": true
+        },
+        {
+          "type": "xavi_var",
+          "named": true
+        },
+        {
+          "type": "xavp_var",
+          "named": true
+        },
+        {
+          "type": "xavu_var",
+          "named": true
+        },
+        {
+          "type": "xhttp",
+          "named": true
+        },
+        {
+          "type": "xml",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "pseudo_variable",
     "named": true,
     "fields": {
-      "argument": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "pvar_argument",
-            "named": true
-          }
-        ]
-      },
-      "pvar": {
+      "var": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "pvar_type",
+            "type": "pseudo_content",
             "named": true
           }
         ]
       }
+    }
+  },
+  {
+    "type": "pv_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pvar",
+    "named": true,
+    "fields": {
+      "attr": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "format": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "max",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "pvar_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1408,80 +3094,30 @@
         {
           "type": "subelement",
           "named": true
-        },
-        {
-          "type": "variable_content",
-          "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "pvar_attribute",
-    "named": true,
-    "fields": {
-      "attribute": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "range_expression",
-            "named": true
-          }
-        ]
-      },
-      "index": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "index_expression",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
     "type": "pvar_expression",
     "named": true,
     "fields": {
-      "pvar": {
-        "multiple": false,
-        "required": true,
+      "transformations": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "variable_content",
+            "type": "transformation",
             "named": true
           }
         ]
       },
-      "value": {
+      "var": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
-            "type": "pvar_attribute",
+            "type": "pseudo_content",
             "named": true
           }
         ]
@@ -1504,10 +3140,125 @@
     }
   },
   {
-    "type": "range_expression",
+    "type": "rcv",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "read_only",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "redis",
     "named": true,
     "fields": {
-      "range_end": {
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "info",
+            "named": false
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "size",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": false
+          },
+          {
+            "type": "value",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "redisd",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "rpl_arr",
+            "named": false
+          },
+          {
+            "type": "rpl_err",
+            "named": false
+          },
+          {
+            "type": "rpl_int",
+            "named": false
+          },
+          {
+            "type": "rpl_nil",
+            "named": false
+          },
+          {
+            "type": "rpl_str",
+            "named": false
+          },
+          {
+            "type": "rpl_sts",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "regex_transformation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "regex_flags",
+          "named": true
+        },
+        {
+          "type": "regex_pattern",
+          "named": true
+        },
+        {
+          "type": "regex_replacement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "registrar",
+    "named": true,
+    "fields": {
+      "attr": {
         "multiple": false,
         "required": true,
         "types": [
@@ -1516,12 +3267,12 @@
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "string",
             "named": true
           }
         ]
       },
-      "range_start": {
+      "profile": {
         "multiple": false,
         "required": true,
         "types": [
@@ -1530,7 +3281,7 @@
             "named": true
           },
           {
-            "type": "number_literal",
+            "type": "string",
             "named": true
           }
         ]
@@ -1540,7 +3291,18 @@
   {
     "type": "return_statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": false,
@@ -1644,6 +3406,146 @@
     }
   },
   {
+    "type": "rpl",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "sdpops",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "secsipid",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "select_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "select_class",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "select_param",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "select_class",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "select_attr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "select_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "select_attr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "shv_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pvar_argument",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "sipdump",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "sipt",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "siptrace",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "snd",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sock_addr_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -1659,12 +3561,28 @@
     }
   },
   {
+    "type": "sql_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "eos": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "break_statement",
@@ -1672,6 +3590,10 @@
         },
         {
           "type": "case_statement",
+          "named": true
+        },
+        {
+          "type": "comma_expression",
           "named": true
         },
         {
@@ -1687,7 +3609,7 @@
           "named": true
         },
         {
-          "type": "expression_statement",
+          "type": "expression",
           "named": true
         },
         {
@@ -1719,6 +3641,21 @@
       "types": [
         {
           "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string_transformation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "number_literal",
           "named": true
         }
       ]
@@ -1790,6 +3727,156 @@
         ]
       }
     }
+  },
+  {
+    "type": "tcpops",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ac_si",
+            "named": false
+          },
+          {
+            "type": "ac_sp",
+            "named": false
+          },
+          {
+            "type": "aconid",
+            "named": false
+          },
+          {
+            "type": "c_si",
+            "named": false
+          },
+          {
+            "type": "c_sp",
+            "named": false
+          },
+          {
+            "type": "conid",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "time_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "hour",
+            "named": false
+          },
+          {
+            "type": "isdst",
+            "named": false
+          },
+          {
+            "type": "mday",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          },
+          {
+            "type": "mon",
+            "named": false
+          },
+          {
+            "type": "sec",
+            "named": false
+          },
+          {
+            "type": "wday",
+            "named": false
+          },
+          {
+            "type": "yday",
+            "named": false
+          },
+          {
+            "type": "year",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "timef_var",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "timeval",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tlskey",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "m_issuer_line",
+            "named": false
+          },
+          {
+            "type": "m_subject_line",
+            "named": false
+          },
+          {
+            "type": "p_issuer_line",
+            "named": false
+          },
+          {
+            "type": "p_subject_line",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "tmx",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "pseudo_variable",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tobody_transformation",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "top_level_assignment_expression",
@@ -1880,15 +3967,15 @@
           "named": true
         },
         {
-          "type": "keyword",
-          "named": true
-        },
-        {
           "type": "loadmodule",
           "named": true
         },
         {
           "type": "loadmodulex",
+          "named": true
+        },
+        {
+          "type": "loadpath",
           "named": true
         },
         {
@@ -1905,6 +3992,10 @@
         },
         {
           "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifndef",
           "named": true
         },
         {
@@ -1951,6 +4042,10 @@
       "required": true,
       "types": [
         {
+          "type": "_expression_statement",
+          "named": true
+        },
+        {
           "type": "break_statement",
           "named": true
         },
@@ -1964,10 +4059,6 @@
         },
         {
           "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "expression_statement",
           "named": true
         },
         {
@@ -1993,36 +4084,144 @@
     "type": "transformation",
     "named": true,
     "fields": {
-      "transformation_type": {
+      "transformation": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "json",
+            "type": "general_transformation",
+            "named": true
+          },
+          {
+            "type": "json_transformation",
+            "named": true
+          },
+          {
+            "type": "line_transformation",
+            "named": true
+          },
+          {
+            "type": "msrpuri_transformation",
+            "named": true
+          },
+          {
+            "type": "nameaddr_transformation",
+            "named": true
+          },
+          {
+            "type": "parameter_list_transformation",
+            "named": true
+          },
+          {
+            "type": "regex_transformation",
+            "named": true
+          },
+          {
+            "type": "sock_addr_transformation",
+            "named": true
+          },
+          {
+            "type": "sql_transformation",
+            "named": true
+          },
+          {
+            "type": "string_transformation",
+            "named": true
+          },
+          {
+            "type": "tobody_transformation",
+            "named": true
+          },
+          {
+            "type": "uri_alias_transformation",
+            "named": true
+          },
+          {
+            "type": "uri_transformation",
+            "named": true
+          },
+          {
+            "type": "url_transformation",
+            "named": true
+          },
+          {
+            "type": "value_transformation",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "uac",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "1",
             "named": false
           },
           {
-            "type": "line",
+            "type": "all",
             "named": false
           },
           {
-            "type": "msrpuri",
+            "type": "apasswd",
             "named": false
           },
           {
-            "type": "nameaddr",
+            "type": "auser",
             "named": false
           },
           {
-            "type": "param",
+            "type": "body",
             "named": false
           },
           {
-            "type": "re",
+            "type": "callid",
             "named": false
           },
           {
-            "type": "s",
+            "type": "evcode",
+            "named": false
+          },
+          {
+            "type": "evparam",
+            "named": false
+          },
+          {
+            "type": "evroute",
+            "named": false
+          },
+          {
+            "type": "evtype",
+            "named": false
+          },
+          {
+            "type": "flags",
+            "named": false
+          },
+          {
+            "type": "furi",
+            "named": false
+          },
+          {
+            "type": "hdrs",
+            "named": false
+          },
+          {
+            "type": "method",
+            "named": false
+          },
+          {
+            "type": "ouri",
+            "named": false
+          },
+          {
+            "type": "ruri",
             "named": false
           },
           {
@@ -2030,27 +4229,7 @@
             "named": false
           },
           {
-            "type": "sql",
-            "named": false
-          },
-          {
-            "type": "tobody",
-            "named": false
-          },
-          {
-            "type": "uri",
-            "named": false
-          },
-          {
-            "type": "urialias",
-            "named": false
-          },
-          {
-            "type": "url",
-            "named": false
-          },
-          {
-            "type": "val",
+            "type": "turi",
             "named": false
           }
         ]
@@ -2132,53 +4311,63 @@
     }
   },
   {
-    "type": "update_expression",
+    "type": "uri_alias_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "uri_transformation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "url_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "value_transformation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "var_",
     "named": true,
     "fields": {
-      "argument": {
+      "name": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "identifier",
             "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "++",
-            "named": false
           },
           {
-            "type": "--",
-            "named": false
+            "type": "pvar_argument",
+            "named": true
           }
         ]
       }
     }
   },
   {
-    "type": "variable_content",
+    "type": "via_attr",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "index",
-          "named": true
-        },
-        {
-          "type": "transformation",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "while_statement",
@@ -2200,6 +4389,166 @@
         "types": [
           {
             "type": "parenthesized_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavi_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "xavp_values",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavp_values",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=>",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "index": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "pseudo_variable",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavp_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "xavp_values",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavu_values",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=>",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xavu_var",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "xavu_values",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "xml",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "spec": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -2279,6 +4628,18 @@
     "named": false
   },
   {
+    "type": "%i",
+    "named": false
+  },
+  {
+    "type": "%s",
+    "named": false
+  },
+  {
+    "type": "%~",
+    "named": false
+  },
+  {
     "type": "&",
     "named": false
   },
@@ -2311,11 +4672,11 @@
     "named": false
   },
   {
-    "type": "+",
+    "type": "**",
     "named": false
   },
   {
-    "type": "++",
+    "type": "+",
     "named": false
   },
   {
@@ -2331,19 +4692,51 @@
     "named": false
   },
   {
-    "type": "--",
-    "named": false
-  },
-  {
-    "type": "->",
-    "named": false
-  },
-  {
     "type": ".",
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "0x000",
+    "named": false
+  },
+  {
+    "type": "0x999",
+    "named": false
+  },
+  {
+    "type": "1",
+    "named": false
+  },
+  {
+    "type": "16",
+    "named": false
+  },
+  {
+    "type": "2",
+    "named": false
+  },
+  {
+    "type": "3",
+    "named": false
+  },
+  {
+    "type": "4",
+    "named": false
+  },
+  {
+    "type": "8",
+    "named": false
+  },
+  {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
@@ -2391,11 +4784,199 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
+    "type": "AU",
+    "named": false
+  },
+  {
+    "type": "Au",
+    "named": false
+  },
+  {
+    "type": "Eb",
+    "named": false
+  },
+  {
+    "type": "Ec",
+    "named": false
+  },
+  {
+    "type": "Ei",
+    "named": false
+  },
+  {
+    "type": "Ej",
+    "named": false
+  },
+  {
+    "type": "Ek",
+    "named": false
+  },
+  {
+    "type": "En",
+    "named": false
+  },
+  {
+    "type": "Eq",
+    "named": false
+  },
+  {
+    "type": "Es",
+    "named": false
+  },
+  {
+    "type": "Et",
+    "named": false
+  },
+  {
+    "type": "Ev",
+    "named": false
+  },
+  {
+    "type": "HN",
+    "named": false
+  },
+  {
+    "type": "IPv4",
+    "named": false
+  },
+  {
+    "type": "IPv6",
+    "named": false
+  },
+  {
+    "type": "K",
+    "named": false
+  },
+  {
     "type": "L'",
     "named": false
   },
   {
+    "type": "P",
+    "named": false
+  },
+  {
+    "type": "RAp",
+    "named": false
+  },
+  {
+    "type": "RAu",
+    "named": false
+  },
+  {
+    "type": "RAut",
+    "named": false
+  },
+  {
+    "type": "Ri",
+    "named": false
+  },
+  {
+    "type": "Rn",
+    "named": false
+  },
+  {
+    "type": "Rp",
+    "named": false
+  },
+  {
+    "type": "Ru",
+    "named": false
+  },
+  {
+    "type": "Rut",
+    "named": false
+  },
+  {
+    "type": "SCTP",
+    "named": false
+  },
+  {
+    "type": "Sm",
+    "named": false
+  },
+  {
+    "type": "Sn",
+    "named": false
+  },
+  {
+    "type": "TCP",
+    "named": false
+  },
+  {
+    "type": "TF",
+    "named": false
+  },
+  {
+    "type": "TLS",
+    "named": false
+  },
+  {
+    "type": "TS",
+    "named": false
+  },
+  {
+    "type": "TV",
+    "named": false
+  },
+  {
+    "type": "T_branch",
+    "named": false
+  },
+  {
+    "type": "T_branch_idx",
+    "named": false
+  },
+  {
+    "type": "T_inv",
+    "named": false
+  },
+  {
+    "type": "T_reply_ruid",
+    "named": false
+  },
+  {
+    "type": "T_req",
+    "named": false
+  },
+  {
+    "type": "T_rpl",
+    "named": false
+  },
+  {
+    "type": "Tb",
+    "named": false
+  },
+  {
+    "type": "Tf",
+    "named": false
+  },
+  {
+    "type": "Ts",
+    "named": false
+  },
+  {
+    "type": "U",
+    "named": false
+  },
+  {
     "type": "U'",
+    "named": false
+  },
+  {
+    "type": "UDP",
+    "named": false
+  },
+  {
+    "type": "WS",
+    "named": false
+  },
+  {
+    "type": "WSS",
     "named": false
   },
   {
@@ -2411,12 +4992,120 @@
     "named": false
   },
   {
+    "type": "_s",
+    "named": false
+  },
+  {
+    "type": "aU",
+    "named": false
+  },
+  {
+    "type": "aa",
+    "named": false
+  },
+  {
+    "type": "ac_si",
+    "named": false
+  },
+  {
+    "type": "ac_sp",
+    "named": false
+  },
+  {
+    "type": "aconid",
+    "named": false
+  },
+  {
+    "type": "active",
+    "named": false
+  },
+  {
+    "type": "ad",
+    "named": false
+  },
+  {
+    "type": "adu",
+    "named": false
+  },
+  {
+    "type": "af",
+    "named": false
+  },
+  {
+    "type": "ai",
+    "named": false
+  },
+  {
+    "type": "all",
+    "named": false
+  },
+  {
     "type": "and",
     "named": false
   },
   {
-    "type": "boolean_constant",
+    "type": "apasswd",
+    "named": false
+  },
+  {
+    "type": "ar",
+    "named": false
+  },
+  {
+    "type": "area",
+    "named": false
+  },
+  {
+    "type": "au",
+    "named": false
+  },
+  {
+    "type": "auser",
+    "named": false
+  },
+  {
+    "type": "authmethod",
+    "named": false
+  },
+  {
+    "type": "avp",
+    "named": false
+  },
+  {
+    "type": "bF",
+    "named": false
+  },
+  {
+    "type": "backward_call_indicator.charge_indicator",
+    "named": false
+  },
+  {
+    "type": "blitval",
+    "named": false
+  },
+  {
+    "type": "bm_diff_time",
     "named": true
+  },
+  {
+    "type": "body",
+    "named": false
+  },
+  {
+    "type": "body_len",
+    "named": false
+  },
+  {
+    "type": "br",
+    "named": false
+  },
+  {
+    "type": "branch",
+    "named": false
+  },
+  {
+    "type": "branch_index",
+    "named": false
   },
   {
     "type": "branch_route",
@@ -2427,11 +5116,87 @@
     "named": false
   },
   {
+    "type": "bs",
+    "named": false
+  },
+  {
+    "type": "buf",
+    "named": false
+  },
+  {
+    "type": "c:af",
+    "named": false
+  },
+  {
+    "type": "c:ip",
+    "named": false
+  },
+  {
+    "type": "cT",
+    "named": false
+  },
+  {
+    "type": "c_si",
+    "named": false
+  },
+  {
+    "type": "c_sp",
+    "named": false
+  },
+  {
+    "type": "called_party_number",
+    "named": false
+  },
+  {
+    "type": "called_party_number.nai",
+    "named": false
+  },
+  {
+    "type": "called_party_number.nature_of_address",
+    "named": false
+  },
+  {
+    "type": "callid",
+    "named": false
+  },
+  {
+    "type": "calling_party_category",
+    "named": false
+  },
+  {
+    "type": "calling_party_number",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.nai",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.nature_of_address",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.presentation",
+    "named": false
+  },
+  {
+    "type": "calling_party_number.screening",
+    "named": false
+  },
+  {
     "type": "case",
     "named": false
   },
   {
-    "type": "cfgengine",
+    "type": "cc",
+    "named": false
+  },
+  {
+    "type": "cctel",
+    "named": false
+  },
+  {
+    "type": "cfg",
     "named": false
   },
   {
@@ -2439,11 +5204,87 @@
     "named": true
   },
   {
+    "type": "ci",
+    "named": false
+  },
+  {
+    "type": "city",
+    "named": false
+  },
+  {
+    "type": "cl",
+    "named": false
+  },
+  {
+    "type": "cnt",
+    "named": false
+  },
+  {
+    "type": "cntvia",
+    "named": false
+  },
+  {
+    "type": "code",
+    "named": false
+  },
+  {
     "type": "comment_line",
     "named": true
   },
   {
+    "type": "conid",
+    "named": false
+  },
+  {
+    "type": "contact",
+    "named": false
+  },
+  {
+    "type": "contc",
+    "named": false
+  },
+  {
     "type": "continue",
+    "named": false
+  },
+  {
+    "type": "count",
+    "named": false
+  },
+  {
+    "type": "cpc",
+    "named": false
+  },
+  {
+    "type": "cs",
+    "named": false
+  },
+  {
+    "type": "csb",
+    "named": false
+  },
+  {
+    "type": "ct",
+    "named": false
+  },
+  {
+    "type": "cts",
+    "named": false
+  },
+  {
+    "type": "d",
+    "named": false
+  },
+  {
+    "type": "data",
+    "named": false
+  },
+  {
+    "type": "dd",
+    "named": false
+  },
+  {
+    "type": "def",
     "named": false
   },
   {
@@ -2451,11 +5292,11 @@
     "named": false
   },
   {
-    "type": "define",
+    "type": "defined",
     "named": false
   },
   {
-    "type": "defined",
+    "type": "defn",
     "named": false
   },
   {
@@ -2463,7 +5304,111 @@
     "named": true
   },
   {
+    "type": "dflags",
+    "named": false
+  },
+  {
+    "type": "dhost",
+    "named": false
+  },
+  {
+    "type": "di",
+    "named": false
+  },
+  {
+    "type": "dic",
+    "named": false
+  },
+  {
+    "type": "dip",
+    "named": false
+  },
+  {
+    "type": "dir",
+    "named": false
+  },
+  {
+    "type": "dlg",
+    "named": false
+  },
+  {
+    "type": "dlg_ctx",
+    "named": false
+  },
+  {
+    "type": "dlg_var",
+    "named": false
+  },
+  {
+    "type": "dma",
+    "named": false
+  },
+  {
+    "type": "dns",
+    "named": false
+  },
+  {
+    "type": "dp",
+    "named": false
+  },
+  {
+    "type": "dport",
+    "named": false
+  },
+  {
+    "type": "dproto",
+    "named": false
+  },
+  {
+    "type": "dprotoid",
+    "named": false
+  },
+  {
     "type": "drop",
+    "named": false
+  },
+  {
+    "type": "ds",
+    "named": false
+  },
+  {
+    "type": "dsg",
+    "named": false
+  },
+  {
+    "type": "dst_addr",
+    "named": false
+  },
+  {
+    "type": "dst_host",
+    "named": false
+  },
+  {
+    "type": "dst_hostip",
+    "named": false
+  },
+  {
+    "type": "dst_ip",
+    "named": false
+  },
+  {
+    "type": "dst_port",
+    "named": false
+  },
+  {
+    "type": "dst_proto",
+    "named": false
+  },
+  {
+    "type": "dsv",
+    "named": false
+  },
+  {
+    "type": "du",
+    "named": false
+  },
+  {
+    "type": "duri",
     "named": false
   },
   {
@@ -2471,15 +5416,107 @@
     "named": false
   },
   {
+    "type": "env",
+    "named": false
+  },
+  {
+    "type": "eqvalue",
+    "named": false
+  },
+  {
+    "type": "erl_atom",
+    "named": false
+  },
+  {
+    "type": "erl_list",
+    "named": false
+  },
+  {
+    "type": "erl_pid",
+    "named": false
+  },
+  {
+    "type": "erl_ref",
+    "named": false
+  },
+  {
+    "type": "erl_tuple",
+    "named": false
+  },
+  {
+    "type": "erl_xbuff",
+    "named": false
+  },
+  {
+    "type": "error",
+    "named": false
+  },
+  {
     "type": "escape_sequence",
     "named": true
+  },
+  {
+    "type": "evapi(conidx)",
+    "named": false
+  },
+  {
+    "type": "evapi(msg)",
+    "named": false
+  },
+  {
+    "type": "evapi(srcaddr)",
+    "named": false
+  },
+  {
+    "type": "evapi(srcport)",
+    "named": false
+  },
+  {
+    "type": "evcode",
+    "named": false
+  },
+  {
+    "type": "event_info",
+    "named": false
   },
   {
     "type": "event_route",
     "named": false
   },
   {
+    "type": "evparam",
+    "named": false
+  },
+  {
+    "type": "evr",
+    "named": false
+  },
+  {
+    "type": "evroute",
+    "named": false
+  },
+  {
+    "type": "evtype",
+    "named": false
+  },
+  {
     "type": "exit",
+    "named": false
+  },
+  {
+    "type": "expires",
+    "named": false
+  },
+  {
+    "type": "f",
+    "named": false
+  },
+  {
+    "type": "fU",
+    "named": false
+  },
+  {
+    "type": "fUl",
     "named": false
   },
   {
@@ -2491,12 +5528,228 @@
     "named": true
   },
   {
+    "type": "fd",
+    "named": false
+  },
+  {
     "type": "field_identifier",
     "named": true
   },
   {
+    "type": "file",
+    "named": false
+  },
+  {
+    "type": "flags",
+    "named": false
+  },
+  {
+    "type": "fline",
+    "named": false
+  },
+  {
+    "type": "fn",
+    "named": false
+  },
+  {
+    "type": "format",
+    "named": false
+  },
+  {
+    "type": "fpart",
+    "named": false
+  },
+  {
+    "type": "from",
+    "named": false
+  },
+  {
+    "type": "from_bindaddr",
+    "named": false
+  },
+  {
+    "type": "from_contact",
+    "named": false
+  },
+  {
+    "type": "from_cseq",
+    "named": false
+  },
+  {
+    "type": "from_rs",
+    "named": false
+  },
+  {
+    "type": "from_tag",
+    "named": false
+  },
+  {
+    "type": "from_uri",
+    "named": false
+  },
+  {
+    "type": "fs",
+    "named": false
+  },
+  {
+    "type": "fsn",
+    "named": false
+  },
+  {
+    "type": "ft",
+    "named": false
+  },
+  {
+    "type": "fti",
+    "named": false
+  },
+  {
+    "type": "fu",
+    "named": false
+  },
+  {
+    "type": "furi",
+    "named": false
+  },
+  {
+    "type": "general_transformation",
+    "named": true
+  },
+  {
+    "type": "generic_number",
+    "named": false
+  },
+  {
+    "type": "generic_number.nai",
+    "named": false
+  },
+  {
+    "type": "gip2",
+    "named": false
+  },
+  {
+    "type": "h_entry",
+    "named": false
+  },
+  {
+    "type": "h_id",
+    "named": false
+  },
+  {
+    "type": "hdr",
+    "named": false
+  },
+  {
+    "type": "hdrc",
+    "named": false
+  },
+  {
+    "type": "hdrs",
+    "named": false
+  },
+  {
+    "type": "hep",
+    "named": false
+  },
+  {
+    "type": "hfitbody",
+    "named": false
+  },
+  {
+    "type": "hfitname",
+    "named": false
+  },
+  {
+    "type": "hfl",
+    "named": false
+  },
+  {
+    "type": "hlfc",
+    "named": false
+  },
+  {
+    "type": "host",
+    "named": false
+  },
+  {
+    "type": "hour",
+    "named": false
+  },
+  {
+    "type": "http_bs",
+    "named": false
+  },
+  {
+    "type": "http_err",
+    "named": false
+  },
+  {
+    "type": "http_hdr",
+    "named": false
+  },
+  {
+    "type": "http_mb",
+    "named": false
+  },
+  {
+    "type": "http_ml",
+    "named": false
+  },
+  {
+    "type": "http_ok",
+    "named": false
+  },
+  {
+    "type": "http_rb",
+    "named": false
+  },
+  {
+    "type": "http_req",
+    "named": false
+  },
+  {
+    "type": "http_req_id",
+    "named": true
+  },
+  {
+    "type": "http_rr",
+    "named": false
+  },
+  {
+    "type": "http_rs",
+    "named": false
+  },
+  {
+    "type": "i",
+    "named": false
+  },
+  {
+    "type": "i:",
+    "named": false
+  },
+  {
+    "type": "id_index",
+    "named": false
+  },
+  {
+    "type": "id_index_n",
+    "named": false
+  },
+  {
+    "type": "id_label",
+    "named": false
+  },
+  {
+    "type": "id_label_n",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "idx",
+    "named": false
   },
   {
     "type": "if",
@@ -2507,15 +5760,67 @@
     "named": false
   },
   {
+    "type": "inactive",
+    "named": false
+  },
+  {
     "type": "include_file",
     "named": false
   },
   {
-    "type": "json",
+    "type": "info",
+    "named": false
+  },
+  {
+    "type": "ipe",
+    "named": false
+  },
+  {
+    "type": "ips",
+    "named": false
+  },
+  {
+    "type": "isdst",
+    "named": false
+  },
+  {
+    "type": "json_transformation",
+    "named": true
+  },
+  {
+    "type": "jsonrpl",
+    "named": false
+  },
+  {
+    "type": "lat",
+    "named": false
+  },
+  {
+    "type": "len",
+    "named": false
+  },
+  {
+    "type": "length",
+    "named": false
+  },
+  {
+    "type": "lifetime",
     "named": false
   },
   {
     "type": "line",
+    "named": false
+  },
+  {
+    "type": "line.at",
+    "named": false
+  },
+  {
+    "type": "line.count",
+    "named": false
+  },
+  {
+    "type": "line.sw",
     "named": false
   },
   {
@@ -2527,6 +5832,102 @@
     "named": false
   },
   {
+    "type": "loadpath",
+    "named": false
+  },
+  {
+    "type": "lon",
+    "named": false
+  },
+  {
+    "type": "lpart",
+    "named": false
+  },
+  {
+    "type": "ltype",
+    "named": false
+  },
+  {
+    "type": "m0:b:AS",
+    "named": false
+  },
+  {
+    "type": "m0:b:RR",
+    "named": false
+  },
+  {
+    "type": "m0:b:RS",
+    "named": false
+  },
+  {
+    "type": "m0:raw",
+    "named": false
+  },
+  {
+    "type": "m0:rtcp:port",
+    "named": false
+  },
+  {
+    "type": "m0:rtp:port",
+    "named": false
+  },
+  {
+    "type": "mF",
+    "named": false
+  },
+  {
+    "type": "m_issuer_line",
+    "named": false
+  },
+  {
+    "type": "m_subject_line",
+    "named": false
+  },
+  {
+    "type": "max",
+    "named": false
+  },
+  {
+    "type": "mb",
+    "named": false
+  },
+  {
+    "type": "mbu",
+    "named": false
+  },
+  {
+    "type": "mcdec",
+    "named": false
+  },
+  {
+    "type": "mcinc",
+    "named": false
+  },
+  {
+    "type": "mday",
+    "named": false
+  },
+  {
+    "type": "method",
+    "named": false
+  },
+  {
+    "type": "metro",
+    "named": false
+  },
+  {
+    "type": "mf",
+    "named": false
+  },
+  {
+    "type": "mi",
+    "named": false
+  },
+  {
+    "type": "min",
+    "named": false
+  },
+  {
     "type": "modparam",
     "named": false
   },
@@ -2535,7 +5936,59 @@
     "named": false
   },
   {
-    "type": "msrpuri",
+    "type": "mon",
+    "named": false
+  },
+  {
+    "type": "mqk",
+    "named": false
+  },
+  {
+    "type": "mqv",
+    "named": false
+  },
+  {
+    "type": "msg",
+    "named": false
+  },
+  {
+    "type": "msgbuf",
+    "named": false
+  },
+  {
+    "type": "msrp",
+    "named": false
+  },
+  {
+    "type": "msrpuri.host",
+    "named": false
+  },
+  {
+    "type": "msrpuri.params",
+    "named": false
+  },
+  {
+    "type": "msrpuri.port",
+    "named": false
+  },
+  {
+    "type": "msrpuri.proto",
+    "named": false
+  },
+  {
+    "type": "msrpuri.session",
+    "named": false
+  },
+  {
+    "type": "msrpuri.user",
+    "named": false
+  },
+  {
+    "type": "msrpuri.userinfo",
+    "named": false
+  },
+  {
+    "type": "mt",
     "named": false
   },
   {
@@ -2543,7 +5996,35 @@
     "named": true
   },
   {
-    "type": "nameaddr",
+    "type": "n",
+    "named": false
+  },
+  {
+    "type": "name",
+    "named": false
+  },
+  {
+    "type": "nameaddr.len",
+    "named": false
+  },
+  {
+    "type": "nameaddr.name",
+    "named": false
+  },
+  {
+    "type": "nameaddr.uri",
+    "named": false
+  },
+  {
+    "type": "ndesc",
+    "named": false
+  },
+  {
+    "type": "nh",
+    "named": false
+  },
+  {
+    "type": "normalized",
     "named": false
   },
   {
@@ -2551,8 +6032,56 @@
     "named": false
   },
   {
+    "type": "number",
+    "named": false
+  },
+  {
     "type": "number_literal",
     "named": true
+  },
+  {
+    "type": "o:ip",
+    "named": false
+  },
+  {
+    "type": "oP",
+    "named": false
+  },
+  {
+    "type": "oU",
+    "named": false
+  },
+  {
+    "type": "oUl",
+    "named": false
+  },
+  {
+    "type": "oc",
+    "named": false
+  },
+  {
+    "type": "ocalgo",
+    "named": false
+  },
+  {
+    "type": "ocseq",
+    "named": false
+  },
+  {
+    "type": "ocval",
+    "named": false
+  },
+  {
+    "type": "ocvalidity",
+    "named": false
+  },
+  {
+    "type": "od",
+    "named": false
+  },
+  {
+    "type": "on",
+    "named": false
   },
   {
     "type": "onreply_route",
@@ -2567,7 +6096,99 @@
     "named": false
   },
   {
-    "type": "param",
+    "type": "original_called_number",
+    "named": false
+  },
+  {
+    "type": "original_called_number.nai",
+    "named": false
+  },
+  {
+    "type": "ou",
+    "named": false
+  },
+  {
+    "type": "ouri",
+    "named": false
+  },
+  {
+    "type": "p",
+    "named": false
+  },
+  {
+    "type": "pU",
+    "named": false
+  },
+  {
+    "type": "p_issuer_line",
+    "named": false
+  },
+  {
+    "type": "p_subject_line",
+    "named": false
+  },
+  {
+    "type": "pactive",
+    "named": false
+  },
+  {
+    "type": "param.count",
+    "named": false
+  },
+  {
+    "type": "param.in",
+    "named": false
+  },
+  {
+    "type": "param.name",
+    "named": false
+  },
+  {
+    "type": "param.value",
+    "named": false
+  },
+  {
+    "type": "param.valueat",
+    "named": false
+  },
+  {
+    "type": "params",
+    "named": false
+  },
+  {
+    "type": "password",
+    "named": false
+  },
+  {
+    "type": "pd",
+    "named": false
+  },
+  {
+    "type": "phn",
+    "named": false
+  },
+  {
+    "type": "pinactive",
+    "named": false
+  },
+  {
+    "type": "pn",
+    "named": false
+  },
+  {
+    "type": "pop",
+    "named": false
+  },
+  {
+    "type": "port",
+    "named": false
+  },
+  {
+    "type": "pp",
+    "named": false
+  },
+  {
+    "type": "pr",
     "named": false
   },
   {
@@ -2575,7 +6196,143 @@
     "named": true
   },
   {
+    "type": "prid",
+    "named": false
+  },
+  {
+    "type": "proto",
+    "named": false
+  },
+  {
+    "type": "protoid",
+    "named": false
+  },
+  {
+    "type": "pu",
+    "named": false
+  },
+  {
+    "type": "rP",
+    "named": false
+  },
+  {
+    "type": "rU",
+    "named": false
+  },
+  {
+    "type": "rUl",
+    "named": false
+  },
+  {
+    "type": "random",
+    "named": true
+  },
+  {
+    "type": "raw",
+    "named": false
+  },
+  {
+    "type": "rb",
+    "named": false
+  },
+  {
+    "type": "rc",
+    "named": false
+  },
+  {
+    "type": "rcv",
+    "named": false
+  },
+  {
+    "type": "rcvip",
+    "named": false
+  },
+  {
+    "type": "rcvport",
+    "named": false
+  },
+  {
+    "type": "rd",
+    "named": false
+  },
+  {
+    "type": "rdir",
+    "named": false
+  },
+  {
     "type": "re",
+    "named": false
+  },
+  {
+    "type": "re.subst",
+    "named": false
+  },
+  {
+    "type": "received",
+    "named": false
+  },
+  {
+    "type": "redirecting_number",
+    "named": false
+  },
+  {
+    "type": "redirecting_number.nai",
+    "named": false
+  },
+  {
+    "type": "redirection_info",
+    "named": false
+  },
+  {
+    "type": "redirection_number",
+    "named": false
+  },
+  {
+    "type": "redirection_number.nai",
+    "named": false
+  },
+  {
+    "type": "redis",
+    "named": false
+  },
+  {
+    "type": "redisd",
+    "named": false
+  },
+  {
+    "type": "ref",
+    "named": false
+  },
+  {
+    "type": "regc",
+    "named": false
+  },
+  {
+    "type": "regex_flags",
+    "named": true
+  },
+  {
+    "type": "regex_pattern",
+    "named": true
+  },
+  {
+    "type": "regex_replacement",
+    "named": true
+  },
+  {
+    "type": "regn",
+    "named": false
+  },
+  {
+    "type": "reply_code",
+    "named": false
+  },
+  {
+    "type": "reply_last",
+    "named": false
+  },
+  {
+    "type": "reply_reason",
     "named": false
   },
   {
@@ -2583,7 +6340,19 @@
     "named": false
   },
   {
+    "type": "reply_type",
+    "named": false
+  },
+  {
     "type": "request_route",
+    "named": false
+  },
+  {
+    "type": "ret",
+    "named": false
+  },
+  {
+    "type": "retcode",
     "named": false
   },
   {
@@ -2591,7 +6360,95 @@
     "named": false
   },
   {
+    "type": "rm",
+    "named": false
+  },
+  {
+    "type": "rmid",
+    "named": false
+  },
+  {
     "type": "route",
+    "named": false
+  },
+  {
+    "type": "route_uri",
+    "named": false
+  },
+  {
+    "type": "rp",
+    "named": false
+  },
+  {
+    "type": "rpl",
+    "named": false
+  },
+  {
+    "type": "rpl_arr",
+    "named": false
+  },
+  {
+    "type": "rpl_err",
+    "named": false
+  },
+  {
+    "type": "rpl_int",
+    "named": false
+  },
+  {
+    "type": "rpl_nil",
+    "named": false
+  },
+  {
+    "type": "rpl_str",
+    "named": false
+  },
+  {
+    "type": "rpl_sts",
+    "named": false
+  },
+  {
+    "type": "rport",
+    "named": false
+  },
+  {
+    "type": "rr",
+    "named": false
+  },
+  {
+    "type": "rr_count",
+    "named": false
+  },
+  {
+    "type": "rr_top_count",
+    "named": false
+  },
+  {
+    "type": "rs",
+    "named": false
+  },
+  {
+    "type": "rt",
+    "named": false
+  },
+  {
+    "type": "ru",
+    "named": false
+  },
+  {
+    "type": "ruid",
+    "named": false
+  },
+  {
+    "type": "ruri",
+    "named": false
+  },
+  {
+    "type": "rv",
+    "named": false
+  },
+  {
+    "type": "rz",
     "named": false
   },
   {
@@ -2599,11 +6456,423 @@
     "named": false
   },
   {
-    "type": "sip_keywords",
-    "named": true
+    "type": "s.after",
+    "named": false
+  },
+  {
+    "type": "s.before",
+    "named": false
+  },
+  {
+    "type": "s.corehash",
+    "named": false
+  },
+  {
+    "type": "s.count",
+    "named": false
+  },
+  {
+    "type": "s.decode.7bit",
+    "named": false
+  },
+  {
+    "type": "s.decode.base64",
+    "named": false
+  },
+  {
+    "type": "s.decode.base64t",
+    "named": false
+  },
+  {
+    "type": "s.decode.base64url",
+    "named": false
+  },
+  {
+    "type": "s.decode.base64urlt",
+    "named": false
+  },
+  {
+    "type": "s.decode.hexa",
+    "named": false
+  },
+  {
+    "type": "s.encode.7bit",
+    "named": false
+  },
+  {
+    "type": "s.encode.base58",
+    "named": false
+  },
+  {
+    "type": "s.encode.base64",
+    "named": false
+  },
+  {
+    "type": "s.encode.base64t",
+    "named": false
+  },
+  {
+    "type": "s.encode.base64url",
+    "named": false
+  },
+  {
+    "type": "s.encode.base64urlt",
+    "named": false
+  },
+  {
+    "type": "s.encode.hexa",
+    "named": false
+  },
+  {
+    "type": "s.escape.common",
+    "named": false
+  },
+  {
+    "type": "s.escape.param",
+    "named": false
+  },
+  {
+    "type": "s.escape.user",
+    "named": false
+  },
+  {
+    "type": "s.escape_csv",
+    "named": false
+  },
+  {
+    "type": "s.fmtlines",
+    "named": false
+  },
+  {
+    "type": "s.fmtlinet",
+    "named": false
+  },
+  {
+    "type": "s.ftime",
+    "named": false
+  },
+  {
+    "type": "s.int",
+    "named": false
+  },
+  {
+    "type": "s.len",
+    "named": false
+  },
+  {
+    "type": "s.ltrim",
+    "named": false
+  },
+  {
+    "type": "s.md5",
+    "named": false
+  },
+  {
+    "type": "s.numeric",
+    "named": false
+  },
+  {
+    "type": "s.prefixes",
+    "named": false
+  },
+  {
+    "type": "s.prefixes.quoted",
+    "named": false
+  },
+  {
+    "type": "s.rafter",
+    "named": false
+  },
+  {
+    "type": "s.rbefore",
+    "named": false
+  },
+  {
+    "type": "s.replace",
+    "named": false
+  },
+  {
+    "type": "s.rm",
+    "named": false
+  },
+  {
+    "type": "s.rmhdws",
+    "named": false
+  },
+  {
+    "type": "s.rmhlws",
+    "named": false
+  },
+  {
+    "type": "s.rmws",
+    "named": false
+  },
+  {
+    "type": "s.rtrim",
+    "named": false
+  },
+  {
+    "type": "s.select",
+    "named": false
+  },
+  {
+    "type": "s.sha256",
+    "named": false
+  },
+  {
+    "type": "s.sha384",
+    "named": false
+  },
+  {
+    "type": "s.sha512",
+    "named": false
+  },
+  {
+    "type": "s.strip",
+    "named": false
+  },
+  {
+    "type": "s.striptail",
+    "named": false
+  },
+  {
+    "type": "s.substr",
+    "named": false
+  },
+  {
+    "type": "s.tolower",
+    "named": false
+  },
+  {
+    "type": "s.toupper",
+    "named": false
+  },
+  {
+    "type": "s.trim",
+    "named": false
+  },
+  {
+    "type": "s.unbracket",
+    "named": false
+  },
+  {
+    "type": "s.unescape.common",
+    "named": false
+  },
+  {
+    "type": "s.unescape.param",
+    "named": false
+  },
+  {
+    "type": "s.unescape.user",
+    "named": false
+  },
+  {
+    "type": "s.unquote",
+    "named": false
+  },
+  {
+    "type": "s.urldecode.param",
+    "named": false
+  },
+  {
+    "type": "s.urlencode.param",
+    "named": false
+  },
+  {
+    "type": "s:",
+    "named": false
+  },
+  {
+    "type": "sF",
+    "named": false
+  },
+  {
+    "type": "sas",
+    "named": false
+  },
+  {
+    "type": "sbranch",
+    "named": false
+  },
+  {
+    "type": "scrport",
+    "named": false
+  },
+  {
+    "type": "sdp",
+    "named": false
+  },
+  {
+    "type": "sec",
+    "named": false
+  },
+  {
+    "type": "secsipid",
+    "named": false
+  },
+  {
+    "type": "sel",
+    "named": false
+  },
+  {
+    "type": "sess-version",
+    "named": false
+  },
+  {
+    "type": "sess_version",
+    "named": false
+  },
+  {
+    "type": "set",
+    "named": false
+  },
+  {
+    "type": "sflags",
+    "named": false
+  },
+  {
+    "type": "sht",
+    "named": false
+  },
+  {
+    "type": "shtcn",
+    "named": false
+  },
+  {
+    "type": "shtcv",
+    "named": false
+  },
+  {
+    "type": "shtdec",
+    "named": false
+  },
+  {
+    "type": "shtex",
+    "named": false
+  },
+  {
+    "type": "shtinc",
+    "named": false
+  },
+  {
+    "type": "shtitkey",
+    "named": false
+  },
+  {
+    "type": "shtitval",
+    "named": false
+  },
+  {
+    "type": "shtrecord",
+    "named": false
+  },
+  {
+    "type": "shv",
+    "named": false
+  },
+  {
+    "type": "si",
+    "named": false
+  },
+  {
+    "type": "sid",
+    "named": false
+  },
+  {
+    "type": "sipt",
+    "named": false
+  },
+  {
+    "type": "sipt_called_party_nai",
+    "named": false
+  },
+  {
+    "type": "sipt_calling_party_nai",
+    "named": false
+  },
+  {
+    "type": "sipt_cpc",
+    "named": false
+  },
+  {
+    "type": "sipt_hop_counter",
+    "named": false
+  },
+  {
+    "type": "sipt_presentation",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_info",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_information_original_reason",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_information_reason",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_number",
+    "named": false
+  },
+  {
+    "type": "sipt_redirection_number_nai",
+    "named": false
+  },
+  {
+    "type": "sipt_screening",
+    "named": false
+  },
+  {
+    "type": "siz",
+    "named": false
+  },
+  {
+    "type": "size",
+    "named": false
+  },
+  {
+    "type": "sn",
+    "named": false
+  },
+  {
+    "type": "snd",
+    "named": false
+  },
+  {
+    "type": "sndfrom",
+    "named": false
+  },
+  {
+    "type": "sndto",
+    "named": false
   },
   {
     "type": "sock",
+    "named": false
+  },
+  {
+    "type": "sock.host",
+    "named": false
+  },
+  {
+    "type": "sock.port",
+    "named": false
+  },
+  {
+    "type": "sock.proto",
+    "named": false
+  },
+  {
+    "type": "sock.touri",
+    "named": false
+  },
+  {
+    "type": "sp",
     "named": false
   },
   {
@@ -2611,7 +6880,71 @@
     "named": true
   },
   {
-    "type": "sql",
+    "type": "sproto",
+    "named": false
+  },
+  {
+    "type": "sql.val",
+    "named": false
+  },
+  {
+    "type": "sql.val.int",
+    "named": false
+  },
+  {
+    "type": "sql.val.str",
+    "named": false
+  },
+  {
+    "type": "src_addr",
+    "named": false
+  },
+  {
+    "type": "src_host",
+    "named": false
+  },
+  {
+    "type": "src_hostip",
+    "named": false
+  },
+  {
+    "type": "src_ip",
+    "named": false
+  },
+  {
+    "type": "src_port",
+    "named": false
+  },
+  {
+    "type": "src_proto",
+    "named": false
+  },
+  {
+    "type": "srcip",
+    "named": false
+  },
+  {
+    "type": "srcport",
+    "named": false
+  },
+  {
+    "type": "srcportno",
+    "named": false
+  },
+  {
+    "type": "sruid",
+    "named": true
+  },
+  {
+    "type": "start_ts",
+    "named": false
+  },
+  {
+    "type": "stat",
+    "named": false
+  },
+  {
+    "type": "state",
     "named": false
   },
   {
@@ -2619,11 +6952,387 @@
     "named": true
   },
   {
+    "type": "su",
+    "named": false
+  },
+  {
+    "type": "subscription",
+    "named": true
+  },
+  {
+    "type": "suspend",
+    "named": false
+  },
+  {
+    "type": "sut",
+    "named": false
+  },
+  {
     "type": "switch",
     "named": false
   },
   {
-    "type": "tobody",
+    "type": "sys",
+    "named": false
+  },
+  {
+    "type": "tU",
+    "named": false
+  },
+  {
+    "type": "tUl",
+    "named": false
+  },
+  {
+    "type": "tag",
+    "named": false
+  },
+  {
+    "type": "tcp_ka_idle",
+    "named": false
+  },
+  {
+    "type": "tcp_ka_interval",
+    "named": false
+  },
+  {
+    "type": "tcp_keepalive",
+    "named": false
+  },
+  {
+    "type": "tcpops",
+    "named": false
+  },
+  {
+    "type": "td",
+    "named": false
+  },
+  {
+    "type": "text",
+    "named": false
+  },
+  {
+    "type": "time",
+    "named": false
+  },
+  {
+    "type": "timeout",
+    "named": false
+  },
+  {
+    "type": "timeout_bye",
+    "named": false
+  },
+  {
+    "type": "timeout_route",
+    "named": false
+  },
+  {
+    "type": "timeout_route_id",
+    "named": false
+  },
+  {
+    "type": "tls",
+    "named": false
+  },
+  {
+    "type": "tls_ca_path",
+    "named": false
+  },
+  {
+    "type": "tls_cipher_bits",
+    "named": false
+  },
+  {
+    "type": "tls_cipher_info",
+    "named": false
+  },
+  {
+    "type": "tls_client_cert",
+    "named": false
+  },
+  {
+    "type": "tls_client_key",
+    "named": false
+  },
+  {
+    "type": "tls_description",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_cn",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_country",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_locality",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_organization",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_state",
+    "named": false
+  },
+  {
+    "type": "tls_my_issuer_unit",
+    "named": false
+  },
+  {
+    "type": "tls_my_raw_cert",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_email",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_hostname",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_ip",
+    "named": false
+  },
+  {
+    "type": "tls_my_san_uri",
+    "named": false
+  },
+  {
+    "type": "tls_my_serial",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_cn",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_country",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_locality",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_organization",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_state",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_uid",
+    "named": false
+  },
+  {
+    "type": "tls_my_subject_unit",
+    "named": false
+  },
+  {
+    "type": "tls_my_urlencoded_cert",
+    "named": false
+  },
+  {
+    "type": "tls_my_version",
+    "named": false
+  },
+  {
+    "type": "tls_peer_expired",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_cn",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_country",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_locality",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_organization",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_state",
+    "named": false
+  },
+  {
+    "type": "tls_peer_issuer_unit",
+    "named": false
+  },
+  {
+    "type": "tls_peer_notAfter",
+    "named": false
+  },
+  {
+    "type": "tls_peer_notBefore",
+    "named": false
+  },
+  {
+    "type": "tls_peer_raw_cert",
+    "named": false
+  },
+  {
+    "type": "tls_peer_revoked",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_email",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_hostname",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_ip",
+    "named": false
+  },
+  {
+    "type": "tls_peer_san_uri",
+    "named": false
+  },
+  {
+    "type": "tls_peer_selfsigned",
+    "named": false
+  },
+  {
+    "type": "tls_peer_serial",
+    "named": false
+  },
+  {
+    "type": "tls_peer_server_name",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_cn",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_country",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_locality",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_organization",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_state",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_uid",
+    "named": false
+  },
+  {
+    "type": "tls_peer_subject_unit",
+    "named": false
+  },
+  {
+    "type": "tls_peer_urlencoded_cert",
+    "named": false
+  },
+  {
+    "type": "tls_peer_verified",
+    "named": false
+  },
+  {
+    "type": "tls_peer_version",
+    "named": false
+  },
+  {
+    "type": "tls_version",
+    "named": false
+  },
+  {
+    "type": "tn",
+    "named": false
+  },
+  {
+    "type": "to",
+    "named": false
+  },
+  {
+    "type": "to_bindaddr",
+    "named": false
+  },
+  {
+    "type": "to_contact",
+    "named": false
+  },
+  {
+    "type": "to_cseq",
+    "named": false
+  },
+  {
+    "type": "to_rs",
+    "named": false
+  },
+  {
+    "type": "to_tag",
+    "named": false
+  },
+  {
+    "type": "to_uri",
+    "named": false
+  },
+  {
+    "type": "tobody.display",
+    "named": false
+  },
+  {
+    "type": "tobody.host",
+    "named": false
+  },
+  {
+    "type": "tobody.params",
+    "named": false
+  },
+  {
+    "type": "tobody.tag",
+    "named": false
+  },
+  {
+    "type": "tobody.uri",
+    "named": false
+  },
+  {
+    "type": "tobody.user",
+    "named": false
+  },
+  {
+    "type": "toroute",
     "named": false
   },
   {
@@ -2631,8 +7340,36 @@
     "named": true
   },
   {
+    "type": "tt",
+    "named": false
+  },
+  {
+    "type": "tti",
+    "named": false
+  },
+  {
+    "type": "tu",
+    "named": false
+  },
+  {
+    "type": "turi",
+    "named": false
+  },
+  {
+    "type": "type",
+    "named": false
+  },
+  {
     "type": "type_identifier",
     "named": true
+  },
+  {
+    "type": "tz",
+    "named": false
+  },
+  {
+    "type": "u",
+    "named": false
   },
   {
     "type": "u'",
@@ -2643,15 +7380,123 @@
     "named": false
   },
   {
-    "type": "uri",
+    "type": "ua",
     "named": false
   },
   {
-    "type": "urialias",
+    "type": "uac_req",
     "named": false
   },
   {
-    "type": "url",
+    "type": "ulc",
+    "named": false
+  },
+  {
+    "type": "un",
+    "named": false
+  },
+  {
+    "type": "uri.duri",
+    "named": false
+  },
+  {
+    "type": "uri.headers",
+    "named": false
+  },
+  {
+    "type": "uri.host",
+    "named": false
+  },
+  {
+    "type": "uri.lr",
+    "named": false
+  },
+  {
+    "type": "uri.maddr",
+    "named": false
+  },
+  {
+    "type": "uri.method",
+    "named": false
+  },
+  {
+    "type": "uri.param",
+    "named": false
+  },
+  {
+    "type": "uri.params",
+    "named": false
+  },
+  {
+    "type": "uri.passwd",
+    "named": false
+  },
+  {
+    "type": "uri.port",
+    "named": false
+  },
+  {
+    "type": "uri.r2",
+    "named": false
+  },
+  {
+    "type": "uri.saor",
+    "named": false
+  },
+  {
+    "type": "uri.scheme",
+    "named": false
+  },
+  {
+    "type": "uri.suri",
+    "named": false
+  },
+  {
+    "type": "uri.tosocket",
+    "named": false
+  },
+  {
+    "type": "uri.transport",
+    "named": false
+  },
+  {
+    "type": "uri.ttl",
+    "named": false
+  },
+  {
+    "type": "uri.uparam",
+    "named": false
+  },
+  {
+    "type": "uri.user",
+    "named": false
+  },
+  {
+    "type": "urialias.decode",
+    "named": false
+  },
+  {
+    "type": "urialias.encode",
+    "named": false
+  },
+  {
+    "type": "url.path",
+    "named": false
+  },
+  {
+    "type": "url.querystring",
+    "named": false
+  },
+  {
+    "type": "username",
+    "named": false
+  },
+  {
+    "type": "utime",
+    "named": false
+  },
+  {
+    "type": "utimef",
     "named": false
   },
   {
@@ -2659,7 +7504,155 @@
     "named": false
   },
   {
+    "type": "val.json",
+    "named": false
+  },
+  {
+    "type": "val.jsonqe",
+    "named": false
+  },
+  {
+    "type": "val.n0",
+    "named": false
+  },
+  {
+    "type": "val.ne",
+    "named": false
+  },
+  {
+    "type": "valid",
+    "named": false
+  },
+  {
+    "type": "value",
+    "named": false
+  },
+  {
+    "type": "var",
+    "named": false
+  },
+  {
+    "type": "version",
+    "named": false
+  },
+  {
+    "type": "via",
+    "named": false
+  },
+  {
+    "type": "via0",
+    "named": false
+  },
+  {
+    "type": "via1",
+    "named": false
+  },
+  {
+    "type": "viaZ",
+    "named": false
+  },
+  {
+    "type": "vn",
+    "named": false
+  },
+  {
+    "type": "vz",
+    "named": false
+  },
+  {
+    "type": "wday",
+    "named": false
+  },
+  {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "x_fU",
+    "named": false
+  },
+  {
+    "type": "x_fd",
+    "named": false
+  },
+  {
+    "type": "x_fn",
+    "named": false
+  },
+  {
+    "type": "x_ft",
+    "named": false
+  },
+  {
+    "type": "x_fu",
+    "named": false
+  },
+  {
+    "type": "x_hdr",
+    "named": false
+  },
+  {
+    "type": "x_rr",
+    "named": false
+  },
+  {
+    "type": "x_rs",
+    "named": false
+  },
+  {
+    "type": "x_tU",
+    "named": false
+  },
+  {
+    "type": "x_td",
+    "named": false
+  },
+  {
+    "type": "x_tn",
+    "named": false
+  },
+  {
+    "type": "x_tt",
+    "named": false
+  },
+  {
+    "type": "x_tu",
+    "named": false
+  },
+  {
+    "type": "xavi",
+    "named": false
+  },
+  {
+    "type": "xavp",
+    "named": false
+  },
+  {
+    "type": "xavu",
+    "named": false
+  },
+  {
+    "type": "xhttp",
+    "named": true
+  },
+  {
+    "type": "xlmrpc",
+    "named": false
+  },
+  {
+    "type": "xml",
+    "named": false
+  },
+  {
+    "type": "yday",
+    "named": false
+  },
+  {
+    "type": "year",
+    "named": false
+  },
+  {
+    "type": "zip",
     "named": false
   },
   {
@@ -2680,6 +7673,14 @@
   },
   {
     "type": "~",
+    "named": false
+  },
+  {
+    "type": "~%",
+    "named": false
+  },
+  {
+    "type": "~~",
     "named": false
   }
 ]

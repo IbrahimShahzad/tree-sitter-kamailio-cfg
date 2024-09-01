@@ -1,4 +1,4 @@
-
+(file_starter) @module
 (comment) @comment
 
 (preproc_def
@@ -12,6 +12,7 @@
 (preproc_trydef
   (preproc_arg) @variable.parameter)
 (preproc_ifdef) @keyword.directive
+(preproc_ifndef) @keyword.directive
 (preproc_trydef) @keyword.directive.define
 (preproc_def) @keyword.directive.define
 (include_file
@@ -20,43 +21,57 @@
   file_name: (string) @string.special.path) @keyword.directive
 (route_call) @function
 
+(regex_pattern) @string.regexp
+(regex_replacement) @string.regexp
+(regex_flags) @string.regexp
 (pseudo_variable
-   pvar: (pvar_type) @attribute.builtin
-   "(" @punctuation.builtin
-   argument: (identifier) @variable.parameter
-   ")" @punctuation.builtin) 
+   "$" @keyword.operator
+   var: (pseudo_content) @attribute.builtin)
+(var_
+  name: (identifier) @variable.parameter)
+(avp_var
+  name: (pvar_argument) @variable.parameter)
+ (pvar_expression
+   "$" @keyword.operator
+   var: (pseudo_content) @attribute.builtin)
+(xavp_values
+  name: (identifier) @variable.parameter
+  index: (identifier) @variable.builtin
+  field: (identifier) @property)
+(transformation) @variable.parameter
+(htable
+  htable: (identifier) @variable.parameter
+  "=>" @punctuation.special)
 
-(pvar_type) @attribute.builtin
-(modparam) @function.builtin
-(loadmodule) @function.builtin
-(modparamx) @function.builtin
-(loadmodulex) @function.builtin
+(modparam
+  module_name: (string) @string.special.path) @function.builtin
+(modparamx
+  module_name: (string) @string.special.path) @function.builtin
+(loadmodule
+  module_name: (string) @string.special.path) @keyword.import
+(loadmodulex
+  module_name: (string) @string.special.path) @keyword.import
+
+(loadpath
+  path: (string) @string.special.path) @keyword.import
 
 (top_level_assignment_expression
   key: (identifier) @variable.member
   value: (expression) @variable.parameter)
 
-(file_starter) @module
-;(predefined_routes) @keyword
 
 (string) @string
 (call_expression
   function: (expression) @function.call
   arguments: (argument_list
     "(" @punctuation.bracket
-    ")" @punctuation.bracket))
+    ")" @punctuation.bracket) @variable.parameter)
 
 (number_literal) @number
-;(named_route
-;  "[" @punctuation.special
-;  "]" @punctuation.special)
-;
-;(named_route
-;  route_name: (string) @attribute)
-;
-;(named_route
-;  route_name: (number_literal) @attribute)
-;
+
+(predef_route) @keyword
+(route_name) @variable.parameter
+
 (true) @keyword
 (false) @keyword
 (null) @keyword
@@ -89,8 +104,10 @@
 "-" @operator
 
 "." @punctuation.delimiter
+"," @punctuation.delimiter
 ";" @punctuation.delimiter
 ":" @punctuation.delimiter
+"::" @character.special
 
 "or" @keyword.operator
 "not" @keyword.operator
@@ -105,8 +122,6 @@
 
 [ "while" ] @keyword.repeat
 [  "if"
- "else"  
- "default"
-  "case" ] @keyword.conditional 
-(predef_route) @keyword
-
+   "else"  
+   "default"
+   "case" ] @keyword.conditional 
