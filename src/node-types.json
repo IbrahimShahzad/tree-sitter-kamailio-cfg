@@ -4535,10 +4535,20 @@
     "fields": {
       "name": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "path": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "xml_path",
             "named": true
           }
         ]
@@ -4554,6 +4564,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "xml_path",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "!",
@@ -4653,6 +4668,10 @@
   },
   {
     "type": "(",
+    "named": false
+  },
+  {
+    "type": "()",
     "named": false
   },
   {

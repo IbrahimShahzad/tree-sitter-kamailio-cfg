@@ -43,12 +43,12 @@ const PUNC = {
 
 /*action keywords*/
 const ACTION_KEYWORDS = {
- DROP: "drop", // done
+  DROP: "drop", // done
   EXIT: "exit", // done
   RETURN: "return", // done
   RETURN_MODE: "return_mode",
   BREAK: "break", // done
- ROUTE: "route", // done
+  ROUTE: "route", // done
   ROUTE_REQUEST: "request_route", // done
   ROUTE_FAILURE: "failure_route", // done
   ROUTE_REPLY: "reply_route", // done
@@ -56,9 +56,9 @@ const ACTION_KEYWORDS = {
   ROUTE_BRANCH: "branch_route", // done
   ROUTE_SEND: "onsend_route", // done
   ROUTE_EVENT: "event_route", // done
- IF: "if", // done
+  IF: "if", // done
   ELSE: "else", // done
- SWITCH: "switch", //done
+  SWITCH: "switch", //done
   CASE: "case", // done
   DEFAULT: "default", // done
   WHILE: "while", // done
@@ -1888,7 +1888,7 @@ module.exports = grammar({
     ),
 
 
-    select_var: $ => prec(PREC.SUBSCRIPT,seq(
+    select_var: $ => prec(PREC.SUBSCRIPT, seq(
       token("sel"),
       PUNC.LPAREN,
       field('name', choice($.select_attr, $.expression)),
@@ -1903,22 +1903,22 @@ module.exports = grammar({
 
 
     select_attr: $ => seq(
-      optional(seq(PUNC.LBRACK,choice( token("%s"), token("%i"), $.expression), PUNC.RBRACK)),
+      optional(seq(PUNC.LBRACK, choice(token("%s"), token("%i"), $.expression), PUNC.RBRACK)),
       PUNC.DOT,
       $.identifier,
     ),
 
     select_class: $ => choice(
-        token("contact"),
-        token("from"),
-        token("msg"),
-        token("ruri"),
-        token("tls"),
-        token("to"),
-        token("sys"),
-        token("via"),
-        token("xlmrpc"),
-      ),
+      token("contact"),
+      token("from"),
+      token("msg"),
+      token("ruri"),
+      token("tls"),
+      token("to"),
+      token("sys"),
+      token("via"),
+      token("xlmrpc"),
+    ),
 
     k_var: _ => seq(
       token("K"),
@@ -2432,15 +2432,20 @@ module.exports = grammar({
     // path example /a/b/c/attrubute::value
     // /pidf:presence/pidf:tuple/pidf:status/pidf:basic
     // The following regex is used to match the path, there could be () at the end of the path
-    _path: _ => /\/[a-zA-Z0-9_\-:]+(\/[a-zA-Z0-9_\-:]+)*(\(\))?/,
+    //_path: _ => /\/[a-zA-Z0-9_\-:]+(\/[a-zA-Z0-9_\-:]+)*(\(\))?/,
+    //_path: _ => /(.*\/\*)([^\/]*)/,
+    _path: _ => /[^)]*/,
+    _path: _ => /\/\/[^;]+;/,
 
+    xml_path: $ => seq(PUNC.COLON, $._path, optional(token("()"))),
     xml: $ => seq(
       token("xml"),
       PUNC.LPAREN,
-      field('name', $.identifier),
-      token("=>"),
+      optional(seq(
+        field('name', $.identifier),
+        token("=>"))),
       field('spec', $.identifier),
-      optional(seq(PUNC.COLON, $._path)),
+      optional(field('path', $.xml_path)),
       PUNC.RPAREN,
     ),
 
