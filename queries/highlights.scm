@@ -1,5 +1,6 @@
 (file_starter) @module
 (comment) @comment
+(multiline_comment) @comment
 
 (preproc_def
   (preproc_arg) @variable.parameter)
@@ -62,7 +63,7 @@
 
 (string) @string
 (call_expression
-  function: (identifier) @function.call
+  function: (expression) @function.call
   arguments: (argument_list
     "(" @punctuation.bracket
     ")" @punctuation.bracket) @variable.parameter)
@@ -121,7 +122,7 @@
   "exit"] @keyword.return
 
 [ "while" ] @keyword.repeat
-[  "if"s
+[  "if"
    "else"
    "default"
    "case" ] @keyword.conditional

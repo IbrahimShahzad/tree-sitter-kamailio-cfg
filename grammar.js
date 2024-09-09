@@ -705,6 +705,7 @@ const STRING_TRANSFORMATIONS = {
   FTIME: "s.ftime", //format
   TRIM: "s.trim",
   RTRIM: "s.rtrim",
+  RTRIM0: "s.rtrim0",
   LTRIM: "s.ltrim",
   RM: "s.rm", //, match
   RMHDWS: "s.rmhdws",
@@ -805,6 +806,7 @@ const PSEUDO_VARS = {
   BODY_OF_REQUEST_REPLY: "rb",
   RETURNED_CODE: "rc",
   RETURNED_CODE_FULL: "retcode",
+  RETURNED_CODE_SYMBOL: "?",
   DOMAIN_IN_R_URI: "rd",
   REQUEST_DIRECTION: "rdir",//_(KEY)
   REMOTE_PARTY_ID_HEADER_URI: "re",
@@ -863,12 +865,15 @@ const PSEUDO_VARS = {
 module.exports = grammar({
   name: 'kamailio_cfg',
 
-  extras: _ => [
+  extras: $ => [
     /\s|\\\r?\n/,
+    $.multiline_comment,
   ],
 
   conflicts: $ => [
     [$._expression_not_binary, $._block_item],
+    [$._expression_not_binary, $._field_identifier],
+    [$._assignment_left_expression, $._field_identifier],
     [$.top_level_item, $._expression_not_binary],
   ],
 
@@ -1091,7 +1096,6 @@ module.exports = grammar({
     comment: $ => (choice(
       $.comment_line,
       $.deprecated_comment,
-      $.multiline_comment
     )),
 
 
@@ -1279,7 +1283,7 @@ module.exports = grammar({
       $.binary_expression,
     ),
 
-    _expression_not_binary: $ => choice(
+    _expression_not_binary: $ => prec(PREC.DEFAULT, choice(
       $.assignment_expression,
       $.pseudo_variable,
       $.pvar_expression,
@@ -1296,7 +1300,7 @@ module.exports = grammar({
       $.false,
       $.null,
       $.parenthesized_expression,
-    ),
+    )),
 
     top_level_assignment_expression: $ => prec.right(PREC.DEFAULT, seq(
       field('key', $._assignment_left_expression),
@@ -1381,15 +1385,15 @@ module.exports = grammar({
       field('arguments', $.argument_list),
     )),
 
-    argument_list: $ => seq(PUNC.LPAREN, commaSep(choice($.expression, $.compound_statement)), PUNC.RPAREN),
+    argument_list: $ => seq(PUNC.LPAREN, commaSep(choice($.expression, $.compound_statement, PUNC.STAR)), PUNC.RPAREN),
 
-    field_expression: $ => seq(
+    field_expression: $ => prec.right(seq(
       prec(PREC.FIELD, seq(
         field('argument', $.expression),
-        field('operator', choice(PUNC.DOT, token('=>'))),
+        field('operator', choice(PUNC.DOT, PUNC.COLON, token('=>'))),
       )),
       field('field', $._field_identifier),
-    ),
+    )),
 
     parenthesized_expression: $ => seq(
       PUNC.LPAREN,
@@ -1449,15 +1453,17 @@ module.exports = grammar({
       ));
     },
 
+    number_eval: $ => choice($.number_literal, $.pseudo_variable, $.pvar_expression),
+
 
     _field_identifier: $ => alias($.identifier, $.field_identifier),
     _statement_identifier: $ => alias($.identifier, $.statement_identifier),
 
     identifier: _ => /[a-zA-Z_\-][a-zA-Z0-9_\-]*/,
-    pvar_type: $ => seq(
-      ATTRIBUTES.VAR_MARK,
-      $.identifier
-    ),
+    //pvar_type: $ => seq(
+    //  ATTRIBUTES.VAR_MARK,
+    //  $.identifier
+    //),
 
     pvar_expression: $ => prec(PREC.SUBSCRIPT, seq(
       ATTRIBUTES.VAR_MARK,
@@ -1493,8 +1499,8 @@ module.exports = grammar({
       seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
       seq(token(PARAMETER_LIST_TRANSFORMATION.VALUE), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
       seq(token(PARAMETER_LIST_TRANSFORMATION.IN), PUNC.COMMA, $.identifier, optional(seq(PUNC.COMMA, $.char_literal))),
-      seq(token(PARAMETER_LIST_TRANSFORMATION.VALUEAT), PUNC.COMMA, $.number_literal, optional(seq(PUNC.COMMA, $.char_literal))),
-      seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.number_literal, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.VALUEAT), PUNC.COMMA, $.number_eval, optional(seq(PUNC.COMMA, $.char_literal))),
+      seq(token(PARAMETER_LIST_TRANSFORMATION.NAME), PUNC.COMMA, $.number_eval, optional(seq(PUNC.COMMA, $.char_literal))),
       seq(token(PARAMETER_LIST_TRANSFORMATION.COUNT), optional(seq(PUNC.COMMA, $.char_literal))),
     ),
 
@@ -1561,7 +1567,7 @@ module.exports = grammar({
 
     line_transformation: $ => choice(
       token(LINE_TRANSFORMATION.COUNT),
-      seq(token(LINE_TRANSFORMATION.AT), $.number_literal),
+      seq(token(LINE_TRANSFORMATION.AT), $.number_eval),
       seq(token(LINE_TRANSFORMATION.SW), $.identifier),
     ),
 
@@ -1610,8 +1616,8 @@ module.exports = grammar({
       token(STRING_TRANSFORMATIONS.SHA256),
       token(STRING_TRANSFORMATIONS.SHA384),
       token(STRING_TRANSFORMATIONS.SHA512),
-      seq(token(STRING_TRANSFORMATIONS.SUBSTR), PUNC.COMMA, $.number_literal, PUNC.COMMA, $.number_literal),
-      seq(token(STRING_TRANSFORMATIONS.SELECT), PUNC.COMMA, $.number_literal, PUNC.COMMA, /./),
+      seq(token(STRING_TRANSFORMATIONS.SUBSTR), PUNC.COMMA, $.number_eval, PUNC.COMMA, $.number_eval),
+      seq(token(STRING_TRANSFORMATIONS.SELECT), PUNC.COMMA, $.number_eval, PUNC.COMMA, /./),
       token(STRING_TRANSFORMATIONS.ENCODE_7BIT),
       token(STRING_TRANSFORMATIONS.DECODE_7BIT),
       token(STRING_TRANSFORMATIONS.ENCODE_HEXA),
@@ -1635,14 +1641,15 @@ module.exports = grammar({
       token(STRING_TRANSFORMATIONS.NUMERIC),
       token(STRING_TRANSFORMATIONS.TOLOWER),
       token(STRING_TRANSFORMATIONS.TOUPPER),
-      seq(token(STRING_TRANSFORMATIONS.STRIP), PUNC.COMMA, $.number_literal),
-      seq(token(STRING_TRANSFORMATIONS.STRIPTAIL), PUNC.COMMA, $.number_literal),
-      seq(token(STRING_TRANSFORMATIONS.PREFIXES), optional(seq(PUNC.COMMA, $.number_literal))),
-      seq(token(STRING_TRANSFORMATIONS.PREFIXES_QUOUTED), optional(seq(PUNC.COMMA, $.number_literal))),
+      seq(token(STRING_TRANSFORMATIONS.STRIP), PUNC.COMMA, $.number_eval),
+      seq(token(STRING_TRANSFORMATIONS.STRIPTAIL), PUNC.COMMA, $.number_eval),
+      seq(token(STRING_TRANSFORMATIONS.PREFIXES), optional(seq(PUNC.COMMA, $.number_eval))),
+      seq(token(STRING_TRANSFORMATIONS.PREFIXES_QUOUTED), optional(seq(PUNC.COMMA, $.number_eval))),
       seq(token(STRING_TRANSFORMATIONS.REPLACE), PUNC.COMMA, /./, PUNC.COMMA, /./),
       seq(token(STRING_TRANSFORMATIONS.FTIME), PUNC.COMMA, /[/s/S]/),
       token(STRING_TRANSFORMATIONS.TRIM),
       token(STRING_TRANSFORMATIONS.RTRIM),
+      token(STRING_TRANSFORMATIONS.RTRIM0),
       token(STRING_TRANSFORMATIONS.LTRIM),
       seq(token(STRING_TRANSFORMATIONS.RM), PUNC.COMMA, /[/s/S]/),
       token(STRING_TRANSFORMATIONS.RMHDWS),
@@ -1656,20 +1663,20 @@ module.exports = grammar({
       seq(token(STRING_TRANSFORMATIONS.RAFTER), PUNC.COMMA, /./),
       seq(token(STRING_TRANSFORMATIONS.BEFORE), PUNC.COMMA, /./),
       seq(token(STRING_TRANSFORMATIONS.RBEFORE), PUNC.COMMA, /./),
-      seq(token(STRING_TRANSFORMATIONS.FMTLINES), PUNC.COMMA, $.number_literal, PUNC.COMMA, $.number_literal),
-      seq(token(STRING_TRANSFORMATIONS.FMTLINET), PUNC.COMMA, $.number_literal, PUNC.COMMA, $.number_literal),
+      seq(token(STRING_TRANSFORMATIONS.FMTLINES), PUNC.COMMA, $.number_eval, PUNC.COMMA, $.number_eval),
+      seq(token(STRING_TRANSFORMATIONS.FMTLINET), PUNC.COMMA, $.number_eval, PUNC.COMMA, $.number_eval),
       token(STRING_TRANSFORMATIONS.URLENCODE_PARAM),
       token(STRING_TRANSFORMATIONS.URLDECODE_PARAM),
     ),
 
     index_expression: $ => seq(
       PUNC.LBRACK,
-      field('index', choice($.number_literal, token(PUNC.STAR))),
+      field('index', choice($.number_eval, token(PUNC.STAR))),
       PUNC.RBRACK
     ),
 
     catch_all_pseudo_variable: $ => prec.right(seq(
-      $.pvar_type,
+      $.identifier,
       optional(
         seq(
           PUNC.LPAREN,
@@ -1681,7 +1688,7 @@ module.exports = grammar({
 
 
     pvar: $ => prec.right(choice(
-      seq(token(PSEUDO_VARS.FORMAT), PUNC.LPAREN, field('format', $.identifier), PUNC.RPAREN),
+      seq(token(PSEUDO_VARS.FORMAT), PUNC.LPAREN, field('format', choice($.identifier, $.pseudo_variable)), PUNC.RPAREN),
       token(PSEUDO_VARS.URI_IN_P_ASSERTED_IDENTITY_HEADER),
       token(PSEUDO_VARS.AUTH_DIGEST_URI),
       token(PSEUDO_VARS.AUTH_ALGORITHM),
@@ -1757,6 +1764,7 @@ module.exports = grammar({
       token(PSEUDO_VARS.BODY_OF_REQUEST_REPLY),
       token(PSEUDO_VARS.RETURNED_CODE),
       token(PSEUDO_VARS.RETURNED_CODE_FULL),
+      token(PSEUDO_VARS.RETURNED_CODE_SYMBOL),
       token(PSEUDO_VARS.DOMAIN_IN_R_URI),
       seq(PSEUDO_VARS.REQUEST_DIRECTION, PUNC.LPAREN, choice($.identifier, $.string), PUNC.RPAREN),
       token(PSEUDO_VARS.REMOTE_PARTY_ID_HEADER_URI),
@@ -2200,7 +2208,7 @@ module.exports = grammar({
         token("ret"),
         token("idx"),
         token("len"),
-        $.number_literal,
+        $.number_eval,
       )),
       PUNC.RPAREN,
     ),
@@ -2332,8 +2340,8 @@ module.exports = grammar({
       token("redis"),
       PUNC.LPAREN,
       field('key', choice(
-        seq(token("type"), optional(seq(PUNC.RBRACK, $.number_literal, PUNC.RBRACK))),
-        seq(token("value"), optional(seq(PUNC.RBRACK, $.number_literal, PUNC.RBRACK))),
+        seq(token("type"), optional(seq(PUNC.RBRACK, $.number_eval, PUNC.RBRACK))),
+        seq(token("value"), optional(seq(PUNC.RBRACK, $.number_eval, PUNC.RBRACK))),
         token("info"),
         token("size"),
       )),
@@ -2428,16 +2436,11 @@ module.exports = grammar({
       seq(token("T_branch"), PUNC.LPAREN, choice($.pseudo_variable, $.identifier, $.string), PUNC.RPAREN),
     ),
 
-    // path example /a/b/text()
-    // path example /a/b/c/attrubute::value
-    // /pidf:presence/pidf:tuple/pidf:status/pidf:basic
-    // The following regex is used to match the path, there could be () at the end of the path
-    //_path: _ => /\/[a-zA-Z0-9_\-:]+(\/[a-zA-Z0-9_\-:]+)*(\(\))?/,
-    //_path: _ => /(.*\/\*)([^\/]*)/,
-    _path: _ => /[^)]*/,
-    _path: _ => /\/\/[^;]+;/,
+    //xml_path: _ => seq(/:[@\w\/\*:-]+/, optional(token("()"))),
+    //xml_path: $ => repeat(seq(/[@\w\/\*:-]+/, optional(field('path_expr', seq(PUNC.LBRACK, $.expression, PUNC.RBRACK))), optional(token("()")))),
+    _path: _ => /[\w:\/*@-]+/,
+    xml_path: $ => seq($._path, optional(seq(PUNC.LBRACK, $.expression, PUNC.RBRACK, $._path)), optional(token("()"))),
 
-    xml_path: $ => seq(PUNC.COLON, $._path, optional(token("()"))),
     xml: $ => seq(
       token("xml"),
       PUNC.LPAREN,
@@ -2501,7 +2504,7 @@ module.exports = grammar({
 
     mct: $ => seq(
       PUNC.LPAREN,
-      choice($.identifier, $.string, seq($.identifier, token("=>"), $.number_literal)),
+      choice($.identifier, $.string, seq($.identifier, token("=>"), $.number_eval)),
       PUNC.RPAREN,
     ),
 
@@ -2523,7 +2526,7 @@ module.exports = grammar({
         seq(token("\~%"), $.identifier),
         seq(token("%\~"), $.identifier),
         seq(token("=="), choice($.identifier, $.string)),
-        seq(token("eqvalue"), $.number_literal),
+        seq(token("eqvalue"), $.number_eval),
         token("**"),
       )),
       PUNC.RPAREN,
@@ -2662,7 +2665,7 @@ module.exports = grammar({
     msg_buf_index: $ => seq(
       token("msgbuf"),
       PUNC.LPAREN,
-      $.number_literal,
+      $.number_eval,
       PUNC.RPAREN,
     ),
 
@@ -2717,8 +2720,8 @@ module.exports = grammar({
       optional(
         seq(PUNC.LBRACK, choice(
           PUNC.STAR,
-          $.number_literal,
-          prec(PREC.CONDITIONAL, seq(token("i:"), $.number_literal)),
+          $.number_eval,
+          prec(PREC.CONDITIONAL, seq(token("i:"), $.number_eval)),
           prec(PREC.CONDITIONAL, seq(token("s:"), ($.identifier, $.string))),
         ), PUNC.RBRACK))
     )),
@@ -2731,13 +2734,13 @@ module.exports = grammar({
       optional(
         seq(PUNC.LBRACK, choice(
           PUNC.STAR,
-          $.number_literal,
+          $.number_eval,
         ), PUNC.RBRACK))
     )),
 
     xavp_values: $ => seq(
       field('name', $.identifier), // single value
-      optional(field('index', seq(PUNC.LBRACK, choice($.identifier, $.number_literal, $.pseudo_variable), PUNC.RBRACK))),
+      optional(field('index', seq(PUNC.LBRACK, choice($.identifier, $.number_eval), PUNC.RBRACK))),
       optional(field('field', seq(token('=>'), $.identifier))),
     ),
 
@@ -2886,12 +2889,12 @@ module.exports = grammar({
         choice(
           field('argument', $.identifier),
           field('argument', $.string),
-          field('argument', $.number_literal)
+          field('argument', $.number_eval)
         ),
         repeat(seq(PUNC.COMMA, choice(
           field('argument', $.identifier),
           field('argument', $.string),
-          field('argument', $.number_literal)
+          field('argument', $.number_eval)
         ))),
       )),
       PUNC.RPAREN
