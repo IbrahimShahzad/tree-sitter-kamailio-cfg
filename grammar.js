@@ -992,11 +992,11 @@ module.exports = grammar({
       field('body', $.statement),
     ),
 
-    return_statement: $ => seq(
+    return_statement: $ => choice(seq(
       token(ACTION_KEYWORDS.RETURN),
       optional(choice($.expression, $.comma_expression)),
       field("eos", PUNC.SEMICOLON),
-    ),
+    ), $._core_function_statement),
 
     break_statement: _ => seq(
       token(ACTION_KEYWORDS.BREAK),
@@ -1009,7 +1009,7 @@ module.exports = grammar({
     ),
 
     _non_case_statement: $ => choice(
-      $.core_function_statement,
+      // $.core_function_statement,
       $.compound_statement,
       $._expression_statement,
       $.if_statement,
@@ -1020,7 +1020,7 @@ module.exports = grammar({
       $.continue_statement,
     ),
 
-    core_function_statement: $ => seq(
+    _core_function_statement: $ => seq(
       $.core_function,
       field("eos", PUNC.SEMICOLON),
     ),

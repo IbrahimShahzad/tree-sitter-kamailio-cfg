@@ -527,10 +527,6 @@
           "named": true
         },
         {
-          "type": "core_function_statement",
-          "named": true
-        },
-        {
           "type": "expression",
           "named": true
         },
@@ -853,32 +849,6 @@
         },
         {
           "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "core_function_statement",
-    "named": true,
-    "fields": {
-      "eos": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": ";",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "core_function",
           "named": true
         }
       ]
@@ -3324,6 +3294,10 @@
           "named": true
         },
         {
+          "type": "core_function",
+          "named": true
+        },
+        {
           "type": "expression",
           "named": true
         }
@@ -3614,10 +3588,6 @@
         },
         {
           "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "core_function_statement",
           "named": true
         },
         {

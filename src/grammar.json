@@ -432,43 +432,52 @@
       ]
     },
     "return_statement": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "return"
-          }
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "return"
+              }
+            },
             {
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "expression"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "comma_expression"
+                    }
+                  ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "comma_expression"
+                  "type": "BLANK"
                 }
               ]
             },
             {
-              "type": "BLANK"
+              "type": "FIELD",
+              "name": "eos",
+              "content": {
+                "type": "STRING",
+                "value": ";"
+              }
             }
           ]
         },
         {
-          "type": "FIELD",
-          "name": "eos",
-          "content": {
-            "type": "STRING",
-            "value": ";"
-          }
+          "type": "SYMBOL",
+          "name": "_core_function_statement"
         }
       ]
     },
@@ -517,10 +526,6 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "core_function_statement"
-        },
-        {
-          "type": "SYMBOL",
           "name": "compound_statement"
         },
         {
@@ -553,7 +558,7 @@
         }
       ]
     },
-    "core_function_statement": {
+    "_core_function_statement": {
       "type": "SEQ",
       "members": [
         {
