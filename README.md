@@ -18,9 +18,8 @@ Some c like grammar is taken from the [tree-sitter-c](https://github.com/tree-si
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.kamailio_cfg = {
   install_info = {
-    -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg', -- local path or git repo
-    url = '~/personal/tree-sitter-kamailio-cfg', -- local path or git repo
-    files = { 'src/parser.c', 'queries/highlights.scm' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
+    files = { 'src/parser.c', },
     branch = 'v0.1.2', -- default branch in case of git repo if different from master
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
