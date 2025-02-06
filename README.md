@@ -28,3 +28,7 @@ parser_config.kamailio_cfg = {
 2. Run `:TSInstall kamailio_cfg` in nvim.
 
 3. Set the filetype to `kamailio_cfg` when opening in neovim.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
