@@ -2544,7 +2544,7 @@ module.exports = grammar({
     dlg_var: $ => seq(
       choice(token("dlg"), token("dlg_var")),
       PUNC.LPAREN,
-      $.identifier,
+      field('name', $.pvar_argument),
       PUNC.RPAREN,
     ),
 
@@ -2774,7 +2774,7 @@ module.exports = grammar({
     var_: $ => prec.left(seq(
       choice(token("var"), token("vz"), token("vn")),
       PUNC.LPAREN,
-      field('name', choice($.identifier, $.pvar_argument)),
+      field('name', $.pvar_argument),
       PUNC.RPAREN
     )),
 

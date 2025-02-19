@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-kamailio-cfg"
 description = "KamailioCfg grammar for tree-sitter"
-version = "0.0.1"
+version = "0.1.3"
 keywords = ["incremental", "parsing", "tree-sitter", "kamailio-cfg"]
 classifiers = [
   "Intended Audience :: Developers",
@@ -17,6 +17,12 @@ classifiers = [
 requires-python = ">=3.8"
 license.text = "MIT"
 readme = "README.md"
+authors = [
+  {name = "Ibrahim Shahzad", email = "ibrahim.shahzad.mirza@gmail.com"},
+]
+maintainers = [
+  {name = "Ibrahim Shahzad", email = "ibrahim.shahzad.mirza@gmail.com"}
+]
 
 [project.urls]
 Homepage = "https://github.com/tree-sitter/tree-sitter-kamailio-cfg"
