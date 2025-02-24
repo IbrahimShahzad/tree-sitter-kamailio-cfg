@@ -5795,8 +5795,7 @@
   },
   {
     "type": "multiline_comment",
-    "named": true,
-    "extra": true
+    "named": true
   },
   {
     "type": "n",
