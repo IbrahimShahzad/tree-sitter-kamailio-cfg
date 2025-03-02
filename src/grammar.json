@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "kamailio_cfg",
   "rules": {
     "source_file": {
@@ -103,7 +102,7 @@
         }
       ]
     },
-    "_block_item": {
+    "_higher_level_block_item": {
       "type": "CHOICE",
       "members": [
         {
@@ -185,6 +184,83 @@
         {
           "type": "SYMBOL",
           "name": "call_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
+        }
+      ]
+    },
+    "_block_item": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_def"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_trydef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_ifdef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_ifndef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_redef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_subst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_substdefs"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "preproc_substdef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loadmodule"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loadmodulex"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "loadpath"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "modparam"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "modparamx"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "import_file"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "include_file"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "route_call"
         },
         {
           "type": "SYMBOL",
@@ -294,6 +370,13 @@
         }
       ]
     },
+    "eos": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": ";"
+      }
+    },
     "_top_level_expression_statement": {
       "type": "PREC",
       "value": 10,
@@ -311,8 +394,8 @@
                 "type": "FIELD",
                 "name": "eos",
                 "content": {
-                  "type": "STRING",
-                  "value": ";"
+                  "type": "SYMBOL",
+                  "name": "eos"
                 }
               },
               {
@@ -364,8 +447,8 @@
           "type": "FIELD",
           "name": "eos",
           "content": {
-            "type": "STRING",
-            "value": ";"
+            "type": "SYMBOL",
+            "name": "eos"
           }
         }
       ]
@@ -470,8 +553,8 @@
               "type": "FIELD",
               "name": "eos",
               "content": {
-                "type": "STRING",
-                "value": ";"
+                "type": "SYMBOL",
+                "name": "eos"
               }
             }
           ]
@@ -496,8 +579,8 @@
           "type": "FIELD",
           "name": "eos",
           "content": {
-            "type": "STRING",
-            "value": ";"
+            "type": "SYMBOL",
+            "name": "eos"
           }
         }
       ]
@@ -516,8 +599,8 @@
           "type": "FIELD",
           "name": "eos",
           "content": {
-            "type": "STRING",
-            "value": ";"
+            "type": "SYMBOL",
+            "name": "eos"
           }
         }
       ]
@@ -556,6 +639,10 @@
         {
           "type": "SYMBOL",
           "name": "continue_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "call_expression"
         }
       ]
     },
@@ -570,8 +657,8 @@
           "type": "FIELD",
           "name": "eos",
           "content": {
-            "type": "STRING",
-            "value": ";"
+            "type": "SYMBOL",
+            "name": "eos"
           }
         }
       ]
@@ -1625,7 +1712,7 @@
             "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
-              "name": "_block_item"
+              "name": "_higher_level_block_item"
             }
           },
           {
@@ -1680,7 +1767,7 @@
             "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
-              "name": "_block_item"
+              "name": "_higher_level_block_item"
             }
           }
         ]
@@ -1713,7 +1800,7 @@
             "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
-              "name": "_block_item"
+              "name": "_higher_level_block_item"
             }
           },
           {
@@ -5977,8 +6064,8 @@
                         "type": "FIELD",
                         "name": "eos",
                         "content": {
-                          "type": "STRING",
-                          "value": ";"
+                          "type": "SYMBOL",
+                          "name": "eos"
                         }
                       },
                       {
@@ -13265,8 +13352,8 @@
                 "type": "FIELD",
                 "name": "eos",
                 "content": {
-                  "type": "STRING",
-                  "value": ";"
+                  "type": "SYMBOL",
+                  "name": "eos"
                 }
               },
               {
@@ -13509,6 +13596,23 @@
     ],
     [
       "_expression_not_binary",
+      "_higher_level_block_item"
+    ],
+    [
+      "_expression_not_binary",
+      "_higher_level_block_item",
+      "_non_case_statement"
+    ],
+    [
+      "_higher_level_block_item",
+      "_non_case_statement"
+    ],
+    [
+      "_expression_not_binary",
+      "_non_case_statement"
+    ],
+    [
+      "_expression_not_binary",
       "_field_identifier"
     ],
     [
@@ -13525,3 +13629,4 @@
   "inline": [],
   "supertypes": []
 }
+

@@ -872,6 +872,10 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$._expression_not_binary, $._block_item],
+    [$._expression_not_binary, $._higher_level_block_item],
+    [$._expression_not_binary, $._higher_level_block_item, $._non_case_statement],
+    [$._higher_level_block_item, $._non_case_statement],
+    [$._expression_not_binary, $._non_case_statement],
     [$._expression_not_binary, $._field_identifier],
     [$._assignment_left_expression, $._field_identifier],
     [$.top_level_item, $._expression_not_binary],
@@ -908,7 +912,7 @@ module.exports = grammar({
       $.comment,
     ),
 
-    _block_item: $ => choice(
+    _higher_level_block_item : $ => choice(
       $.statement,
       $.assignment_expression,
       $.preproc_def,
@@ -929,6 +933,30 @@ module.exports = grammar({
       $.route_call,
       $.routing_block,
       $.call_expression,
+      $.comment,
+    ),
+
+    _block_item: $ => choice(
+      $.statement,
+      // $.assignment_expression,
+      $.preproc_def,
+      $.preproc_trydef,
+      $.preproc_ifdef,
+      $.preproc_ifndef,
+      $.preproc_redef,
+      $.preproc_subst,
+      $.preproc_substdefs,
+      $.preproc_substdef,
+      $.loadmodule,
+      $.loadmodulex,
+      $.loadpath,
+      $.modparam,
+      $.modparamx,
+      $.import_file,
+      $.include_file,
+      $.route_call,
+      // $.routing_block,
+      // $.call_expression,
       $.comment,
     ),
 
@@ -961,10 +989,11 @@ module.exports = grammar({
         )))),
 
 
+    eos: _ => token(PUNC.SEMICOLON),
 
     _top_level_expression_statement: $ => prec(10, seq(
       $._expression_not_binary,
-      optional(field("eos", PUNC.SEMICOLON)),
+      optional(field("eos", $.eos)),
     )),
     statement: $ => choice(
       $.case_statement,
@@ -976,7 +1005,7 @@ module.exports = grammar({
         $.expression,
         $.comma_expression,
       )),
-      field("eos", PUNC.SEMICOLON),
+      field("eos", $.eos),
     ),
 
 
@@ -995,17 +1024,17 @@ module.exports = grammar({
     return_statement: $ => choice(seq(
       token(ACTION_KEYWORDS.RETURN),
       optional(choice($.expression, $.comma_expression)),
-      field("eos", PUNC.SEMICOLON),
+      field("eos", $.eos),
     ), $._core_function_statement),
 
-    break_statement: _ => seq(
+    break_statement: $ => seq(
       token(ACTION_KEYWORDS.BREAK),
-      field("eos", PUNC.SEMICOLON),
+      field("eos", $.eos),
     ),
 
-    continue_statement: _ => seq(
+    continue_statement: $ => seq(
       token('continue'),
-      field("eos", PUNC.SEMICOLON),
+      field("eos", $.eos),
     ),
 
     _non_case_statement: $ => choice(
@@ -1018,11 +1047,12 @@ module.exports = grammar({
       $.return_statement,
       $.break_statement,
       $.continue_statement,
+      $.call_expression,
     ),
 
     _core_function_statement: $ => seq(
       $.core_function,
-      field("eos", PUNC.SEMICOLON),
+      field("eos", $.eos),
     ),
 
     core_function: $ => seq(
@@ -1193,8 +1223,8 @@ module.exports = grammar({
 
     preproc_arg: _ => token(prec(-1, /\S([^/\n]|\/[^*]|\\\r?\n)*/)),
 
-    ...preprocIf('', $ => $._block_item),
-    ...preprocIfn('', $ => $._block_item),
+    ...preprocIf('', $ => $._higher_level_block_item),
+    ...preprocIfn('', $ => $._higher_level_block_item),
 
     _preproc_expression: $ => choice(
       $.identifier,
@@ -1682,7 +1712,7 @@ module.exports = grammar({
           PUNC.LPAREN,
           field('name', $.pvar_argument),
           PUNC.RPAREN,
-          optional(field("eos", PUNC.SEMICOLON)),
+          optional(field("eos", $.eos)),
         ))
     )),
 
@@ -2863,7 +2893,7 @@ module.exports = grammar({
       )),
       optional(field('value_s', $.string)),
       PUNC.RPAREN,
-      optional(field("eos", PUNC.SEMICOLON)),
+      optional(field("eos", $.eos)),
     )),
 
     modparamx: $ => seq(
